@@ -10,7 +10,7 @@ Container_Boundary(merlin, "Merlin") {
 }
 
 ContainerDb(merlin_db, "Merlin Database", "PostgreSQL", "Stores plans and mission model metadata")
-ContainerDb(file_store, "Aerie File Store", "File System", "Stores mission model JAR files")
+ContainerDb(file_store, "PlanDev File Store", "File System", "Stores mission model JAR files")
 
 Rel_D(hasura, app, "Makes internal API calls", "JSON/HTTP")
 Rel_D(app, plan_logic, "Makes calls to")

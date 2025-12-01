@@ -13,13 +13,13 @@ Some of the main features of PlanDev include:
 - A GraphQL API so you can easily build tools on top of PlanDev
 - A web-based [client application](https://github.com/PlanDev/plandev-ui)
 
-As a multi-tenant system, PlanDev allows multiple distributed users to [collaborate](https://nasa-ammos.github.io/plandev-docs/planning/collaboration/introduction/) in real-time on a single plan or concurrently work on multiple plans for multiple missions. Additionally, PlanDev's [service based architecture](https://nasa-ammos.github.io/plandev-docs/overview/software-design-document/#aerie-system-design) allows for efficient system deployment and scalability on the cloud.
+As a multi-tenant system, PlanDev allows multiple distributed users to [collaborate](https://nasa-ammos.github.io/plandev-docs/planning/collaboration/introduction/) in real-time on a single plan or concurrently work on multiple plans for multiple missions. Additionally, PlanDev's [service based architecture](https://plandev.github.io/plandev-docs/overview/software-design-document/#plandev-system-design) allows for efficient system deployment and scalability on the cloud.
 
 ## Fast Track ⏱️ {#fast-track}
 
 Understand PlanDev in **5 minutes** by trying it out!
 
-1. Before starting you first need to install [Docker](https://www.docker.com/get-started/) on your local machine. The PlanDev system is essentially a collection of [OCI](https://opencontainers.org/) [images](https://github.com/orgs/NASA-AMMOS/packages?ecosystem=container&q=aerie).
+1. Before starting you first need to install [Docker](https://www.docker.com/get-started/) on your local machine. The PlanDev system is essentially a collection of [OCI](https://opencontainers.org/) [images](https://github.com/orgs/PlanDev/packages?ecosystem=container&q=plandev).
 
 1. If you’re running macOS, Linux, or another Unix-like OS you can use following two commands in your terminal to download the [Docker Compose](https://docs.docker.com/compose/) file and `.env` file:
 

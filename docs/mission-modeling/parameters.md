@@ -47,7 +47,7 @@ This approach is great for defining a simple record type parent class without de
 
 ### See Also
 
-PlanDev's [config-without-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-without-defaults/src/main/java/gov/nasa/jpl/aerie/configwithoutdefaults/Configuration.java) example mission model makes use of this succinct style for declaring mission model configuration parameters. See the [Java documentation on Record classes](https://docs.oracle.com/en/java/javase/19/language/records.html) for more detailed information about the language feature.
+PlanDev's [config-without-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-without-defaults/src/main/java/gov/nasa/jpl/plandev/configwithoutdefaults/Configuration.java) example mission model makes use of this succinct style for declaring mission model configuration parameters. See the [Java documentation on Record classes](https://docs.oracle.com/en/java/javase/19/language/records.html) for more detailed information about the language feature.
 
 ## Export Parameter
 
@@ -87,7 +87,7 @@ Some mission modelers may prefer the explicitness provided by individual `@Param
 
 ### See Also
 
-PlanDev's [foo-missionmodel](https://github.com/PlanDev/plandev/blob/develop/examples/foo-missionmodel/src/main/java/gov/nasa/jpl/aerie/foomissionmodel/Configuration.java) example mission model makes use of this style when declaring mission model configuration parameters.
+PlanDev's [foo-missionmodel](https://github.com/PlanDev/plandev/blob/develop/examples/foo-missionmodel/src/main/java/gov/nasa/jpl/plandev/foomissionmodel/Configuration.java) example mission model makes use of this style when declaring mission model configuration parameters.
 
 ## Export Template
 
@@ -118,7 +118,7 @@ Use `@Template` when every member variable for a parent class should be an expor
 
 ### See Also
 
-PlanDev's [banananation](https://github.com/PlanDev/plandev/tree/develop/examples/banananation) example mission model uses this style within the [GrowBananaActivity](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/activities/GrowBananaActivity.java) and [ThrowBananaActivity](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/activities/ThrowBananaActivity.java).
+PlanDev's [banananation](https://github.com/PlanDev/plandev/tree/develop/examples/banananation) example mission model uses this style within the [GrowBananaActivity](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/plandev/banananation/activities/GrowBananaActivity.java) and [ThrowBananaActivity](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/plandev/banananation/activities/ThrowBananaActivity.java).
 
 ## Export With Defaults
 
@@ -150,4 +150,4 @@ Use `@WithDefaults` when every member variable for a parent class should be an e
 
 ### See Also
 
-PlanDev's [config-with-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-with-defaults/src/main/java/gov/nasa/jpl/aerie/configwithdefaults/Configuration.java) example mission model makes use of this style within its mission model configuration. The [banananation](https://github.com/PlanDev/plandev/tree/develop/examples/banananation) example mission model uses this style in the [BakeBananaBreadActivity](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/activities/BakeBananaBreadActivity.java).
+PlanDev's [config-with-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-with-defaults/src/main/java/gov/nasa/jpl/plandev/configwithdefaults/Configuration.java) example mission model makes use of this style within its mission model configuration. The [banananation](https://github.com/PlanDev/plandev/tree/develop/examples/banananation) example mission model uses this style in the [BakeBananaBreadActivity](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/plandev/banananation/activities/BakeBananaBreadActivity.java).

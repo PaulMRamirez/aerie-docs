@@ -22,7 +22,7 @@ Of note, the `plandev-merlin`, `plandev_merlin_worker`, `plandev-scheduler`, and
 
 ## Docker
 
-PlanDev consists of multiple **services**, and uses [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) to manage and run them. The artifacts used to deploy PlanDev are a collection of Docker **images**, one per service, which we publish to the public [GitHub Packages](https://github.com/orgs/NASA-AMMOS/packages?ecosystem=container&q=aerie) repository. PlanDev images conform to the [OCI](https://opencontainers.org/) [Image Format](https://github.com/opencontainers/image-spec/blob/main/spec.md) and may be compatible with Docker alternatives, but only Docker is officially supported.
+PlanDev consists of multiple **services**, and uses [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) to manage and run them. The artifacts used to deploy PlanDev are a collection of Docker **images**, one per service, which we publish to the public [GitHub Packages](https://github.com/orgs/PlanDev/packages?ecosystem=container&q=plandev) repository. PlanDev images conform to the [OCI](https://opencontainers.org/) [Image Format](https://github.com/opencontainers/image-spec/blob/main/spec.md) and may be compatible with Docker alternatives, but only Docker is officially supported.
 
 [Docker Compose](https://docs.docker.com/compose/) commands are used to build and run the PlanDev services **all together**, so in general you should only need to run  `docker compose up` & `docker compose down` (along with some various [command flags](https://docs.docker.com/reference/cli/docker/compose/)) to start and stop PlanDev.
 

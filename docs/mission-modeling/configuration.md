@@ -61,10 +61,10 @@ public record Configuration(Path initialDataPath) {
 
 See the PlanDev [mission model examples directory](https://github.com/PlanDev/plandev/tree/develop/examples) for a demonstration of each possible style of configuration definitions:
 
-1. [foo-missionmodel](https://github.com/PlanDev/plandev/blob/develop/examples/foo-missionmodel/src/main/java/gov/nasa/jpl/aerie/foomissionmodel/Configuration.java) - Uses standard `@Parameter` configuration annotations
-1. [banananation](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/Configuration.java) - Uses the `@Template` annotation to define a default Configuration object (shown above)
-1. [config-with-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-with-defaults/src/main/java/gov/nasa/jpl/aerie/configwithdefaults/Configuration.java) - Uses `@WithDefaults` to define a default for each parameter
-1. [config-without-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-without-defaults/src/main/java/gov/nasa/jpl/aerie/configwithoutdefaults/Configuration.java) - Defined with no default arguments, requires all arguments to be supplied by the planner
+1. [foo-missionmodel](https://github.com/PlanDev/plandev/blob/develop/examples/foo-missionmodel/src/main/java/gov/nasa/jpl/plandev/foomissionmodel/Configuration.java) - Uses standard `@Parameter` configuration annotations
+1. [banananation](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/plandev/banananation/Configuration.java) - Uses the `@Template` annotation to define a default Configuration object (shown above)
+1. [config-with-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-with-defaults/src/main/java/gov/nasa/jpl/plandev/configwithdefaults/Configuration.java) - Uses `@WithDefaults` to define a default for each parameter
+1. [config-without-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-without-defaults/src/main/java/gov/nasa/jpl/plandev/configwithoutdefaults/Configuration.java) - Defined with no default arguments, requires all arguments to be supplied by the planner
 
 The mission model may use a configuration to set initial values of resources, for example:
 

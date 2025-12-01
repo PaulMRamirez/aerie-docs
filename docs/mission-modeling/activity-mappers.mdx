@@ -16,7 +16,7 @@ The `ActivityMapper` interface is shown below:
   language="java"
   showLineNumbers
   title="PlanDev Merlin Framework - ActivityMapper.java "
-  url="https://raw.githubusercontent.com/PlanDev/plandev/develop/merlin-framework/src/main/java/gov/nasa/jpl/aerie/merlin/framework/ActivityMapper.java"
+  url="https://raw.githubusercontent.com/PlanDev/plandev/develop/merlin-framework/src/main/java/gov/nasa/jpl/plandev/merlin/framework/ActivityMapper.java"
 ></RemoteCodeBlock>
 
 The first thing to notice is that the interface takes a type parameter (here called `Instance`). When implementing the `ActivityMapper` interface, an activity mapper must supply the `ActivityType` being mapped. With that in mind, each of the methods shown must be implemented as such:
@@ -110,7 +110,7 @@ describing the structure of the value being mapped (see [here](https://github.co
 
 The next two methods are inverses of each other: `deserializeValue()` and `serializeValue()`. It is the job of `deserializeValue()` to take a `SerializedValue` and map it, if possible, into the mapper's supported value. Meanwhile, `serializeValue()` takes an instance of the mapper's supported value and turns it into a [`SerializedValue`](https://github.com/PlanDev/plandev/wiki/Activity-Mappers#what-is-a-serializedvalue).
 
-There are plenty of examples of value mappers over in the [contrib module](https://github.com/PlanDev/plandev/tree/develop/contrib/src/main/java/gov/nasa/jpl/aerie/contrib/serialization/mappers).
+There are plenty of examples of value mappers over in the [contrib module](https://github.com/PlanDev/plandev/tree/develop/contrib/src/main/java/gov/nasa/jpl/plandev/contrib/serialization/mappers).
 
 ### AutoValueMapper.Record
 

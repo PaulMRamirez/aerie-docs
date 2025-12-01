@@ -18,7 +18,7 @@ This document lists the instructions for building an plandev-ui Docker image wit
    git checkout tags/v1.0.0 -b v1.0.0
    ```
 
-2. Update [svelte.config.js](https://github.com/PlanDev/plandev-ui/blob/develop/svelte.config.js) with the [base path](https://github.com/PlanDev/plandev-ui/blob/develop/svelte.config.js#L9) you want to use. Note that a leading `/` is required. So for example a valid base path is `/aerie`.
+2. Update [svelte.config.js](https://github.com/PlanDev/plandev-ui/blob/develop/svelte.config.js) with the [base path](https://github.com/PlanDev/plandev-ui/blob/develop/svelte.config.js#L9) you want to use. Note that a leading `/` is required. So for example a valid base path is `/plandev`.
 
 3. Build the plandev-ui.
 
