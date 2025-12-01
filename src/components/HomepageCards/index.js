@@ -6,8 +6,8 @@ import { useColorMode } from '@docusaurus/theme-common';
 const FeatureList = [
   {
     title: 'Seamless workflow from planning to commanding',
-    Img: require('@site/static/img/cards/aerie-feature-planning-commanding-light.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-feature-planning-commanding-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-feature-planning-commanding-light.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-feature-planning-commanding-dark.png').default,
     size: 'col--8',
     description: (
       <>
@@ -18,20 +18,20 @@ const FeatureList = [
   },
   {
     title: 'Extensible mission modeling and simulation',
-    Img: require('@site/static/img/cards/aerie-feature-mission-modeling-light.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-feature-mission-modeling-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-feature-mission-modeling-light.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-feature-mission-modeling-dark.png').default,
     size: 'col--4',
     description: (
       <>
-        Model your system with access to the entire Java ecosystem. Validate plans against your models using Aerie's
-        discrete event simulator through the user interface or Aerie API.
+        Model your system with access to the entire Java ecosystem. Validate plans against your models using PlanDev's
+        discrete event simulator through the user interface or PlanDev API.
       </>
     ),
   },
   {
     title: 'Real-time collaboration and versioning',
-    Img: require('@site/static/img/cards/aerie-feature-collaboration-light.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-feature-collaboration-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-feature-collaboration-light.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-feature-collaboration-dark.png').default,
     size: 'col--4',
     description: (
       <>
@@ -42,8 +42,8 @@ const FeatureList = [
   },
   {
     title: 'Flexible scheduling and rule checking',
-    Img: require('@site/static/img/cards/aerie-feature-rule-checking-light.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-feature-rule-checking-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-feature-rule-checking-light.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-feature-rule-checking-dark.png').default,
     size: 'col--8',
     description: (
       <>
@@ -57,10 +57,10 @@ const FeatureList = [
 const GetStartedList = [
   {
     title: 'For Mission Planners',
-    Img: require('@site/static/img/cards/aerie-getstarted-mission-planners-light.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-getstarted-mission-planners-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-getstarted-mission-planners-light.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-getstarted-mission-planners-dark.png').default,
     size: 'col--4',
-    link: '/aerie-docs/category/planning/',
+    link: '/plandev-docs/category/planning/',
     linkTitle: 'Planning docs',
     description: (
       <>
@@ -71,19 +71,19 @@ const GetStartedList = [
   },
   {
     title: 'For Systems Engineers',
-    Img: require('@site/static/img/cards/aerie-getstarted-systems-engineers-light.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-getstarted-systems-engineers-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-getstarted-systems-engineers-light.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-getstarted-systems-engineers-dark.png').default,
     size: 'col--4',
-    // link: '/aerie-docs/category/planning/',
+    // link: '/plandev-docs/category/planning/',
     // linkTitle: 'Planning docs',
     description: <>Analyze and inform spacecraft design and architecture during development.</>,
   },
   {
     title: 'For Spacecraft Operators',
-    Img: require('@site/static/img/cards/aerie-getstarted-spacecraftops-light.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-getstarted-spacecraftops-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-getstarted-spacecraftops-light.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-getstarted-spacecraftops-dark.png').default,
     size: 'col--4',
-    // link: '/aerie-docs/category/planning/',
+    // link: '/plandev-docs/category/planning/',
     // linkTitle: 'Planning docs',
     description: (
       <>
@@ -94,8 +94,8 @@ const GetStartedList = [
   },
   {
     title: 'Open source and zero cost',
-    Img: require('@site/static/img/cards/aerie-getstarted-opensource-light.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-getstarted-opensource-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-getstarted-opensource-light.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-getstarted-opensource-dark.png').default,
     size: 'col--4',
     link: 'https://opensource.org/license/mit/',
     linkTitle: 'MIT License',
@@ -105,15 +105,15 @@ const GetStartedList = [
   },
   {
     title: 'Quick set up and customization',
-    Img: require('@site/static/img/cards/aerie-getstarted-customize-light.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-getstarted-customize-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-getstarted-customize-light.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-getstarted-customize-dark.png').default,
     size: 'col--8',
-    link: '/aerie-docs/introduction/#fast-track',
-    linkTitle: 'Aerie quick start',
+    link: '/plandev-docs/introduction/#fast-track',
+    linkTitle: 'PlanDev quick start',
     description: (
       <>
-        Aerie was designed from the ground up to be easily installed and used to get your mission up and running
-        quickly. Aerie lets you focus on your mission, and we'll do the chores.
+        PlanDev was designed from the ground up to be easily installed and used to get your mission up and running
+        quickly. PlanDev lets you focus on your mission, and we'll do the chores.
       </>
     ),
   },
@@ -122,8 +122,8 @@ const GetStartedList = [
 const LearnMoreList = [
   {
     title: 'Ask a question on Slack',
-    Img: require('@site/static/img/cards/aerie-learn-slack.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-learn-slack-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-learn-slack.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-learn-slack-dark.png').default,
     size: 'col--4',
     link: 'https://join.slack.com/t/nasa-ammos/shared_invite/zt-1mlgmk5c2-MgqVSyKzVRUWrXy87FNqPw',
     linkTitle: 'Join Slack',
@@ -133,43 +133,43 @@ const LearnMoreList = [
   },
   {
     title: 'Discuss or contribute on Github',
-    Img: require('@site/static/img/cards/aerie-learn-github.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-learn-github-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-learn-github.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-learn-github-dark.png').default,
     size: 'col--4',
-    link: 'https://github.com/NASA-AMMOS/aerie',
-    linkTitle: 'Aerie on Github',
+    link: 'https://github.com/PlanDev/plandev',
+    linkTitle: 'PlanDev on Github',
     description: (
-      <>Post a question in GitHub discussions, or contribute back and help make Aerie even better than it is today.</>
+      <>Post a question in GitHub discussions, or contribute back and help make PlanDev even better than it is today.</>
     ),
   },
   {
     title: 'Sign up for news and updates',
-    Img: require('@site/static/img/cards/aerie-learn-googlegroup.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-learn-googlegroup-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-learn-googlegroup.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-learn-googlegroup-dark.png').default,
     size: 'col--4',
-    link: 'https://groups.google.com/u/3/g/aerie-users',
-    linkTitle: 'Aerie Users Group',
-    description: <>Stay up-to-date on the latest news and releases by joining the Aerie Users Google Group.</>,
+    link: 'https://groups.google.com/u/3/g/plandev-users',
+    linkTitle: 'PlanDev Users Group',
+    description: <>Stay up-to-date on the latest news and releases by joining the PlanDev Users Google Group.</>,
   },
   {
     title: 'Dive into the docs',
     size: 'col--4',
     links: [
-      { url: '/aerie-docs/overview/concept-of-operations/', text: 'Concept of Operations' },
-      { url: '/aerie-docs/overview/software-design-document/', text: 'Software Design Document' },
-      { url: '/aerie-docs/mission-modeling/introduction/', text: 'Mission Modeling' },
-      { url: '/aerie-docs/category/planning/', text: 'Planning' },
-      { url: '/aerie-docs/constraints/introduction/', text: 'Constraints' },
-      { url: '/aerie-docs/java-docs/introduction/', text: 'Java Docs' },
+      { url: '/plandev-docs/overview/concept-of-operations/', text: 'Concept of Operations' },
+      { url: '/plandev-docs/overview/software-design-document/', text: 'Software Design Document' },
+      { url: '/plandev-docs/mission-modeling/introduction/', text: 'Mission Modeling' },
+      { url: '/plandev-docs/category/planning/', text: 'Planning' },
+      { url: '/plandev-docs/constraints/introduction/', text: 'Constraints' },
+      { url: '/plandev-docs/java-docs/introduction/', text: 'Java Docs' },
     ],
-    description: <>See the details of how different components work in Aerie.</>,
+    description: <>See the details of how different components work in PlanDev.</>,
   },
   {
     title: 'Explore a universe of extensions',
-    Img: require('@site/static/img/cards/aerie-learn-extensions.png').default,
-    ImgDark: require('@site/static/img/cards/aerie-learn-extensions-dark.png').default,
+    Img: require('@site/static/img/cards/plandev-learn-extensions.png').default,
+    ImgDark: require('@site/static/img/cards/plandev-learn-extensions-dark.png').default,
     size: 'col--4',
-    link: '/aerie-docs/introduction/#fast-track',
+    link: '/plandev-docs/introduction/#fast-track',
     linkTitle: 'Coming soon',
     description: (
       <>
@@ -181,12 +181,12 @@ const LearnMoreList = [
   {
     title: 'Something else?',
     size: 'col--4',
-    link: 'support@aerie.ammos.nasa.gov',
-    linkTitle: 'support@aerie.ammos.nasa.gov',
+    link: 'support@plandev.dev',
+    linkTitle: 'support@plandev.dev',
     description: (
       <>
         Have a specific quesion that you'd like help with? Curious to speak with someone directly? Send us an email and
-        we can find to chat or demo Aerie.
+        we can find to chat or demo PlanDev.
       </>
     ),
   },

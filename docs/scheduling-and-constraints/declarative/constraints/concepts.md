@@ -12,7 +12,7 @@ Profiles can have _gaps_, or intervals where the value is unknown. This comes up
 
 ## Windows
 
-Windows are like a boolean profile, augmented with some extra functionality. For many constraints, the final result is a `Windows` object, which tells Aerie what times are violations of the constraint. `true` means the state is nominal and `false` means the state is a violation. This means that you should describe the conditions you _want_ to happen, not the conditions you don’t want to happen.
+Windows are like a boolean profile, augmented with some extra functionality. For many constraints, the final result is a `Windows` object, which tells PlanDev what times are violations of the constraint. `true` means the state is nominal and `false` means the state is a violation. This means that you should describe the conditions you _want_ to happen, not the conditions you don’t want to happen.
 
 There are a few ways to calculate a `Windows` object from profiles, and many operations that can be done on them; including the traditional boolean `and`, `or`, and `not`. These are all in the API documentation. Like all profiles, `Windows` can have gaps too. However, some operations (such as converting to Spans or splitting segments) are not possible on gaps, so you'll be required to apply a default value using `windows.assignGaps(boolean)`.
 
@@ -32,4 +32,4 @@ Not all constraints are based solely off of a `Windows` object. The main excepti
 
 ## Mental Model for Evaluation
 
-A constraint doesn't directly query simulation data, or directly return violations. Instead, your constraint code defines an expression to be interpreted by Aerie. The exact implementation details don’t matter for constraint authors, but for this reason you cannot directly inspect a profile's values or a plan's activities. This is also why there are no plans to support querying external profiles directly from a web request or filesystem access inside the constraint code. For that, see the [external dataset documentation](../../../../planning/external-datasets).
+A constraint doesn't directly query simulation data, or directly return violations. Instead, your constraint code defines an expression to be interpreted by PlanDev. The exact implementation details don’t matter for constraint authors, but for this reason you cannot directly inspect a profile's values or a plan's activities. This is also why there are no plans to support querying external profiles directly from a web request or filesystem access inside the constraint code. For that, see the [external dataset documentation](../../../../planning/external-datasets).

@@ -1,12 +1,12 @@
 # Sim Configuration
 
 There is often a need for certain aspects of a model to be exposed to the planner to provide flexibility to tweak and configure the model prior to a simulation run.
-The Aerie modeling framework provides a [simulation configuration](https://ammos.nasa.gov/aerie-docs/mission-modeling/configuration/) interface to satisfy this need.
+The PlanDev modeling framework provides a [simulation configuration](https://ammos.nasa.gov/plandev-docs/mission-modeling/configuration/) interface to satisfy this need.
 In our SSR model, we will expose a couple variables that already exist in our code: the sample interval for our `SSR_Volume_Sampled` resource and the SSR max capacity defined as part of the `SSR_Volume_Polynomial` resource definition.
 We will also create a new model configuration for setting the initial state of the `MagDataMode`.
 
 Back when we initially grabbed the mission model template to give us a jumping off point for our model, you may recall that the template provided a `Configuration` class, and that class is already passed into the top-level `Mission` class as a parameter.
-Taking a look at the `Configuration` class (which is actually a [java record](https://www.baeldung.com/java-record-vs-final-class)), you'll see there is already a static method there called `defaultConfiguration()` that uses the [`@Template` annotation](https://ammos.nasa.gov/aerie-docs/mission-modeling/parameters/#export-template).
+Taking a look at the `Configuration` class (which is actually a [java record](https://www.baeldung.com/java-record-vs-final-class)), you'll see there is already a static method there called `defaultConfiguration()` that uses the [`@Template` annotation](https://ammos.nasa.gov/plandev-docs/mission-modeling/parameters/#export-template).
 This type of annotation assumes every variable within the parent class should be exposed as simulation configuration (or a parameter if you use this within activities) with a default value.
 So, in our case, we will declare three member variables and give them all default values that match the values we have for them in the `DataModel` class, which we will soon replace with references to this configuration.
 
@@ -23,7 +23,7 @@ In order to hook up these member variables to our record, we need to add three c
 ```java
 package missionmodel;
 
-import static gov.nasa.jpl.aerie.merlin.framework.annotations.Export.Template;
+import static dev.plandev.merlin.framework.annotations.Export.Template;
 
 public record Configuration(Double ssrMaxCapacity,
                             long integrationSampleInterval,
@@ -43,7 +43,7 @@ public record Configuration(Double ssrMaxCapacity,
 }
 ```
 
-Now, when Aerie loads in our model, the member variables above will be exposed as simulation configuration with defaults set to the defaults defined in this record. However, at the moment, changing the values from their defaults won't actually change the behavior of the simulation because our `DataModel` doesn't yet know about this configuration. Within our top-level `Mission` class, we need to pass our configuration into `DataModel` via its constructor
+Now, when PlanDev loads in our model, the member variables above will be exposed as simulation configuration with defaults set to the defaults defined in this record. However, at the moment, changing the values from their defaults won't actually change the behavior of the simulation because our `DataModel` doesn't yet know about this configuration. Within our top-level `Mission` class, we need to pass our configuration into `DataModel` via its constructor
 
 ```java
 this.dataModel = new DataModel(this.errorRegistrar, config);
@@ -89,8 +89,8 @@ registrar.discrete("RecordingRate", RecordingRate, new DoubleValueMapper());
 previousRecordingRate = currentValue(RecordingRate);
 ```
 
-Now you should be ready to try this out in the Aerie UI. Go ahead and compile your model with simulation configuration and upload it to Aerie. Build whatever plan you'd like and then before you simulate, in the left panel view, select "Simulation" in the dropdown menu. You should now see your three configuration variables appear under "Arguments"
+Now you should be ready to try this out in the PlanDev UI. Go ahead and compile your model with simulation configuration and upload it to PlanDev. Build whatever plan you'd like and then before you simulate, in the left panel view, select "Simulation" in the dropdown menu. You should now see your three configuration variables appear under "Arguments"
 
 ![Simulation Config](assets/Simulation_Config.png)
 
-Aerie is smart enough to look at the types of the configuration variables and generate a input field in the UI that best matches that type. So, for example, the `startingMagMode` is a simple drop down menu with the only options available being members of the `MagDataCollectionMode` enumeration.
+PlanDev is smart enough to look at the types of the configuration variables and generate a input field in the UI that best matches that type. So, for example, the `startingMagMode` is a simple drop down menu with the only options available being members of the `MagDataCollectionMode` enumeration.

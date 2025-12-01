@@ -1,7 +1,7 @@
 # Tags
 
-Tags are metadata that can be used to mark certain things in Aerie, including Plans, Plan Snapshots, Activity Directives, Scheduling Goals, Constraints, and Command Expansion Runs. 
-Tags are shared across an Aerie instance.
+Tags are metadata that can be used to mark certain things in PlanDev, including Plans, Plan Snapshots, Activity Directives, Scheduling Goals, Constraints, and Command Expansion Runs. 
+Tags are shared across an PlanDev instance.
 
 ## Creating a Tag
 

@@ -1,24 +1,24 @@
 # Advanced - User Role Permissions
 
-User Roles are sets of permissions that defines how a user is a allowed to interact with the Aerie system.
-By default, Aerie provides three User Roles:
+User Roles are sets of permissions that defines how a user is a allowed to interact with the PlanDev system.
+By default, PlanDev provides three User Roles:
 
 - `viewer`, which can view all data
 - `user`, which can view all data and perform all actions based on ownership
-- `aerie_admin`, which can view all data and perform all actions
+- `plandev_admin`, which can view all data and perform all actions
 
 ## Creating New User Roles
 
 Should the default three not be sufficient for your deployment, it is possible to define new User Roles.
 
 :::info
-The `viewer` role is the most restricted role Aerie supports. To ensure Aerie works as expected when using your new role,
+The `viewer` role is the most restricted role PlanDev supports. To ensure PlanDev works as expected when using your new role,
 it is strongly recommended to give your role *at least* the same permissions as `viewer`.
 :::
 
 ### Adding the Role to Hasura
 
-In order to interact with the Aerie system, a role must first be provided access via the [Hasura Metadata](https://github.com/NASA-AMMOS/aerie/tree/develop/deployment/hasura/metadata).
+In order to interact with the PlanDev system, a role must first be provided access via the [Hasura Metadata](https://github.com/PlanDev/plandev/tree/develop/deployment/hasura/metadata).
 
 There are three parts of the Hasura Metadata that a role needs to be added to:
 Functions, Actions, and individual tables. The Hasura Metadata can be found in `hasura/metadata`.
@@ -26,7 +26,7 @@ Functions, Actions, and individual tables. The Hasura Metadata can be found in `
 #### Function Permissions
 
 Function Permissions can be found in `databases/<DATABASE_NAME>/functions/functions.yaml`.
-Currently, all functions are in the AerieMerlin Database.
+Currently, all functions are in the PlanDevMerlin Database.
 The inside of a `functions.yaml` will look like a sequence of entries in the following pattern:
 
 ```yaml
@@ -38,7 +38,7 @@ The inside of a `functions.yaml` will look like a sequence of entries in the fol
       function: <GQL_function_name>
     session_argument: hasura_session
   permissions:
-    - role: aerie_admin
+    - role: plandev_admin
 ```
 
 To give the new role permission to see a given Function,
@@ -46,7 +46,7 @@ you must add them to the list of roles listed under the `permissions` key, like 
 
 ```yaml
   permissions:
-    - role: aerie_admin
+    - role: plandev_admin
     - role: <YOUR_ROLE>
 ```
 
@@ -62,7 +62,7 @@ The pattern for these entries is:
       handler: "<action_endpoint>"
       timeout: 300
     permissions:
-      - role: aerie_admin
+      - role: plandev_admin
       - role: user
 ```
 
@@ -70,7 +70,7 @@ To give a role permission to see an Action, add them to the list of roles under 
 
 ```yaml
     permissions:
-      - role: aerie_admin
+      - role: plandev_admin
       - role: user
       - role: <YOUR_ROLE>
 ```
@@ -102,7 +102,7 @@ select_permissions:
 ##### Insert Permissions:
 - `columns` determines which fields a role can provide values for while setting a row. It is expected that `columns` includes at least those specified in the `user` role.
 - `check` allows for validation of the row being inserted.
-For example, `{"name":{"_like":"aerie--%"}}` means that the row being inserted must have its `name` field begin with "aerie--".
+For example, `{"name":{"_like":"plandev--%"}}` means that the row being inserted must have its `name` field begin with "plandev--".
 - `set` automatically sets the value of certain fields on the row to be inserted.
 For example, `owner: "x-hasura-user-id"` will set `owner` as the current user's username (`"x-hasura-user-id"`).
 These fields **must not** be included in `columns`.
@@ -113,7 +113,7 @@ insert_permissions:
   - role: <YOUR_ROLE>
     permission:
       columns: [name, definition]
-      check: {"name":{"_like":"aerie--%"}}
+      check: {"name":{"_like":"plandev--%"}}
       set:
         owner: "x-hasura-user-id"
 ```
@@ -125,7 +125,7 @@ It is expected that `columns` includes at least those specified in the `user` ro
 For example, `{"owner":{"_eq":"x-hasura-user-id"}}` means that users using the role can only delete rows
 where the `owner` field is their username.
 - `check` allows for validation of the updated row.
-For example, `{"name":{"_like":"aerie--%"}}` means that the row must have its `name` field begin with "aerie--" after being updated.
+For example, `{"name":{"_like":"plandev--%"}}` means that the row must have its `name` field begin with "plandev--" after being updated.
 This is optional.
 - `set` automatically sets the value of certain fields on the row being updated.
 For example, `updated_by: "x-hasura-user-id"` will set `owner` as the current user's username.
@@ -138,7 +138,7 @@ update_permissions:
     permission:
       columns: [name, owner]
       filter: {"owner":{"_eq":"x-hasura-user-id"}}
-      check: {"name":{"_like":"aerie--%"}}
+      check: {"name":{"_like":"plandev--%"}}
       set:
         updated_by: "x-hasura-user-id"
 ```
@@ -251,7 +251,7 @@ Any Functions not included here only have coarse-grained control.
 
 | Permission | Meaning |
 | -: | :- |
-| `NO_CHECK` | The user may run the action/function with no restrictions. **The `aerie_admin` role will always be treated as having `NO_CHECK` permissions on all Actions and Functions.** |
+| `NO_CHECK` | The user may run the action/function with no restrictions. **The `plandev_admin` role will always be treated as having `NO_CHECK` permissions on all Actions and Functions.** |
 | `OWNER` | The user must be the `owner` of **all** relevant objects **directly** used by the KEY |
 | `MISSION_MODEL_OWNER` | The user must own the relevant Mission Model |
 | `PLAN_OWNER` | The user must be the Owner of the relevant Plan |
@@ -277,7 +277,7 @@ and 'Target Plan' refers to the plan *receiving* changes.
 
 | Permission | Meaning   |
 |-:|:-|
-| `NO_CHECK` | The user may run the action/function with no restrictions. **The `aerie_admin` role will always be treated as having `NO_CHECK` permissions on all Plan Merge Functions.** |
+| `NO_CHECK` | The user may run the action/function with no restrictions. **The `plandev_admin` role will always be treated as having `NO_CHECK` permissions on all Plan Merge Functions.** |
 | `OWNER` | The user must be the Owner of **both** Plans
 | `MISSION_MODEL_OWNER` | The user must be the Owner of the relevant Mission Model
 | `PLAN_OWNER` | The user must be the Owner of **either** Plan
@@ -356,16 +356,16 @@ Below are sample Query Variables. These are equivalent to the `user` role's Perm
 
 ## Configuring Roles for New Users
 
-The first time a user not in the system logs in, they will be added to the Aerie system with a set of User Roles they
+The first time a user not in the system logs in, they will be added to the PlanDev system with a set of User Roles they
 are allowed to use and one Role from this set that they use by default.
 By default, users will use the `user` role and have access to the `user` and `viewer` roles.
 To configure this, use the `ALLOWED_ROLES` and `DEFAULT_ROLE` environment variables.
 **Note: `DEFAULT_ROLE` _must_ be an entry in `ALLOWED_ROLES`.**
 
-For more information, see the [Environment Variables document](https://github.com/NASA-AMMOS/aerie-gateway/blob/develop/docs/ENVIRONMENT.md) in the Gateway.
+For more information, see the [Environment Variables document](https://github.com/PlanDev/plandev-gateway/blob/develop/docs/ENVIRONMENT.md) in the Gateway.
 
 :::info When Authentication is Disabled
 [If authentication is disabled](../advanced-authentication/), then the following changes apply:
-1. By default, users will use the `aerie_admin` role and have access to the `aerie_admin`, `user`, and `viewer` roles
+1. By default, users will use the `plandev_admin` role and have access to the `plandev_admin`, `user`, and `viewer` roles
 2. To configure these roles for new users, use the `ALLOWED_ROLES_NO_AUTH` and `DEFAULT_ROLES_NO_AUTH` environment variables instead.
 :::

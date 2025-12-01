@@ -2,7 +2,7 @@
 
 Users can create custom planning views for different sub-systems (e.g. science, engineering, thermal, etc.), where only data (e.g. activities and resources) for those sub-systems are visualized. This is done through custom JSON configuration files (or directly via the UI). The format of a UI View is the subject of this document.
 
-See the [UI view JSON schema specification](https://github.com/NASA-AMMOS/aerie-ui/blob/develop/src/schemas/ui-view-schema.json) for the complete set of view object properties and types.
+See the [UI view JSON schema specification](https://github.com/PlanDev/plandev-ui/blob/develop/src/schemas/ui-view-schema.json) for the complete set of view object properties and types.
 
 ## View Schema
 
@@ -337,7 +337,7 @@ Notice how we connect the grid component `activityTableId` with the `id` of the 
 
 ### IFrames
 
-An IFrame component allows you to embed another application in the Aerie UI. Here is an example `iFrames` view JSON definition:
+An IFrame component allows you to embed another application in the PlanDev UI. Here is an example `iFrames` view JSON definition:
 
 ```json
 {

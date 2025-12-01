@@ -3,15 +3,15 @@
 Activity parameters provide the ability to modulate the behavior of an activity's effect model.
 Aside from determining the effects of the activity, these parameters can be used to determine its duration, decomposition into children activities and expansion into commands.
 
-The Aerie annotation processor is used to extract and generate serialization code for parameters of activity types.
-The annotation processor also allows authors of a mission model to create mission-specific parameter types, ensuring that they will be recognized by the Aerie framework.
+The PlanDev annotation processor is used to extract and generate serialization code for parameters of activity types.
+The annotation processor also allows authors of a mission model to create mission-specific parameter types, ensuring that they will be recognized by the PlanDev framework.
 
 ## Validations
 
 A mission model configuration or activity can be validated by providing one or more methods annotated by `@Validation` and `@Validation.Subject`.
 The `@Validation` annotation message specifies the message to present to a planner when the validation fails.
 The `@Validation.Subject` annotation specifies which parameter(s) the validation is associated with.
-These associated parameters are reported from Aerie when querying for activity argument validations to couple validations with parameters.
+These associated parameters are reported from PlanDev when querying for activity argument validations to couple validations with parameters.
 
 For example the following function validates that a parameter called `instrumentPower_W` is between `0.0` and `1000.0` inclusive:
 

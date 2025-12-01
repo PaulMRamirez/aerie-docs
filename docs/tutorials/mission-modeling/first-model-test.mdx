@@ -2,8 +2,8 @@
 
 Within your IDE, compile the model (`./gradlew :missionmodel:build --refresh-dependencies` should do the trick) and make sure it built successfully by checking `build/libs` for a new `missionmodel.jar` file.
 
-Follow [these instructions](https://ammos.nasa.gov/aerie-docs/planning/upload-mission-model/) to upload your `.jar` file, and give your model a name and version number (e.g. SSR Model version 1.0).
-Next, you can follow [these instructions](https://ammos.nasa.gov/aerie-docs/planning/create-plan-and-simulate/#instructions) to create a new plan.
+Follow [these instructions](https://ammos.nasa.gov/plandev-docs/planning/upload-mission-model/) to upload your `.jar` file, and give your model a name and version number (e.g. SSR Model version 1.0).
+Next, you can follow [these instructions](https://ammos.nasa.gov/plandev-docs/planning/create-plan-and-simulate/#instructions) to create a new plan.
 Pick the model you just compiled to build your plan off of and name your plan `Mission Plan 1` and give it an arbitrary start time (for example, today).
 The end time will be pre-populated by default to give your plan a duration `1 day`, which we will keep for this test drive.
 Click "Create" and click on the newly created plan to open it, which should take you to a view with the plan timeline in the center view panel.
@@ -25,4 +25,4 @@ On the top menu bar, click "Simulation" and then "Simulate". After you see a gre
 
 ![Tutorial Plan 1](assets/Tutorial_Plan_1.png)
 
-At this point, we could go into more detail about how you can [edit the timeline](https://nasa-ammos.github.io/aerie-docs/planning/timeline-editing/), edit your UI view, or view simulation history, but instead we will move back to our IDE and add some more complexity to our model.
+At this point, we could go into more detail about how you can [edit the timeline](https://nasa-ammos.github.io/plandev-docs/planning/timeline-editing/), edit your UI view, or view simulation history, but instead we will move back to our IDE and add some more complexity to our model.

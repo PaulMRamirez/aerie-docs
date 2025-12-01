@@ -1,31 +1,31 @@
 # Mission Modeling Tutorial
 
-Welcome Aerie modeling padawans! For your training today, you will be learning the basics of mission modeling in Aerie by building your own simple model of an on-board spacecraft solid state recorder (SSR). This model will track the recording rate into the recorder from a couple instruments along with the integrated data volume over time. Through the process of building this model, you'll learn about the fundamental objects of a model, activities and resources, and their structure. You'll be introduced to the different categories of resources and learn how you define and implement each along with restrictions on when you can/can't modify them. As a bonus, we will also cover how you can make your resources "unit aware" to prevent those pesky issues that come along with performing unit conversions and how you can test your model without having to pull your model into an Aerie deployment.
+Welcome PlanDev modeling padawans! For your training today, you will be learning the basics of mission modeling in PlanDev by building your own simple model of an on-board spacecraft solid state recorder (SSR). This model will track the recording rate into the recorder from a couple instruments along with the integrated data volume over time. Through the process of building this model, you'll learn about the fundamental objects of a model, activities and resources, and their structure. You'll be introduced to the different categories of resources and learn how you define and implement each along with restrictions on when you can/can't modify them. As a bonus, we will also cover how you can make your resources "unit aware" to prevent those pesky issues that come along with performing unit conversions and how you can test your model without having to pull your model into an PlanDev deployment.
 
 Let the training begin!
 
 ## Prerequisites
 
-### Deploy Aerie
+### Deploy PlanDev
 
-Before we begin writing modeling code, make sure that you have access to an Aerie deployment as we'll be loading our model into Aerie to build plans and view simulation results. You can deploy Aerie locally on your machine by following the simple steps outlined in our [Fast Track](https://nasa-ammos.github.io/aerie-docs/introduction/#fast-track) instructions. Once you have checked that the Aerie UI is available on [http://localhost/](http://localhost/), you should be ready proceed with this tutorial.
+Before we begin writing modeling code, make sure that you have access to an PlanDev deployment as we'll be loading our model into PlanDev to build plans and view simulation results. You can deploy PlanDev locally on your machine by following the simple steps outlined in our [Fast Track](https://nasa-ammos.github.io/plandev-docs/introduction/#fast-track) instructions. Once you have checked that the PlanDev UI is available on [http://localhost/](http://localhost/), you should be ready proceed with this tutorial.
 
 ### Install an IDE
 
-Aerie mission models are built using a Java modeling framework (which we will discuss in detail later) and take the form of a `.jar` file, which you can then load into Aerie via the UI (or GraphQL API). In order to have an enjoyable experience building your mission model, you'll want to download and install a Java integrated development environment (IDE) with support for the [Gradle Build Tool](https://docs.gradle.org/current/userguide/userguide.html) (our models use Gradle to build our `.jar` files). Our team's preferred IDE is currently [IntelliJ](https://www.jetbrains.com/idea/), but any Java IDE should work just fine.
+PlanDev mission models are built using a Java modeling framework (which we will discuss in detail later) and take the form of a `.jar` file, which you can then load into PlanDev via the UI (or GraphQL API). In order to have an enjoyable experience building your mission model, you'll want to download and install a Java integrated development environment (IDE) with support for the [Gradle Build Tool](https://docs.gradle.org/current/userguide/userguide.html) (our models use Gradle to build our `.jar` files). Our team's preferred IDE is currently [IntelliJ](https://www.jetbrains.com/idea/), but any Java IDE should work just fine.
 
 ## Download and Build the Mission Model Template
 
-Mission models require a couple of standard items for Aerie to process the model once it has been built:
+Mission models require a couple of standard items for PlanDev to process the model once it has been built:
 
-1. A [`package-info.java`](https://nasa-ammos.github.io/aerie-docs/mission-modeling/introduction/#the-package-infojava-file) file containing a reference to the top-level mission model class, annotations referencing any activities defined in the model, an annotation referencing a configuration class that can expose configuration parameters that can be varied prior to simulation, and import statements to the Aerie modeling framework to bridge the framework to the model.
-2. The top-level [mission model class](https://ammos.nasa.gov/aerie-docs/mission-modeling/introduction/#the-mission-model-class) that defines or delegates the behavior of the system being described in the model. Any quantity or state that you would like to track over the course of the simulation - which we define as a [**Resource**](https://ammos.nasa.gov/aerie-docs/mission-modeling/resources-and-models/) - should be declared and defined in this class or its delegates. The name of the top-level mission class can be anything as long as it matches the reference in `package-info.java`.
+1. A [`package-info.java`](https://nasa-ammos.github.io/plandev-docs/mission-modeling/introduction/#the-package-infojava-file) file containing a reference to the top-level mission model class, annotations referencing any activities defined in the model, an annotation referencing a configuration class that can expose configuration parameters that can be varied prior to simulation, and import statements to the PlanDev modeling framework to bridge the framework to the model.
+2. The top-level [mission model class](https://ammos.nasa.gov/plandev-docs/mission-modeling/introduction/#the-mission-model-class) that defines or delegates the behavior of the system being described in the model. Any quantity or state that you would like to track over the course of the simulation - which we define as a [**Resource**](https://ammos.nasa.gov/plandev-docs/mission-modeling/resources-and-models/) - should be declared and defined in this class or its delegates. The name of the top-level mission class can be anything as long as it matches the reference in `package-info.java`.
 
-Fortunately, to save you some trouble, we've created a [mission model template repository](https://github.com/NASA-AMMOS/aerie-mission-model-template) that already has these items included for you along with a gradle build setup that takes care of including the right Aerie dependencies to get your mission model `.jar` file built hassle-free. In this repository, if you take a look in [`src/main/java/missionmodel`](https://github.com/NASA-AMMOS/aerie-mission-model-template/tree/main/src/main/java/missionmodel), you'll see the `package-info.java` file along with the top-level `Mission` and `Configuration` classes already defined for you.
+Fortunately, to save you some trouble, we've created a [mission model template repository](https://github.com/PlanDev/plandev-mission-model-template) that already has these items included for you along with a gradle build setup that takes care of including the right PlanDev dependencies to get your mission model `.jar` file built hassle-free. In this repository, if you take a look in [`src/main/java/missionmodel`](https://github.com/PlanDev/plandev-mission-model-template/tree/main/src/main/java/missionmodel), you'll see the `package-info.java` file along with the top-level `Mission` and `Configuration` classes already defined for you.
 
-On the main page for the [mission model template repository](https://github.com/NASA-AMMOS/aerie-mission-model-template), click the "Use this template" button on the top right of the page and select "Create a new repository" to create a new repository for your SSR model. Clone your new repository and follow the instructions in the [`README.md`](https://github.com/NASA-AMMOS/aerie-mission-model-template/blob/main/README.md) to setup your environment and test out building a mission model `.jar` from the model. You'll find the `.jar` you built within a `build/libs` directory generated as part of the gradle build.
+On the main page for the [mission model template repository](https://github.com/PlanDev/plandev-mission-model-template), click the "Use this template" button on the top right of the page and select "Create a new repository" to create a new repository for your SSR model. Clone your new repository and follow the instructions in the [`README.md`](https://github.com/PlanDev/plandev-mission-model-template/blob/main/README.md) to setup your environment and test out building a mission model `.jar` from the model. You'll find the `.jar` you built within a `build/libs` directory generated as part of the gradle build.
 
-At this point, we could pull up the Aerie UI and load the `.jar` file into Aerie as a model, but there is nothing really interesting in the model yet. So before we bring our model into Aerie, let's give it some content.
+At this point, we could pull up the PlanDev UI and load the `.jar` file into PlanDev as a model, but there is nothing really interesting in the model yet. So before we bring our model into PlanDev, let's give it some content.
 
 TODO:
 
@@ -54,7 +54,7 @@ As you are coding, take advantage of your IDE to auto import the modeling framew
 
 Let's tease apart this line of code and use it as an opportunity to provide a brief overview of the various types of resources available to you as a modeler. The mission modeling framework provides two primary classes from which to define resources:
 
-1. `MutableResource` - resource whose value can be explicitly updated by activities or other modeling code after it has been defined. Updates to the resource take the form of "Effects" such as `increase`, `decrease`, or `set`. The values of this category of resource are explicitly tracked in objects called "Cells" within Aerie, which you can read about in detail in the [Aerie Software Design Document](https://ammos.nasa.gov/aerie-docs/overview/software-design-document/#cells) if you are interested.
+1. `MutableResource` - resource whose value can be explicitly updated by activities or other modeling code after it has been defined. Updates to the resource take the form of "Effects" such as `increase`, `decrease`, or `set`. The values of this category of resource are explicitly tracked in objects called "Cells" within PlanDev, which you can read about in detail in the [PlanDev Software Design Document](https://ammos.nasa.gov/plandev-docs/overview/software-design-document/#cells) if you are interested.
 2. `Resource` - resource whose value cannot be explicitly updated after it has been defined. In other words, these resources cannot be updated via "Effects". The most common use of these resources are to create "derived" resources that are fully defined by the values of other resources (we will have some examples of these later). Since these resources get their value from other resources, they actually don't need to store their own value within a "Cell". Interestingly, the `MutableResource` class extends the `Resource` class and includes additional logic to ensure values are correctly stored in these "Cells".
 
 From these classes, there are a few different types of resources provided, which are primarily distinguished by how the value of the resource progresses between computed points:
@@ -68,7 +68,7 @@ TODO: Add more content on `Clock`
 
 :::note
 
-Polynomial resources currently cannot be rendered in the Aerie UI and must be transformed to a linear resource (an example of this is shown later in the tutorial)
+Polynomial resources currently cannot be rendered in the PlanDev UI and must be transformed to a linear resource (an example of this is shown later in the tutorial)
 
 :::
 
@@ -88,20 +88,20 @@ The last thing to do is to register `RecordingRate` to the UI so we can view the
 registrar.discrete("RecordingRate", RecordingRate, new DoubleValueMapper());
 ```
 
-The first argument to this `discrete` function is the string name of the resource you want to appear in the UI, the second argument is the resource itself, and then the third argument is a [Value Mapper](https://nasa-ammos.github.io/aerie-docs/mission-modeling/activity-mappers/#value-mappers) object that matches the resource primitive type, which in this case is a `Double`. For now, you don't need to know much about Value Mappers other than they are needed for performing data serialization to the UI and there are mappers already currently available as part of the framework for all basic types. You can create custom ones if you have complex resource types, but for almost all cases, you should be able to get away with one of the pre-built mappers.
+The first argument to this `discrete` function is the string name of the resource you want to appear in the UI, the second argument is the resource itself, and then the third argument is a [Value Mapper](https://nasa-ammos.github.io/plandev-docs/mission-modeling/activity-mappers/#value-mappers) object that matches the resource primitive type, which in this case is a `Double`. For now, you don't need to know much about Value Mappers other than they are needed for performing data serialization to the UI and there are mappers already currently available as part of the framework for all basic types. You can create custom ones if you have complex resource types, but for almost all cases, you should be able to get away with one of the pre-built mappers.
 
 You have now declared, defined, and registered your first resource and your `DataModel` class should look something like this:
 
 ```java
 package missionmodel;
 
-import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
-import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
-import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
-import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
+import dev.plandev.contrib.streamline.core.MutableResource;
+import dev.plandev.contrib.streamline.modeling.Registrar;
+import dev.plandev.contrib.streamline.modeling.discrete.Discrete;
+import dev.plandev.contrib.serialization.mappers.DoubleValueMapper;
 
-import static gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource.resource;
-import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete.discrete;
+import static dev.plandev.contrib.streamline.core.MutableResource.resource;
+import static dev.plandev.contrib.streamline.modeling.discrete.Discrete.discrete;
 
 public class DataModel {
 
@@ -119,14 +119,14 @@ With our `DataModel` class built, we can now instantiate it within the top-level
 ```java
 package missionmodel;
 
-import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
+import dev.plandev.contrib.streamline.modeling.Registrar;
 
 public final class Mission {
 
   public final Registrar errorRegistrar;
   public final DataModel dataModel;
 
-  public Mission(final gov.nasa.jpl.aerie.merlin.framework.Registrar registrar, final Configuration config) {
+  public Mission(final dev.plandev.merlin.framework.Registrar registrar, final Configuration config) {
     this.errorRegistrar = new Registrar(registrar, Registrar.ErrorBehavior.Log);
     // Tutorial code
     this.dataModel = new DataModel(this.errorRegistrar);
@@ -137,19 +137,19 @@ public final class Mission {
 
 ## Your First Activity
 
-Now that we have a resource, let's build an activity called `CollectData` that emits effects on that resource. We can imagine this activity representing a camera on-board a spacecraft that collects data over a short period of time. Activities in Aerie follow the general definition given in the [CCSDS Mission Planning and Scheduling Green Book](https://public.ccsds.org/Pubs/529x0g1.pdf)
+Now that we have a resource, let's build an activity called `CollectData` that emits effects on that resource. We can imagine this activity representing a camera on-board a spacecraft that collects data over a short period of time. Activities in PlanDev follow the general definition given in the [CCSDS Mission Planning and Scheduling Green Book](https://public.ccsds.org/Pubs/529x0g1.pdf)
 
 > "An activity is a meaningful unit of what can be planned… The granularity of a Planning Activity depends on the use case; It can be hierarchical"
 
-Essentially, activities are the building blocks for generating your plan. Activities in Aerie follow a class/object relationship where [activity types](https://nasa-ammos.github.io/aerie-docs/mission-modeling/activity-types/introduction/) - defined as a class in Java - describe the structure, properties, and behavior of an object and activity instances are the actual objects that exist within a plan.
+Essentially, activities are the building blocks for generating your plan. Activities in PlanDev follow a class/object relationship where [activity types](https://nasa-ammos.github.io/plandev-docs/mission-modeling/activity-types/introduction/) - defined as a class in Java - describe the structure, properties, and behavior of an object and activity instances are the actual objects that exist within a plan.
 
-Since activity types are classes in Java, create a new class called `CreateData` and add the following Java annotation above that class, which allows Aerie to recognize this class as an activity type.
+Since activity types are classes in Java, create a new class called `CreateData` and add the following Java annotation above that class, which allows PlanDev to recognize this class as an activity type.
 
 ```java
 @ActivityType("CollectData")
 ```
 
-Within this activity type, let's define two [parameters](https://nasa-ammos.github.io/aerie-docs/mission-modeling/activity-types/parameters/), `rate` and `duration`, and give them default arguments. When an activity instance is placed into a plan, operators can modify these default arguments prior to simulation if desired. Activity parameters are simply member variables of the activity type class with an annotation above the member variable:
+Within this activity type, let's define two [parameters](https://nasa-ammos.github.io/plandev-docs/mission-modeling/activity-types/parameters/), `rate` and `duration`, and give them default arguments. When an activity instance is placed into a plan, operators can modify these default arguments prior to simulation if desired. Activity parameters are simply member variables of the activity type class with an annotation above the member variable:
 
 ```java
 @Export.Parameter
@@ -157,11 +157,11 @@ Within this activity type, let's define two [parameters](https://nasa-ammos.gith
 
 :::note
 
-In reality, there are a variety of [parameter annotations](https://nasa-ammos.github.io/aerie-docs/mission-modeling/parameters/) you can use to tell Aerie about activity parameters and their defaults. In fact, if all member variables are intended to be parameters, you don't even need to include an annotation. For this tutorial, however, we want to be explicit with our parameter definition and will be using annotations even if they aren't technically required.
+In reality, there are a variety of [parameter annotations](https://nasa-ammos.github.io/plandev-docs/mission-modeling/parameters/) you can use to tell PlanDev about activity parameters and their defaults. In fact, if all member variables are intended to be parameters, you don't even need to include an annotation. For this tutorial, however, we want to be explicit with our parameter definition and will be using annotations even if they aren't technically required.
 
 :::
 
-For our activity, we will make `rate` a `double` with a default value of `10.0` megabits per second and `duration` a `Duration` type built into Aerie with a default value of `1` hour. That translates to the following code:
+For our activity, we will make `rate` a `double` with a default value of `10.0` megabits per second and `duration` a `Duration` type built into PlanDev with a default value of `1` hour. That translates to the following code:
 
 ```java
 @Parameter
@@ -171,7 +171,7 @@ public double rate = 10.0; // Mbps
 public Duration duration = Duration.duration(1, Duration.HOURS);
 ```
 
-Right now, if an activity of this type was added to a plan, an operator could alter the parameter defaults to any value allowed by the parameter's type. Let's say that due to buffer limitations of our camera, it can only collect data at a rate of `100.0` megabits per second, and we want to notify the operator that any rate above this range is invalid. We can do this with [parameter validations](https://nasa-ammos.github.io/aerie-docs/mission-modeling/activity-types/parameters/#validations) by adding a method to our class with a couple of annotations:
+Right now, if an activity of this type was added to a plan, an operator could alter the parameter defaults to any value allowed by the parameter's type. Let's say that due to buffer limitations of our camera, it can only collect data at a rate of `100.0` megabits per second, and we want to notify the operator that any rate above this range is invalid. We can do this with [parameter validations](https://nasa-ammos.github.io/plandev-docs/mission-modeling/activity-types/parameters/#validations) by adding a method to our class with a couple of annotations:
 
 ```java
 @Validation("Collection rate is beyond buffer limit of 100.0 Mbps")
@@ -181,9 +181,9 @@ public boolean validateCollectionRate() {
 }
 ```
 
-The `@Validation` annotation specifies the message to present to the operator when the validation fails. The `@Validation.Subject` annotation specifies the parameter(s) with which the validation is associated. Now, as you will see soon, when an operator specifies a data rate above `100.0`, Aerie will show a validation error and message in the UI.
+The `@Validation` annotation specifies the message to present to the operator when the validation fails. The `@Validation.Subject` annotation specifies the parameter(s) with which the validation is associated. Now, as you will see soon, when an operator specifies a data rate above `100.0`, PlanDev will show a validation error and message in the UI.
 
-Next, we need to tell our activity how and when to effect change on the `RecordingRate` resource, which is done in an [Activity Effect Model](https://nasa-ammos.github.io/aerie-docs/mission-modeling/activity-types/effect-model/). Just like with validations, an effect model is built by adding a method to our class, but with a different annotation, `@ActivityType.EffectModel`. Unlike validations, there can only be one of these methods per activity and the method should accept the top-level mission model class as a parameter (which in our case is just `Mission`). Conventionally, the method name given to the effect model is `run()`.
+Next, we need to tell our activity how and when to effect change on the `RecordingRate` resource, which is done in an [Activity Effect Model](https://nasa-ammos.github.io/plandev-docs/mission-modeling/activity-types/effect-model/). Just like with validations, an effect model is built by adding a method to our class, but with a different annotation, `@ActivityType.EffectModel`. Unlike validations, there can only be one of these methods per activity and the method should accept the top-level mission model class as a parameter (which in our case is just `Mission`). Conventionally, the method name given to the effect model is `run()`.
 
 For our activity, we simply want to model data collection at a fixed rate specified by the `rate` parameter over the full duration of the activity. Within the `run()` method, we can add the follow code to get that behavior:
 
@@ -193,7 +193,7 @@ delay(duration);
 DiscreteEffects.decrease(model.dataModel.RecordingRate, this.rate);
 ```
 
-Effects on resources are accomplished by using one of the many static methods available in the class associated with your resource type. In this case, `RecordingRate` is a discrete resource, and therefore we are using methods from the `DiscreteEffects` class. If you peruse the static methods in `DiscreteEffects`, you'll see methods like `set()`, `increase()`, `decrease()`, `consume()`, `restore()`,`using()`, etc. Since discrete resources can be of many primitive types (e.g. `Double`,`Boolean`), there are specific methods for each type. Most of these effects change the value of the resource at one time point instantaneously, but some, like `using()`, allow you to specify an [action](https://nasa-ammos.github.io/aerie-docs/mission-modeling/activity-types/effect-model/#actions) to run like `delay()`. Prior to executing the action, the resource changes just like other effects, but once the action is complete, the effect on the resource is reversed. These resource effects are sometimes called "renewable" in contrast to the other style of effects, which are often called "consumable".
+Effects on resources are accomplished by using one of the many static methods available in the class associated with your resource type. In this case, `RecordingRate` is a discrete resource, and therefore we are using methods from the `DiscreteEffects` class. If you peruse the static methods in `DiscreteEffects`, you'll see methods like `set()`, `increase()`, `decrease()`, `consume()`, `restore()`,`using()`, etc. Since discrete resources can be of many primitive types (e.g. `Double`,`Boolean`), there are specific methods for each type. Most of these effects change the value of the resource at one time point instantaneously, but some, like `using()`, allow you to specify an [action](https://nasa-ammos.github.io/plandev-docs/mission-modeling/activity-types/effect-model/#actions) to run like `delay()`. Prior to executing the action, the resource changes just like other effects, but once the action is complete, the effect on the resource is reversed. These resource effects are sometimes called "renewable" in contrast to the other style of effects, which are often called "consumable".
 
 In our effect model for this activity, we are using the "consumable" effects `increase()` and `decrease()`, which as you would predict, increase and decrease the value of the `RecordingRate` by the `rate` parameter. The `run()` method is executed at the start of the activity, so the increase occurs right at the activity start time. We then perform the `delay()` action for the user-specified activity `duration`, which moves time forward within this activity before finally reversing the rate increase. Since there are no other actions after the rate decrease, we know we have reached the end of the activity.
 
@@ -215,15 +215,15 @@ With our effect model in place, we are done coding up the `CollectData` activity
 ```java
 package missionmodel;
 
-import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteEffects;
-import gov.nasa.jpl.aerie.merlin.framework.annotations.ActivityType;
-import gov.nasa.jpl.aerie.merlin.framework.annotations.Export.Parameter;
-import gov.nasa.jpl.aerie.merlin.framework.annotations.Export.Validation;
+import dev.plandev.contrib.streamline.modeling.discrete.DiscreteEffects;
+import dev.plandev.merlin.framework.annotations.ActivityType;
+import dev.plandev.merlin.framework.annotations.Export.Parameter;
+import dev.plandev.merlin.framework.annotations.Export.Validation;
 
-import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
+import dev.plandev.merlin.protocol.types.Duration;
 
-import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.delay;
-import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.SECONDS;
+import static dev.plandev.merlin.framework.ModelActions.delay;
+import static dev.plandev.merlin.protocol.types.Duration.SECONDS;
 
 @ActivityType("CollectData")
 public class CollectData {
@@ -255,7 +255,7 @@ public class CollectData {
 }
 ```
 
-The last thing we need to do before giving our model a test drive is add a line to the `package-info.java` file to help Aerie find our newly built activity type
+The last thing we need to do before giving our model a test drive is add a line to the `package-info.java` file to help PlanDev find our newly built activity type
 
 ```java
 @WithActivityType(CollectData.class)
@@ -267,7 +267,7 @@ Ok! Now we are all set to give this a spin.
 
 Within your IDE, compile the model (`./gradlew assemble` should do the trick) and make sure it built successfully by checking `build/lib` for a new `missionmodel.jar` file.
 
-Follow [these instructions](https://ammos.nasa.gov/aerie-docs/planning/upload-mission-model/) to upload your `.jar` file, and give your model a name and version number (e.g. SSR Model version 1.0). Next, you can follow [these instructions](https://ammos.nasa.gov/aerie-docs/planning/create-plan-and-simulate/#instructions) to create a new plan. Pick the model you just compiled to build your plan off of and name your plan `Mission Plan 1` and give it a duration of `1 day`. Click "Create" and click on the newly created plan to open it, which should take you to a view with the plan timeline in the center view panel.
+Follow [these instructions](https://ammos.nasa.gov/plandev-docs/planning/upload-mission-model/) to upload your `.jar` file, and give your model a name and version number (e.g. SSR Model version 1.0). Next, you can follow [these instructions](https://ammos.nasa.gov/plandev-docs/planning/create-plan-and-simulate/#instructions) to create a new plan. Pick the model you just compiled to build your plan off of and name your plan `Mission Plan 1` and give it a duration of `1 day`. Click "Create" and click on the newly created plan to open it, which should take you to a view with the plan timeline in the center view panel.
 
 On the left panel, you should see your `CollectData` activity type, which you can drag and drop onto the "Activities" row in the timeline. Your `RecordingRate` resource should also appear as a row in the timeline, but with no values applied yet since we haven't simulated. Put two activities in your plan and click on the second one (the first one we will leave alone and let it use default values). On the right panel, you should now see detailed information about your activity. Look for the "Parameters" section and you will see your rate and duration parameters, which you can modify. Try modifying the rate above `100.0` and you will see a warning icon appear, which you can hover over and see the message we wrote into a Validation earlier. Modify the rate back to `20` and change the default duration to `2 hours`.
 
@@ -281,7 +281,7 @@ On the top menu bar, click "Simulation" and then "Simulate". After you see a gre
 
 ![Tutorial Plan 1](assets/Tutorial_Plan_1.png)
 
-At this point, we could go into more detail about how you can [edit the timeline](https://nasa-ammos.github.io/aerie-docs/planning/timeline-editing/), edit your UI view, or view simulation history, but instead we will move back to our IDE and add some more complexity to our model.
+At this point, we could go into more detail about how you can [edit the timeline](https://nasa-ammos.github.io/plandev-docs/planning/timeline-editing/), edit your UI view, or view simulation history, but instead we will move back to our IDE and add some more complexity to our model.
 
 ### Enumerated and Derived Resources
 
@@ -354,11 +354,11 @@ We can get the current value of a resource with a static method called `currentV
 ```java
 package missionmodel;
 
-import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteEffects;
-import gov.nasa.jpl.aerie.merlin.framework.annotations.ActivityType;
-import gov.nasa.jpl.aerie.merlin.framework.annotations.Export;
+import dev.plandev.contrib.streamline.modeling.discrete.DiscreteEffects;
+import dev.plandev.merlin.framework.annotations.ActivityType;
+import dev.plandev.merlin.framework.annotations.Export;
 
-import static gov.nasa.jpl.aerie.contrib.streamline.core.Resources.currentValue;
+import static dev.plandev.contrib.streamline.core.Resources.currentValue;
 
 @ActivityType("ChangeMagMode")
 public class ChangeMagMode {
@@ -387,21 +387,21 @@ As a final step, make sure you add this new activity to our `package-info.java` 
 
 ### Second Look
 
-With our second activity and corresponding resources built, let's compile the model again and upload it into Aerie (if you forget how to do this, refer to the [Model Test Drive Page](first-model-test.mdx) for simple instructions and references). Build a new plan off of the model you just uploaded, name your plan `Mission Plan 2`, and give it a duration of `1 day`. When you open this plan, you will see your two activity types appear in the left panel, which you can drag and drop onto the plan. Add two `ChangeMagMode` activities and change the parameter of the first one to `HIGH_RATE`. Add a `CollectData` activity in between the two `ChangeMagMode` activities and then simulate.
+With our second activity and corresponding resources built, let's compile the model again and upload it into PlanDev (if you forget how to do this, refer to the [Model Test Drive Page](first-model-test.mdx) for simple instructions and references). Build a new plan off of the model you just uploaded, name your plan `Mission Plan 2`, and give it a duration of `1 day`. When you open this plan, you will see your two activity types appear in the left panel, which you can drag and drop onto the plan. Add two `ChangeMagMode` activities and change the parameter of the first one to `HIGH_RATE`. Add a `CollectData` activity in between the two `ChangeMagMode` activities and then simulate.
 
 You should now see our three resources populate with values in the timeline below. You'll notice that now the `RecordingRate` resource starts at zero until the `MagDataMode` changes to `HIGH_RATE`, which pops up the rate to `5 Mbps`. Then, the `CollectData` activity increases the rate by another `10` to `15 Mbps`, but immediately decreases after the end of the activity. Finally, the `MagDataMode` changes to `LOW_RATE`, which takes the rate down to `0.5 Mbps` until the end of the plan.
 
-At this point, you can take the opportunity to play around with Aerie's [Timeline Editing](https://ammos.nasa.gov/aerie-docs/planning/timeline-editing/) capability to change the colors of activities or lines or put multiple resources onto one row. Try putting the `MagDataMode` and `MagDataRate` on the same row so you can easily see how the mode changes align with the rate changes and change the color of `MagDataRate` to red. With these changes you should get something similar to the screenshot below
+At this point, you can take the opportunity to play around with PlanDev's [Timeline Editing](https://ammos.nasa.gov/plandev-docs/planning/timeline-editing/) capability to change the colors of activities or lines or put multiple resources onto one row. Try putting the `MagDataMode` and `MagDataRate` on the same row so you can easily see how the mode changes align with the rate changes and change the color of `MagDataRate` to red. With these changes you should get something similar to the screenshot below
 
 ![Tutorial Plan 2](assets/Tutorial_Plan_2.png)
 
 ### Integrating Data Rate
 
-Now is where the fun really begins! Although having the data rate in and out of our SSR is useful, we are often more concerned with the total amount of volume we have in our SSR in order to make sure we don't over fill it and have sufficient downlink opportunities to get all the data we collected back to Earth. In order to compute total volume, we must figure out a way to integrate our `RecordingRate`. It turns out there are many different methods in Aerie you can choose to arrive at the total SSR volume, but each method has its own advantages and drawbacks. We will explore 4 different options for integration with the final option, a derived `Polynomial` resource, being our recommended approach. As we progress through the options, you'll learn about a few more features of the resource framework that you can use for different use cases in your model including the use of `Reactions` and **daemon** tasks.
+Now is where the fun really begins! Although having the data rate in and out of our SSR is useful, we are often more concerned with the total amount of volume we have in our SSR in order to make sure we don't over fill it and have sufficient downlink opportunities to get all the data we collected back to Earth. In order to compute total volume, we must figure out a way to integrate our `RecordingRate`. It turns out there are many different methods in PlanDev you can choose to arrive at the total SSR volume, but each method has its own advantages and drawbacks. We will explore 4 different options for integration with the final option, a derived `Polynomial` resource, being our recommended approach. As we progress through the options, you'll learn about a few more features of the resource framework that you can use for different use cases in your model including the use of `Reactions` and **daemon** tasks.
 
 #### Method 1 - Increase volume within activity
 
-The simplest method for performing an "integration" of `RecordingRate` is to compute the integral directly within the effect model of the activities who change the `RecordingRate`. Before we do this, let's make sure we have a data volume resource in our `DataModel` class. For each method, we are going to build a different data volume resource so we can eventually compare them in the Aerie UI. As this is our simplest method, let's call this resource `SSR_Volume_Simple` and make it store volume in Gigabits (Gb). Since we are going to directly effect this resource in our activities, this will need to be a `MutableResource`. The declaration looks just like `RecordingRate`
+The simplest method for performing an "integration" of `RecordingRate` is to compute the integral directly within the effect model of the activities who change the `RecordingRate`. Before we do this, let's make sure we have a data volume resource in our `DataModel` class. For each method, we are going to build a different data volume resource so we can eventually compare them in the PlanDev UI. As this is our simplest method, let's call this resource `SSR_Volume_Simple` and make it store volume in Gigabits (Gb). Since we are going to directly effect this resource in our activities, this will need to be a `MutableResource`. The declaration looks just like `RecordingRate`
 
 ```java
 public MutableResource<Discrete<Double>> SSR_Volume_Simple; // Gigabits
@@ -433,7 +433,7 @@ for (int i = 0; i < numSteps; i++) {
 }
 ```
 
-which would replace the `delay()` and the single data volume increase line from above. The resulting timeline for `SSR_Volume_Simple` would look like a stair step with the number of steps equal to `numSteps`. It's important to remember we are still using a `Discrete` resource, so the resource is stored as a constant, "step-function" profile in Aerie. We will show the use of a `Polynomial` resource in our final method to truly store and view data volume as a linear profile.
+which would replace the `delay()` and the single data volume increase line from above. The resulting timeline for `SSR_Volume_Simple` would look like a stair step with the number of steps equal to `numSteps`. It's important to remember we are still using a `Discrete` resource, so the resource is stored as a constant, "step-function" profile in PlanDev. We will show the use of a `Polynomial` resource in our final method to truly store and view data volume as a linear profile.
 
 Another issue with this approach is that is does not transfer well to activities like `ChangeMagMode` that alter the `RecordingRate` and do not return the rate back to its original value at the end of the activity (i.e. activities whose effects on rate are not contained within the time span of the activity). In order to compute the magnetometer's contribution to the data volume in `ChangeMagMode`, we would need to multiply the `currentRate` by the duration since the last mode change, or if no mode change has occurred, the beginning of the plan. While this is possible by using a `Clock` resource to track time between mode changes, the `ChangeMagMode` activity would now requires additional context about the plan that would otherwise be unnecessary.
 
@@ -477,7 +477,7 @@ public void integrateSampledSSR() {
 }
 ```
 
-As a programmer, you may be surprised to see an infinite `while` loop, but Aerie will shut down this task, effectively breaking the loop, once the simulation reaches the end of the plan. Within the loop, the first thing we do is `delay()` by our sampling interval and then retrieve the current value of `RecordingRate`. Finally, we sum up our rectangle by multiplying the current rate by the sampling interval. We could have easily chosen to use other numerical methods like the "trapezoid" rule by storing the previous recording rate in addition to the current rate, but what we did is sufficient for now.
+As a programmer, you may be surprised to see an infinite `while` loop, but PlanDev will shut down this task, effectively breaking the loop, once the simulation reaches the end of the plan. Within the loop, the first thing we do is `delay()` by our sampling interval and then retrieve the current value of `RecordingRate`. Finally, we sum up our rectangle by multiplying the current rate by the sampling interval. We could have easily chosen to use other numerical methods like the "trapezoid" rule by storing the previous recording rate in addition to the current rate, but what we did is sufficient for now.
 
 The final piece we need to build into our model to get this method to work is a simple `spawn` with the `Mission` class to our `integrateSampledSSR` method.
 
@@ -491,7 +491,7 @@ Despite these issues `daemon` tasks are a very effective tool in a modelers tool
 
 #### Method 3 - Update volume upon change to rate
 
-If you are looking for an efficient, yet accurate way to compute data volume from `RecordingRate`, one method you could take is to set up trigger that calls a function whenever `RecordingRate` changes and then computes volume by multiplying the rate just before the latest change by the duration that has passed since the last change. Fortunately, there is a fairly easy way to do this in Aerie's modeling framework.
+If you are looking for an efficient, yet accurate way to compute data volume from `RecordingRate`, one method you could take is to set up trigger that calls a function whenever `RecordingRate` changes and then computes volume by multiplying the rate just before the latest change by the duration that has passed since the last change. Fortunately, there is a fairly easy way to do this in PlanDev's modeling framework.
 
 Let's begin by creating one more discrete `MutableResource` called `SSR_Volume_UponRateChange` in our `DataModel` class (refer back to previous instances in this tutorial for how to declare and define one of these). In addition to our volume resource, we are also going to need a `Clock` resource to help us track the time between changes to `RecordingRate`. Since this resource is more of a "helper" resource and doesn't need to be exposed to our planners, we'll make it `private` and not register it to the UI. Declaring and defining a `Clock` resource is not much different than declaring a `Discrete` except you don't have to specify a primitive type. The declaration looks like this
 
@@ -564,7 +564,7 @@ Breaking down the definition, we see the `integrate()` function takes the resour
 
 The resource registration is also slightly different than what we have seen thus far as we are using a `real()` method as opposed to `discrete()` and we have to wrap our resource with yet another static helper method in `PolynomialResources` called `assumeLinear()`. The reason we have to do this is that the UI currently does not have support for `Polynomial` resources and can only render timelines as linear or constant segments. In our case, `SSR_Volume_Polynomial` is actually linear anyway, so we are not "degrading" our resource by having to make this down conversion.
 
-Now in reality, our on-board `SSR` is going to have a max capacity, and if data is removed from the `SSR`, we want to make sure our model stops decreasing the `SSR` volume once it reaches `0.0`. By good fortune, the Aerie framework includes another static method in `PolynomialResources` called `clampedIntegral()` that allows you to build a resource that takes care of all that messy logic to make sure you are adhering to your min/max limits.
+Now in reality, our on-board `SSR` is going to have a max capacity, and if data is removed from the `SSR`, we want to make sure our model stops decreasing the `SSR` volume once it reaches `0.0`. By good fortune, the PlanDev framework includes another static method in `PolynomialResources` called `clampedIntegral()` that allows you to build a resource that takes care of all that messy logic to make sure you are adhering to your min/max limits.
 
 If we wanted to build a "clamped" version of `SSR_Volume_Polynomial`, it would look something like this
 
@@ -587,11 +587,11 @@ As expected, the `integral()` resource is mapped to `SSR_Volume_Polynomial` to c
 
 ### Integral Method Comparison
 
-Now that we have explored multiple methods to implement integration in Aerie, let's compare all of the methods in the Aerie UI. To make things more interesting, use the 2nd approach to the `Polynomial` method so we can see how that approach enforces a data volume capacity. Compile the current version of the model (`./gradlew assemble`) and upload it into Aerie. Build a new `1 day` plan off of that model and call it "Mission Plan 3".
+Now that we have explored multiple methods to implement integration in PlanDev, let's compare all of the methods in the PlanDev UI. To make things more interesting, use the 2nd approach to the `Polynomial` method so we can see how that approach enforces a data volume capacity. Compile the current version of the model (`./gradlew assemble`) and upload it into PlanDev. Build a new `1 day` plan off of that model and call it "Mission Plan 3".
 
 For this plan, throw a couple of `CollectData` activities near the beginning of the plan, create a `ChangeMagMode` activity after those activities in the first half of the plan and set that activity's parameter to `HIGH_RATE`. Throw one more `CollectData` and `ChangeMagMode` activity near the end of the plan to make sure we get a plan that goes over our data capacity threshold. With our simple plan built, go ahead and simulate the plan to see the resulting resource profiles.
 
-The easiest way to compare our four integration methods is to use Aerie's [Timeline Editing](https://ammos.nasa.gov/aerie-docs/planning/timeline-editing/) capability to build a row that includes all four of our data volume resources:
+The easiest way to compare our four integration methods is to use PlanDev's [Timeline Editing](https://ammos.nasa.gov/plandev-docs/planning/timeline-editing/) capability to build a row that includes all four of our data volume resources:
 
 - `SSR_Volume_Simple`
 - `SSR_Volume_Sampled`
@@ -608,13 +608,13 @@ Looking at `SSR_Volume_Simple`, you'll see that data volume increases at the end
 
 `SSR_Volume_UponRateChange` has much less points, but you can see that it produces the same volume as our `SSR_Volume_Polynomial` resource at the time points it computes until we go above our maximum capacity. `SSR_Volume_Polynomial` has same computed points as `SSR_Volume_UponRateChange`, but has linear profile segments in between points. It also has an additional point once it reaches the capacity threshold, and then it remains at that threshold for the remainder of the plan (we don't have any downlinks or we would see the volume decrease).
 
-Hopefully looking at the various methods of integrating in Aerie has given you some insight into the modeling constructs available to you. You can do a ton with what you have learned thus far, but next we'll go over some additional capabilities you will likely find useful as you build models with Aerie.
+Hopefully looking at the various methods of integrating in PlanDev has given you some insight into the modeling constructs available to you. You can do a ton with what you have learned thus far, but next we'll go over some additional capabilities you will likely find useful as you build models with PlanDev.
 
 ### Sim Configuration
 
-There is often a need for certain aspects of a model to be exposed to the planner to provide flexibility to tweak and configure the model prior to a simulation run. The Aerie modeling framework provides a [simulation configuration](https://ammos.nasa.gov/aerie-docs/mission-modeling/configuration/) interface to satisfy this need. In our SSR model, we will expose a couple variables that already exist in our code: the sample interval for our `SSR_Volume_Sampled` resource and the SSR max capacity defined as part of the `SSR_Volume_Polynomial` resource definition. We will also create a new model configuration for setting the initial state of the `MagDataMode`.
+There is often a need for certain aspects of a model to be exposed to the planner to provide flexibility to tweak and configure the model prior to a simulation run. The PlanDev modeling framework provides a [simulation configuration](https://ammos.nasa.gov/plandev-docs/mission-modeling/configuration/) interface to satisfy this need. In our SSR model, we will expose a couple variables that already exist in our code: the sample interval for our `SSR_Volume_Sampled` resource and the SSR max capacity defined as part of the `SSR_Volume_Polynomial` resource definition. We will also create a new model configuration for setting the initial state of the `MagDataMode`.
 
-Back when we initially grabbed the mission model template to give us a jumping off point for our model, you may recall that the template provided a `Configuration` class, and that class is already passed into the top-level `Mission` class as a parameter. Taking a look at the `Configuration` class (which is actually a [java record](https://www.baeldung.com/java-record-vs-final-class)), you'll see there is already a static method there called `defaultConfiguration()` that uses the [`@Template` annotation](https://ammos.nasa.gov/aerie-docs/mission-modeling/parameters/#export-template). This type of annotation assumes every variable within the parent class should be exposed as simulation configuration (or a parameter if you use this within activities) with a default value. So, in our case, we will declare three member variables and give them all default values that match the values we have for them in the `DataModel` class, which we will soon replace with references to this configuration.
+Back when we initially grabbed the mission model template to give us a jumping off point for our model, you may recall that the template provided a `Configuration` class, and that class is already passed into the top-level `Mission` class as a parameter. Taking a look at the `Configuration` class (which is actually a [java record](https://www.baeldung.com/java-record-vs-final-class)), you'll see there is already a static method there called `defaultConfiguration()` that uses the [`@Template` annotation](https://ammos.nasa.gov/plandev-docs/mission-modeling/parameters/#export-template). This type of annotation assumes every variable within the parent class should be exposed as simulation configuration (or a parameter if you use this within activities) with a default value. So, in our case, we will declare three member variables and give them all default values that match the values we have for them in the `DataModel` class, which we will soon replace with references to this configuration.
 
 ```java
 public static final Double SSR_MAX_CAPACITY = 250.0;
@@ -629,7 +629,7 @@ In order to hook up these member variables to our record, we need to add three c
 ```java
 package missionmodel;
 
-import static gov.nasa.jpl.aerie.merlin.framework.annotations.Export.Template;
+import static dev.plandev.merlin.framework.annotations.Export.Template;
 
 public record Configuration(Double ssrMaxCapacity,
                             long integrationSampleInterval,
@@ -649,7 +649,7 @@ public record Configuration(Double ssrMaxCapacity,
 }
 ```
 
-Now, when Aerie loads in our model, the member variables above will be exposed as simulation configuration with defaults set to the defaults defined in this record. However, at the moment, changing the values from their defaults won't actually change the behavior of the simulation because our `DataModel` doesn't yet know about this configuration. Within our top-level `Mission` class, we need to pass our configuration into `DataModel` via its constructor
+Now, when PlanDev loads in our model, the member variables above will be exposed as simulation configuration with defaults set to the defaults defined in this record. However, at the moment, changing the values from their defaults won't actually change the behavior of the simulation because our `DataModel` doesn't yet know about this configuration. Within our top-level `Mission` class, we need to pass our configuration into `DataModel` via its constructor
 
 ```java
 this.dataModel = new DataModel(this.errorRegistrar, config);
@@ -695,11 +695,11 @@ registrar.discrete("RecordingRate", RecordingRate, new DoubleValueMapper());
 previousRecordingRate = currentValue(RecordingRate);
 ```
 
-Now you should be ready to try this out in the Aerie UI. Go ahead and compile your model with simulation configuration and upload it to Aerie. Build whatever plan you'd like and then before you simulate, in the left panel view, select "Simulation" in the dropdown menu. You should now see your three configuration variables appear under "Arguments"
+Now you should be ready to try this out in the PlanDev UI. Go ahead and compile your model with simulation configuration and upload it to PlanDev. Build whatever plan you'd like and then before you simulate, in the left panel view, select "Simulation" in the dropdown menu. You should now see your three configuration variables appear under "Arguments"
 
 ![Simulation Config](assets/Simulation_Config.png)
 
-Aerie is smart enough to look at the types of the configuration variables and generate a input field in the UI that best matches that type. So, for example, the `startingMagMode` is a simple drop down menu with the only options available being members of the `MagDataCollectionMode` enumeration.
+PlanDev is smart enough to look at the types of the configuration variables and generate a input field in the UI that best matches that type. So, for example, the `startingMagMode` is a simple drop down menu with the only options available being members of the `MagDataCollectionMode` enumeration.
 
 ### Unit Annotations
 

@@ -15,13 +15,13 @@ There is an experimental feature that allows users to specify how an activity ty
 
 ## Managing
 
-Navigate to the "Expansion" page from the Aerie UI top-level menu, to view, edit or delete existing expansion rules.
-The expansion rules page shown in Figure 1 below lists all expansion rules authored by any user who has access to the Aerie deployment.
+Navigate to the "Expansion" page from the PlanDev UI top-level menu, to view, edit or delete existing expansion rules.
+The expansion rules page shown in Figure 1 below lists all expansion rules authored by any user who has access to the PlanDev deployment.
 Click on "New" above the table to the right to create a new expansion rule.
 
 <figure>
-  <img alt="Aerie UI - Expansion Rules Page" src={rulesPage} />
-  <figcaption>Figure 1: Aerie UI Expansion Rules Page - View, create, or delete expansion rules</figcaption>
+  <img alt="PlanDev UI - Expansion Rules Page" src={rulesPage} />
+  <figcaption>Figure 1: PlanDev UI Expansion Rules Page - View, create, or delete expansion rules</figcaption>
 </figure>
 
 ## Authoring
@@ -32,8 +32,8 @@ Once the mission model version is selected, the "Activity Type" drop-down menu l
 Once the activity type is selected, its parameters can be accessed within the expansion rule.
 
 <figure>
-  <img alt="Aerie UI - Expansion Rules Editor" src={rulesEditor} />
-  <figcaption>Figure 2: Aerie UI Expansion Rules Editor</figcaption>
+  <img alt="PlanDev UI - Expansion Rules Editor" src={rulesEditor} />
+  <figcaption>Figure 2: PlanDev UI Expansion Rules Editor</figcaption>
 </figure>
 
 An expansion rule starts with some boilerplate code, and users are expected to add their commands as comma-separated objects in a `return []` statement structured as the following:
@@ -56,13 +56,13 @@ Once a command stem is selected the editor will list all the arguments and expec
 Values for ENUMs will be listed as strings, and must be input as strings. See the below figures for details.
 
 <figure>
-  <img alt="Aerie UI Expansion Rules Editor - Command Autocomplete" src={rulesEditorCommandAutocomplete} />
-  <figcaption>Figure 3: Aerie UI Expansion Rules Editor - Command Autocomplete</figcaption>
+  <img alt="PlanDev UI Expansion Rules Editor - Command Autocomplete" src={rulesEditorCommandAutocomplete} />
+  <figcaption>Figure 3: PlanDev UI Expansion Rules Editor - Command Autocomplete</figcaption>
 </figure>
 
 <figure>
-  <img alt="Aerie UI Expansion Rules Editor - Command Arguments Error" src={rulesEditorCommandArgsError} />
-  <figcaption>Figure 4: Aerie UI Expansion Rules Editor - Command Arguments Error</figcaption>
+  <img alt="PlanDev UI Expansion Rules Editor - Command Arguments Error" src={rulesEditorCommandArgsError} />
+  <figcaption>Figure 4: PlanDev UI Expansion Rules Editor - Command Arguments Error</figcaption>
 </figure>
 
 The true power of command expansion is to be able to map activity parameter values to command arguments.
@@ -73,9 +73,9 @@ Typing `props.activityInstance.` lists properties like start time, end time, dur
 Note that expansion request will replace these with actual values from simulated activity instances.
 
 <figure>
-  <img alt="Aerie UI Expansion Rules Editor - Command Arguments for Activity" src={rulesEditorCommandArgs1} />
-  <img alt="Aerie UI Expansion Rules Editor - Command Arguments for Activity" src={rulesEditorCommandArgs2} />
-  <figcaption>Figure 5: Aerie UI Expansion Rules Editor - Passing Command Arguments from Activity</figcaption>
+  <img alt="PlanDev UI Expansion Rules Editor - Command Arguments for Activity" src={rulesEditorCommandArgs1} />
+  <img alt="PlanDev UI Expansion Rules Editor - Command Arguments for Activity" src={rulesEditorCommandArgs2} />
+  <figcaption>Figure 5: PlanDev UI Expansion Rules Editor - Passing Command Arguments from Activity</figcaption>
 </figure>
 
 Expansion rules can also access computed attributes of an activity.
@@ -84,7 +84,7 @@ The mechanism can be used to report value of a specific resource at the time of 
 
 :::caution
 
-The Aerie expansion API exposes duration, computed attributes and similar data that is **only** available post simulation.
+The PlanDev expansion API exposes duration, computed attributes and similar data that is **only** available post simulation.
 Hence input to expansion is a simulation dataset.
 Any change to activity plan that invalidates simulation also invalidates command expansion outputs.
 

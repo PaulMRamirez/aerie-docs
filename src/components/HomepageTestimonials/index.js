@@ -7,11 +7,11 @@ const TestimonialList = [
     name: 'First Last',
     title: 'Job Title, Mission Name',
 
-    Img: require('@site/static/img/cards/aerie-feature-planning-commanding-light.png').default,
+    Img: require('@site/static/img/cards/plandev-feature-planning-commanding-light.png').default,
     size: 'col--6',
     description: (
       <>
-        Aerie supports multiple modes of collaboration that enable highly distributed planning and allow it to be
+        PlanDev supports multiple modes of collaboration that enable highly distributed planning and allow it to be
         tailored.
       </>
     ),
@@ -20,11 +20,11 @@ const TestimonialList = [
     name: 'First Last',
     title: 'Job Title, Mission Name',
 
-    Img: require('@site/static/img/cards/aerie-feature-planning-commanding-light.png').default,
+    Img: require('@site/static/img/cards/plandev-feature-planning-commanding-light.png').default,
     size: 'col--6',
     description: (
       <>
-        Aerie supports multiple modes of collaboration that enable highly distributed planning and allow it to be
+        PlanDev supports multiple modes of collaboration that enable highly distributed planning and allow it to be
         tailored.
       </>
     ),

@@ -7,19 +7,19 @@ const links = [
   {
     category: 'Resources',
     label: 'Quick Start',
-    href: '/aerie-docs/introduction/#fast-track',
+    href: '/plandev-docs/introduction/#fast-track',
     type: 'link',
   },
   {
     category: 'Resources',
     label: 'Documentation',
-    href: '/aerie-docs/introduction/',
+    href: '/plandev-docs/introduction/',
     type: 'link',
   },
   {
     category: 'Resources',
     label: 'Github',
-    href: 'https://github.com/NASA-AMMOS/aerie',
+    href: 'https://github.com/PlanDev/plandev',
     type: 'link',
   },
   {
@@ -30,14 +30,14 @@ const links = [
   },
   {
     category: 'Learn more',
-    label: 'Aerie Users Group',
-    href: 'https://groups.google.com/u/3/g/aerie-users',
+    label: 'PlanDev Users Group',
+    href: 'https://groups.google.com/u/3/g/plandev-users',
     type: 'link',
   },
   {
     category: 'Learn more',
-    label: 'aerie-support@googlegroups.com',
-    href: 'mailto:aerie-support@googlegroups.com',
+    label: 'plandev-support@googlegroups.com',
+    href: 'mailto:plandev-support@googlegroups.com',
     type: 'link',
   },
 ];
@@ -53,7 +53,7 @@ export function HomepageFooter() {
       <div className="container">
         <div className={styles.grid}>
           <div className={styles.gridItem}>
-            <img className={styles.logo} src={`./img/aerie-wordmark-${colorMode}.svg`} />
+            <img className={styles.logo} src={`./img/plandev-wordmark-${colorMode}.svg`} />
             <ul className={styles.footerList}>
               <li>
                 <span className={styles.footerLink}>AMMOS | Advanced Multi-Mission Operations System</span>

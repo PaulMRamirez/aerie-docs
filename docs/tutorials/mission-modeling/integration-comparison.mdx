@@ -1,12 +1,12 @@
 # Integral Method Comparison
 
-Now that we have explored multiple methods to implement integration in Aerie, let's compare all of the methods in the Aerie UI.
-Compile the current version of the model (`./gradlew :missionmodel:build --refresh-dependencies`) and upload it into Aerie.
+Now that we have explored multiple methods to implement integration in PlanDev, let's compare all of the methods in the PlanDev UI.
+Compile the current version of the model (`./gradlew :missionmodel:build --refresh-dependencies`) and upload it into PlanDev.
 Build a new `1 day` plan off of that model and call it "Mission Plan 3".
 
 For this plan, throw a couple of `CollectData` activities near the beginning of the plan, create a `ChangeMagMode` activity after those activities in the first half of the plan and set that activity's parameter to `HIGH_RATE`. Throw one more `CollectData` and `ChangeMagMode` activity near the end of the plan to make sure we get a plan that goes over our data capacity threshold. With our simple plan built, go ahead and simulate the plan to see the resulting resource profiles.
 
-The easiest way to compare our four integration methods is to use Aerie's [Timeline Editing](https://ammos.nasa.gov/aerie-docs/planning/timeline-editing/) capability to build a row that includes all four of our data volume resources:
+The easiest way to compare our four integration methods is to use PlanDev's [Timeline Editing](https://ammos.nasa.gov/plandev-docs/planning/timeline-editing/) capability to build a row that includes all four of our data volume resources:
 
 - `SSR_Volume_Simple`
 - `SSR_Volume_Sampled`
@@ -23,4 +23,4 @@ Looking at `SSR_Volume_Simple`, you'll see that data volume increases at the end
 
 `SSR_Volume_UponRateChange` has much less points, but you can see that it produces the same volume as our `SSR_Volume_Polynomial` resource at the time points it computes until we go above our maximum capacity. `SSR_Volume_Polynomial` has same computed points as `SSR_Volume_UponRateChange`, but has linear profile segments in between points. It also has an additional point once it reaches the capacity threshold, and then it remains at that threshold for the remainder of the plan (we don't have any downlinks or we would see the volume decrease).
 
-Hopefully looking at the various methods of integrating in Aerie has given you some insight into the modeling constructs available to you. You can do a ton with what you have learned thus far, but next we'll go over some additional capabilities you will likely find useful as you build models with Aerie.
+Hopefully looking at the various methods of integrating in PlanDev has given you some insight into the modeling constructs available to you. You can do a ton with what you have learned thus far, but next we'll go over some additional capabilities you will likely find useful as you build models with PlanDev.

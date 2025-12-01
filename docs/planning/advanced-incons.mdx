@@ -21,11 +21,11 @@ They may need to be tweaked slightly depending on how your model implemented inc
 
 ### Step 1: Get the Incons from Hasura
 
-Navigate to your deployment's Hasura GraphQL console by selecting `GraphQL Console` in the dropdown under `Aerie`.
+Navigate to your deployment's Hasura GraphQL console by selecting `GraphQL Console` in the dropdown under `PlanDev`.
 By default, the GraphQL console is accessible on [port 8080](http://localhost:8080).
 
 <figure>
-  <img alt="Aerie UI - Dropdown Menu Highlighting GraphQL Console Option" src={gqlDropdown} />
+  <img alt="PlanDev UI - Dropdown Menu Highlighting GraphQL Console Option" src={gqlDropdown} />
   <figcaption>Figure 1: Dropdown Menu Highlighting GraphQL Console Option</figcaption>
 </figure>
 
@@ -72,11 +72,11 @@ If the first time a resource's value is set is after `start_offset`, it will not
 
 Take the value of `"getResourcesAtStartOffset"` from the output of the query and copy it into a JSON file.
 
-Next, navigate to your deployment's Gateway by selecting `Gateway` in the dropdown under `Aerie`.
+Next, navigate to your deployment's Gateway by selecting `Gateway` in the dropdown under `PlanDev`.
 By default, the Gateway is accessible on [port 9000](http://localhost:9000).
 
 <figure>
-  <img alt="Aerie UI - Dropdown Menu Highlighting Gateway Option" src={gatewayDropdown}/>
+  <img alt="PlanDev UI - Dropdown Menu Highlighting Gateway Option" src={gatewayDropdown}/>
   <figcaption>Figure 2: Dropdown Menu Highlighting Gateway Option</figcaption>
 </figure>
 
@@ -104,7 +104,7 @@ Click the `Execute` button. In `ServerResponse`, you should see a response body 
 }
 ```
 
-The most important element of this JSON is `filename`. It contains the name of the file within Aerie.
+The most important element of this JSON is `filename`. It contains the name of the file within PlanDev.
 
 <video controls>
   <source src={uploadIncons} type="video/webm" />
@@ -112,11 +112,11 @@ The most important element of this JSON is `filename`. It contains the name of t
 
 ### Step 3: Use the Incons in Simulation
 
-Finally, open the Simulation Configuration panel and set the `inconsPath` argument to `<path-to-aerie-file-store>/<filename>`,
-where `<path-to-aerie-file-store>` is the path to where the `aerie_file_store` volume is mounted in Merlin,
+Finally, open the Simulation Configuration panel and set the `inconsPath` argument to `<path-to-plandev-file-store>/<filename>`,
+where `<path-to-plandev-file-store>` is the path to where the `plandev_file_store` volume is mounted in Merlin,
 and `<filename>` is the value of `"filename"` from the earlier JSON from the Gateway.
 
-By default, `<path-to-aerie-file-store>` is `merlin_file_store`.
+By default, `<path-to-plandev-file-store>` is `merlin_file_store`.
 
 <video controls>
   <source src={simulateIncons} type="video/webm" />

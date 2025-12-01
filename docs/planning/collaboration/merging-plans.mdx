@@ -5,22 +5,22 @@
 In order to merge changes between two related plans (most commonly between a branch and its parent),
 a merge request must first be created between the **source plan** (the one supplying changes) and the **target plan** (the one to receive changes).
 
-From the child plan in the Aerie UI, open the dropdown and select "Create merge request".
+From the child plan in the PlanDev UI, open the dropdown and select "Create merge request".
 Confirm which plan you wish to be the target plan and press "Create merge request":
 
 import createMergeRq from './assets/create-merge-rq.png';
 import createMergeRqModal from './assets/create-merge-rq-modal.png';
 
 <figure>
-  <img alt="Aerie UI - Create Merge Request Menu" src={createMergeRq} />
-  <img alt="Aerie UI - Create Merge Request" src={createMergeRqModal} />
-  <figcaption>Figure 1: Aerie UI - Create Merge Request</figcaption>
+  <img alt="PlanDev UI - Create Merge Request Menu" src={createMergeRq} />
+  <img alt="PlanDev UI - Create Merge Request" src={createMergeRqModal} />
+  <figcaption>Figure 1: PlanDev UI - Create Merge Request</figcaption>
 </figure>
 
 :::note
 
-Currently it is only possible to select the parent branch as the target plan via the Aerie UI.
-To merge between other related plans, use the [Aerie API](../../../api/examples/planning/collaboration).
+Currently it is only possible to select the parent branch as the target plan via the PlanDev UI.
+To merge between other related plans, use the [PlanDev API](../../../api/examples/planning/collaboration).
 
 :::
 
@@ -37,10 +37,10 @@ import withdrawMergeRequestModal from './assets/withdraw-merge-rq-modal.png';
 
 <figure>
   <div>
-    <img alt="Aerie UI - Outgoing Merge Requests" src={outgoingMergeRequests} />
+    <img alt="PlanDev UI - Outgoing Merge Requests" src={outgoingMergeRequests} />
   </div>
-  <img alt="Aerie UI - Withdraw Merge Request" src={withdrawMergeRequestModal} />
-  <figcaption>Figure 2: Aerie UI - Withdraw Merge Request</figcaption>
+  <img alt="PlanDev UI - Withdraw Merge Request" src={withdrawMergeRequestModal} />
+  <figcaption>Figure 2: PlanDev UI - Withdraw Merge Request</figcaption>
 </figure>
 
 ## Begin a Merge
@@ -61,10 +61,10 @@ import beginMergeModal from './assets/begin-merge-modal.png';
 
 <figure>
   <div>
-    <img alt="Aerie UI - Incoming Merge Requests" src={incomingMergeRequests} />
+    <img alt="PlanDev UI - Incoming Merge Requests" src={incomingMergeRequests} />
   </div>
-  <img alt="Aerie UI - Begin Merge" src={beginMergeModal} />
-  <figcaption>Figure 3: Aerie UI - Begin Merge</figcaption>
+  <img alt="PlanDev UI - Begin Merge" src={beginMergeModal} />
+  <figcaption>Figure 3: PlanDev UI - Begin Merge</figcaption>
 </figure>
 
 ## Cancel a Merge
@@ -74,8 +74,8 @@ You can cancel any `in-progress` merge. From the merge review screen, press the 
 import cancelMerge from './assets/cancel-merge.png';
 
 <figure>
-  <img alt="Aerie UI - Cancel Merge" src={cancelMerge} />
-  <figcaption>Figure 4: Aerie UI - Cancel Merge</figcaption>
+  <img alt="PlanDev UI - Cancel Merge" src={cancelMerge} />
+  <figcaption>Figure 4: PlanDev UI - Cancel Merge</figcaption>
 </figure>
 
 ## Resolving Conflicts
@@ -90,13 +90,13 @@ import unresolvedConflict from './assets/unresolved-conflict.png';
 import resolvedConflict from './assets/resolved-conflict.png';
 
 <figure>
-  <img alt="Aerie UI - Unresolved Conflict" src={unresolvedConflict} />
-  <figcaption>Figure 5: Aerie UI - Unresolved Merge Conflict</figcaption>
+  <img alt="PlanDev UI - Unresolved Conflict" src={unresolvedConflict} />
+  <figcaption>Figure 5: PlanDev UI - Unresolved Merge Conflict</figcaption>
 </figure>
 
 <figure>
-  <img alt="Aerie UI - Resolved Conflict" src={resolvedConflict} />
-  <figcaption>Figure 6: Aerie UI - Resolved Merge Conflict</figcaption>
+  <img alt="PlanDev UI - Resolved Conflict" src={resolvedConflict} />
+  <figcaption>Figure 6: PlanDev UI - Resolved Merge Conflict</figcaption>
 </figure>
 
 You can also resolve conflicts in bulk:
@@ -104,8 +104,8 @@ You can also resolve conflicts in bulk:
 import resolveConflictsBulk from './assets/resolve-conflicts-bulk.png';
 
 <figure>
-  <img alt="Aerie UI - Resolve Merge Conflicts in Bulk" src={resolveConflictsBulk} />
-  <figcaption>Figure 7: Aerie UI - Resolve Merge Conflicts in Bulk</figcaption>
+  <img alt="PlanDev UI - Resolve Merge Conflicts in Bulk" src={resolveConflictsBulk} />
+  <figcaption>Figure 7: PlanDev UI - Resolve Merge Conflicts in Bulk</figcaption>
 </figure>
 
 ## Deny a Merge
@@ -118,8 +118,8 @@ From the merge review screen, press the "Deny Changes" button in the bottom-righ
 import denyMerge from './assets/deny-merge.png';
 
 <figure>
-  <img alt="Aerie UI - Deny Merge" src={denyMerge} />
-  <figcaption>Figure 8: Aerie UI - Deny Merge</figcaption>
+  <img alt="PlanDev UI - Deny Merge" src={denyMerge} />
+  <figcaption>Figure 8: PlanDev UI - Deny Merge</figcaption>
 </figure>
 
 ## Commit a Merge
@@ -130,8 +130,8 @@ From the merge review screen, press the "Approve Changes" button in the bottom-r
 import approveMerge from './assets/approve-merge.png';
 
 <figure>
-  <img alt="Aerie UI - Approve Merge" src={approveMerge} />
-  <figcaption>Figure 9: Aerie UI - Approve Merge</figcaption>
+  <img alt="PlanDev UI - Approve Merge" src={approveMerge} />
+  <figcaption>Figure 9: PlanDev UI - Approve Merge</figcaption>
 </figure>
 
 :::info External Events and Plan Merge

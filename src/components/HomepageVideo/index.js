@@ -2,8 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
-import PromoVideo from '@site/static/video/aerie-video-subtitles.mp4';
-import PromoStill from '@site/static/video/aerie-video-still.png';
+import PromoVideo from '@site/static/video/plandev-video-subtitles.mp4';
+import PromoStill from '@site/static/video/plandev-video-still.png';
 
 export function HomepageVideo() {
   return (

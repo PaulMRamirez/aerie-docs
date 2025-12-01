@@ -1,0 +1,19 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+title System Context diagram for PlanDev
+
+System_Ext(missionTool, "Mission Tool")
+Person(planner, "Planner", "A mission/instrument team planner")
+System(missionScheduler, "Mission Scheduler", "The mission scheduling logic system")
+
+System(plandev, "PlanDev", "Provides mission activity and sequence simulation and resource analysis")
+
+System_Ext(cam, "Common Access Manager", "Central authentication and authorization provider")
+
+Rel_D(missionTool, plandev, "Query data")
+Rel_D(planner, plandev, "Views and edits plans, resource profiles, constraints")
+Rel_D(missionScheduler, plandev, "Query resource profiles and constraints, mutate plans")
+
+Rel_D(plandev, cam, "Get authentication/authorization")
+
+@enduml

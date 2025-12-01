@@ -8,7 +8,7 @@ Retroactive
 
 ## Context
 
-The Aerie sequence editor currently provides users with the ability to author and edit sequences in a TypeScript embedded Domain Specific Language (eDSL). As this capability has been rolled out, the feedback from users has been far from positive. Below are some of the issues that have been identified:
+The PlanDev sequence editor currently provides users with the ability to author and edit sequences in a TypeScript embedded Domain Specific Language (eDSL). As this capability has been rolled out, the feedback from users has been far from positive. Below are some of the issues that have been identified:
 
 - While part of the goal of the sequence editor was to not require the user to write seq-json, users feel writing a sequence in TypeScript is just as bad as json. Note that a large portion of sequencers may not be programmers by background, so things that look like code can be scary for them.
 - The sequence editor has major issues with readability and review
@@ -20,7 +20,7 @@ The Aerie sequence editor currently provides users with the ability to author an
 - The use of sequence variables and input arguments is cumbersome and not well documented
 - Autocomplete feature is nice, but does not support certain cases well (e.g. does not auto complete for arguments that have defined/enumerated values)
 
-The issues with the editor have been significant enough for our first committed customer, Europa Clipper, to reconsider using the editor altogether and revert back to writing sequences in COTs editors, which do not offer out of the box linting support for its sequencing formats. This obviously does not bode well for future customer adoption of the Aerie sequence editor. A major architectural change or alternate solution is needed if we want to keep Clipper as a customer of our sequencing capabilities and garner additional adoption in the future.
+The issues with the editor have been significant enough for our first committed customer, Europa Clipper, to reconsider using the editor altogether and revert back to writing sequences in COTs editors, which do not offer out of the box linting support for its sequencing formats. This obviously does not bode well for future customer adoption of the PlanDev sequence editor. A major architectural change or alternate solution is needed if we want to keep Clipper as a customer of our sequencing capabilities and garner additional adoption in the future.
 
 Another important note is that at the time of this decision (early 2024), Europa Clipper decided to more widely embrace a sequencing format called "seqN", which was originally developed to perform sequencing in the test bed for verification and validation activities. Therefore, supporting SeqN became a requirement if we wanted wide adoption of our editor on Clipper. Also, there was significant time pressure from Clipper to deliver an alternate solution as they needed to firm up their ground system tooling in the next few months.
 
@@ -32,22 +32,22 @@ A standalone prototype web-based editor using [CodeMirror](https://codemirror.ne
 
 Given the time pressure to deliver something workable for Clipper, it was an obvious choice to start with the prototype, especially since many developers on the team were already familiar with CodeMirror and Lezer. Moreover, the prototype was demoed to users and feedback was very positive.
 
-While the prototype was standalone, there was a question as to whether it should remain standalone or be integrated into Aerie much like the current eDSL sequence editor. The primary benefit of integrating the new sequence editor into Aerie was to take advantage of the Authentication and Authorization features already available there, which would significantly reduce the time to delivery. However, tying the editor to Aerie's activity planning capabilities meant that a project could not update the editor without also taking updates to activity planning capabilities.
+While the prototype was standalone, there was a question as to whether it should remain standalone or be integrated into PlanDev much like the current eDSL sequence editor. The primary benefit of integrating the new sequence editor into PlanDev was to take advantage of the Authentication and Authorization features already available there, which would significantly reduce the time to delivery. However, tying the editor to PlanDev's activity planning capabilities meant that a project could not update the editor without also taking updates to activity planning capabilities.
 
 ## Decision
 
-The project will create a new sequence editor called Phoenix that is fully integrated into Aerie and will deprecate the TypeScript sequence editor. The editor will use CodeMirror and will provide a seqN grammar (defined in Lezer) out of the box that can be exported in seq-json, a more machine friendly sequencing syntax.
+The project will create a new sequence editor called Phoenix that is fully integrated into PlanDev and will deprecate the TypeScript sequence editor. The editor will use CodeMirror and will provide a seqN grammar (defined in Lezer) out of the box that can be exported in seq-json, a more machine friendly sequencing syntax.
 
-Although delivering a working editor for Clipper is of highest priority, the development team will try to keep Clipper-specific functionality out of the core Aerie code by developing an adaptation interface that allows custom behavior to be injected into the editor via CodeMirror extensions.
+Although delivering a working editor for Clipper is of highest priority, the development team will try to keep Clipper-specific functionality out of the core PlanDev code by developing an adaptation interface that allows custom behavior to be injected into the editor via CodeMirror extensions.
 
 Upon initial evaluation, we believe the sequencing constructs defined within seqN are sufficiently generic that the language could be used to support a variety of different missions and flight softwares, so providing this language out of the box could add value for potential mission users who have not selected a sequence language to use. However, we must also ensure support for other sequencing languages since there is no standard language used by all missions. Fortunately, additional sequencing grammars can be defined and supported (even simultaneously) in CodeMirror.
 
 ## Consequences
 
 - We will inevitably incur some technical debt as we rush to deliver something for Clipper, but this should in part be mitigated by establishing an adaptation interface.
-- Tying Phoenix to the activity planning portion of Aerie could cause issues if a mission wants to take Phoenix updates without taking activity planning updates, especially if those updates include breaking changes.
-- Adds a new dependency (CodeMirror) to Aerie so that Aerie will now depend on two code editors (Monaco for scheduling, constraint, and expansion eDSLs and CodeMirror for sequencing). This will likely increase maintenance costs.
-- The activity expansion capability within Aerie will expand sequences into seq-json as opposed to seqN, so developers of expansions will have to be familiar with two separate languages instead of one.
+- Tying Phoenix to the activity planning portion of PlanDev could cause issues if a mission wants to take Phoenix updates without taking activity planning updates, especially if those updates include breaking changes.
+- Adds a new dependency (CodeMirror) to PlanDev so that PlanDev will now depend on two code editors (Monaco for scheduling, constraint, and expansion eDSLs and CodeMirror for sequencing). This will likely increase maintenance costs.
+- The activity expansion capability within PlanDev will expand sequences into seq-json as opposed to seqN, so developers of expansions will have to be familiar with two separate languages instead of one.
 
 ## References
 

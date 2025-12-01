@@ -2,7 +2,7 @@
 
 ## Context
 
-Over the past year, the Aerie project team has been tasked by its primary sponsor, the NASA AMMOS program, to incorporate enhanced spacecraft sequencing capabilities into Aerie (this task has been colloquially called SEQ 2.0). The program is interested in ensuring sufficient oversight to preserve stakeholder buy-in on the task as it progresses. In addition, new organizations are contributing to the project (e.g. Goddard Spaceflight Center, Ames Research Center) that have less familiarly with the Aerie project and its history. These drivers have created an increased need to clearly communicate architectural decisions and their rationale.
+Over the past year, the PlanDev project team has been tasked by its primary sponsor, the NASA AMMOS program, to incorporate enhanced spacecraft sequencing capabilities into PlanDev (this task has been colloquially called SEQ 2.0). The program is interested in ensuring sufficient oversight to preserve stakeholder buy-in on the task as it progresses. In addition, new organizations are contributing to the project (e.g. Goddard Spaceflight Center, Ames Research Center) that have less familiarly with the PlanDev project and its history. These drivers have created an increased need to clearly communicate architectural decisions and their rationale.
 
 ## Decision
 

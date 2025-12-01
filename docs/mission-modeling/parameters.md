@@ -1,12 +1,12 @@
 # Parameters
 
-The Aerie interface offers a variety of ways to define **parameters** for mission model configurations and activities.
+The PlanDev interface offers a variety of ways to define **parameters** for mission model configurations and activities.
 
-Parameters offer a concise way to export information across the mission-agnostic Aerie interface – namely a parameter's type to support serialization and a parameter's "required" status to ensure that parameters without mission-model-defined defaults have an argument supplied by the planner.
+Parameters offer a concise way to export information across the mission-agnostic PlanDev interface – namely a parameter's type to support serialization and a parameter's "required" status to ensure that parameters without mission-model-defined defaults have an argument supplied by the planner.
 
 In this guide **parent class** refers to the Java class that encapsulates parameters. This class may take the form of either a mission model [configuration](../mission-modeling/configuration.md) or [activity](../mission-modeling/activity-types/introduction.mdx).
 
-Both configurations and activities make use of the same Java annotations for declaring parameters within a parent class. The `@Export` annotation interface serves as the common qualifier for exporting information across the mission-agnostic Aerie interface. The following parameter annotations serve to assist with parameter declaration and validation:
+Both configurations and activities make use of the same Java annotations for declaring parameters within a parent class. The `@Export` annotation interface serves as the common qualifier for exporting information across the mission-agnostic PlanDev interface. The following parameter annotations serve to assist with parameter declaration and validation:
 
 1. `@Export.Parameter`
 1. `@Export.Template`
@@ -17,7 +17,7 @@ The following sections delve into each of these annotations along with examples 
 
 ## Without Export Annotations
 
-The first – and perhaps less obvious option – is to not use any parameter annotations. If a parent class contains no `@Export.Parameter`, `@Export.Template`, or `@Export.WithDefaults` annotation it is assumed that every class member variable is a parameter to export to Aerie.
+The first – and perhaps less obvious option – is to not use any parameter annotations. If a parent class contains no `@Export.Parameter`, `@Export.Template`, or `@Export.WithDefaults` annotation it is assumed that every class member variable is a parameter to export to PlanDev.
 
 Defining a parent class becomes as simple as `public record Configuration(Integer a, Integer b, Integer c) { }`. However, it is not possible to declare a member variable that is not an exported parameter with this approach.
 
@@ -47,7 +47,7 @@ This approach is great for defining a simple record type parent class without de
 
 ### See Also
 
-Aerie's [config-without-defaults](https://github.com/NASA-AMMOS/aerie/blob/develop/examples/config-without-defaults/src/main/java/gov/nasa/jpl/aerie/configwithoutdefaults/Configuration.java) example mission model makes use of this succinct style for declaring mission model configuration parameters. See the [Java documentation on Record classes](https://docs.oracle.com/en/java/javase/19/language/records.html) for more detailed information about the language feature.
+PlanDev's [config-without-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-without-defaults/src/main/java/gov/nasa/jpl/aerie/configwithoutdefaults/Configuration.java) example mission model makes use of this succinct style for declaring mission model configuration parameters. See the [Java documentation on Record classes](https://docs.oracle.com/en/java/javase/19/language/records.html) for more detailed information about the language feature.
 
 ## Export Parameter
 
@@ -87,11 +87,11 @@ Some mission modelers may prefer the explicitness provided by individual `@Param
 
 ### See Also
 
-Aerie's [foo-missionmodel](https://github.com/NASA-AMMOS/aerie/blob/develop/examples/foo-missionmodel/src/main/java/gov/nasa/jpl/aerie/foomissionmodel/Configuration.java) example mission model makes use of this style when declaring mission model configuration parameters.
+PlanDev's [foo-missionmodel](https://github.com/PlanDev/plandev/blob/develop/examples/foo-missionmodel/src/main/java/gov/nasa/jpl/aerie/foomissionmodel/Configuration.java) example mission model makes use of this style when declaring mission model configuration parameters.
 
 ## Export Template
 
-The `@Template` annotation decouples parameter definitions and default values, allowing record types to be used as parent classes. When the `@Template` annotation is used every parent class member variable is interpreted as a parameter to export to Aerie. This annotation must be attached to a public static constructor method.
+The `@Template` annotation decouples parameter definitions and default values, allowing record types to be used as parent classes. When the `@Template` annotation is used every parent class member variable is interpreted as a parameter to export to PlanDev. This annotation must be attached to a public static constructor method.
 
 ### Example
 
@@ -118,11 +118,11 @@ Use `@Template` when every member variable for a parent class should be an expor
 
 ### See Also
 
-Aerie's [banananation](https://github.com/NASA-AMMOS/aerie/tree/develop/examples/banananation) example mission model uses this style within the [GrowBananaActivity](https://github.com/NASA-AMMOS/aerie/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/activities/GrowBananaActivity.java) and [ThrowBananaActivity](https://github.com/NASA-AMMOS/aerie/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/activities/ThrowBananaActivity.java).
+PlanDev's [banananation](https://github.com/PlanDev/plandev/tree/develop/examples/banananation) example mission model uses this style within the [GrowBananaActivity](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/activities/GrowBananaActivity.java) and [ThrowBananaActivity](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/activities/ThrowBananaActivity.java).
 
 ## Export With Defaults
 
-Similarly to `@Template`, the `@WithDefaults` annotation also decouples parameter definitions and default values, allowing record types to be used as parent classes. When the `@WithDefaults` annotation is used every parent class member variable is interpreted as a parameter to export to Aerie. Unlike `@Template`, a sparse set of default values may be supplied.
+Similarly to `@Template`, the `@WithDefaults` annotation also decouples parameter definitions and default values, allowing record types to be used as parent classes. When the `@WithDefaults` annotation is used every parent class member variable is interpreted as a parameter to export to PlanDev. Unlike `@Template`, a sparse set of default values may be supplied.
 
 This annotation must be attached to a nested public static class within the parent class. Each member variable of this nested class must have the same name as a parent class’s member variable. Not every parent class member variable is required to have an associated member variable within the nested class. This allows the mission modeler to selectively choose which parameters must be supplied by the planner.
 
@@ -150,4 +150,4 @@ Use `@WithDefaults` when every member variable for a parent class should be an e
 
 ### See Also
 
-Aerie's [config-with-defaults](https://github.com/NASA-AMMOS/aerie/blob/develop/examples/config-with-defaults/src/main/java/gov/nasa/jpl/aerie/configwithdefaults/Configuration.java) example mission model makes use of this style within its mission model configuration. The [banananation](https://github.com/NASA-AMMOS/aerie/tree/develop/examples/banananation) example mission model uses this style in the [BakeBananaBreadActivity](https://github.com/NASA-AMMOS/aerie/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/activities/BakeBananaBreadActivity.java).
+PlanDev's [config-with-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-with-defaults/src/main/java/gov/nasa/jpl/aerie/configwithdefaults/Configuration.java) example mission model makes use of this style within its mission model configuration. The [banananation](https://github.com/PlanDev/plandev/tree/develop/examples/banananation) example mission model uses this style in the [BakeBananaBreadActivity](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/activities/BakeBananaBreadActivity.java).

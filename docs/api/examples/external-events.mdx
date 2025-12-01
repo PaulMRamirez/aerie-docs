@@ -3,11 +3,11 @@
 Refer to [External Events](../../../planning/external-events/introduction) for more information on External Events & Sources.
 
 ## API Gateway
-External Events & their respective External Sources utilize routes located on [`aerie-gateway`](https://github.com/NASA-AMMOS/aerie-gateway) to perform data validation and upon success, an upload through Hasura/GQL.
+External Events & their respective External Sources utilize routes located on [`plandev-gateway`](https://github.com/PlanDev/plandev-gateway) to perform data validation and upon success, an upload through Hasura/GQL.
 
 
 ### Creating External Source & Event Types
-To upload schemas for External Sources and Events, users should POST to the `/uploadExternalSourceEventTypes` route in `aerie-gateway`.
+To upload schemas for External Sources and Events, users should POST to the `/uploadExternalSourceEventTypes` route in `plandev-gateway`.
 
 The body of the request should be a JSON object with this structure:
 
@@ -44,14 +44,14 @@ Uploading a definition of a single External Source Type (`ExampleSource`) and a 
 ```
 
 ### Creating an External Source
-To upload External Sources, users should POST to the `/uploadExternalSource` route in `aerie-gateway`.
+To upload External Sources, users should POST to the `/uploadExternalSource` route in `plandev-gateway`.
 
 This endpoint expects data provided in [`multipart/form-data` format](https://www.ietf.org/rfc/rfc2388.txt).
 
 
 
 
-When uploading through Aerie's UI, the External Source & it's contained External Events are packaged together in a single `JSON` file which adheres to the meta-schema defined [here](https://github.com/NASA-AMMOS/aerie-gateway/blob/develop/src/schemas/external-event-validation-schemata.ts). A `derivation_group_name` can be passed in as an argument with the request which will override any value for `derivation_group_name` in the External Source. This argument can be ignored if there is a value for `derivation_group_name` in the External Source.
+When uploading through PlanDev's UI, the External Source & it's contained External Events are packaged together in a single `JSON` file which adheres to the meta-schema defined [here](https://github.com/PlanDev/plandev-gateway/blob/develop/src/schemas/external-event-validation-schemata.ts). A `derivation_group_name` can be passed in as an argument with the request which will override any value for `derivation_group_name` in the External Source. This argument can be ignored if there is a value for `derivation_group_name` in the External Source.
 
 :::info Note
 

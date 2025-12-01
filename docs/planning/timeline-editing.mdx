@@ -10,7 +10,7 @@ import timelineLineLayerEditingDemo from './assets/timeline-line-layer-editing.m
 
 # Timeline Editing
 
-Here we describe how to edit the timeline using the [Aerie UI](https://github.com/NASA-AMMOS/aerie-ui). For more details on the full timeline definition please refer to the [UI Views](./ui-views.md#timeline) documentation.
+Here we describe how to edit the timeline using the [PlanDev UI](https://github.com/PlanDev/plandev-ui). For more details on the full timeline definition please refer to the [UI Views](./ui-views.md#timeline) documentation.
 
 ## Edit Timeline Properties
 
@@ -21,8 +21,8 @@ Changes made in the Timeline Editor are not automatically saved and must be save
 :::
 
 <figure>
-  <img alt="Aerie UI - Timeline Editor" src={timelineEditor} />
-  <figcaption>Figure 1: Aerie UI Timeline Editor - Manage Timeline properties, Vertical Guides, and Rows</figcaption>
+  <img alt="PlanDev UI - Timeline Editor" src={timelineEditor} />
+  <figcaption>Figure 1: PlanDev UI Timeline Editor - Manage Timeline properties, Vertical Guides, and Rows</figcaption>
 </figure>
 
 ### Edit Timeline Margins
@@ -42,15 +42,15 @@ Click on the plus button to add a new row to the timeline. A row will be added b
 Edit row properties from within the timeline row editor. If multiple rows exist you can use the top dropdown to edit different rows. A blue highlight will appear around the row in the timeline that you are currently editing. You can also edit a row by clicking on the pencil icon in the header of a row in the timeline.
 
 <figure>
-  <img alt="Aerie UI - Timeline Row Editor" src={timelineRowEditor} style={{ maxHeight: '100%', width: '100%' }} />
+  <img alt="PlanDev UI - Timeline Row Editor" src={timelineRowEditor} style={{ maxHeight: '100%', width: '100%' }} />
   <figcaption>
-    Figure 2: Aerie UI Timeline Row Editor - Manage Row properties, Horizontal Guides, Y Axes, and Layers
+    Figure 2: PlanDev UI Timeline Row Editor - Manage Row properties, Horizontal Guides, Y Axes, and Layers
   </figcaption>
 </figure>
 
 ### Add an Activity Layer
 
-To visualize activities on the timeline, add a new activity layer using the plus button in the Activity Layers section. The default Aerie UI view creates a row with a single activity layer with all activities grouped by type. Manage which activities are visualized in an activity layer by clicking on the Activity Layer filter button within the layer. Activity filtering will be explained in the next section. You can also manage the color of the activities rendered by this layer using the color picker. All activity layers within a single row are drawn on the same canvas so that all of the activities are grouped and packed together correctly. Below is a demonstration of this workflow.
+To visualize activities on the timeline, add a new activity layer using the plus button in the Activity Layers section. The default PlanDev UI view creates a row with a single activity layer with all activities grouped by type. Manage which activities are visualized in an activity layer by clicking on the Activity Layer filter button within the layer. Activity filtering will be explained in the next section. You can also manage the color of the activities rendered by this layer using the color picker. All activity layers within a single row are drawn on the same canvas so that all of the activities are grouped and packed together correctly. Below is a demonstration of this workflow.
 
 <video controls>
   <source src={timelineActivityEditingDemo} />
@@ -67,11 +67,11 @@ Each activity layer can be configured with a custom filter on activity types and
 
 <figure>
   <img
-    alt="Aerie UI - Activity Filtering"
+    alt="PlanDev UI - Activity Filtering"
     src={timelineActivityFilteringModal}
     style={{ maxHeight: '100%', width: '100%' }}
   />
-  <figcaption>Figure 3: Aerie UI Activity Filtering</figcaption>
+  <figcaption>Figure 3: PlanDev UI Activity Filtering</figcaption>
 </figure>
 
 #### 1. Layer Name
@@ -108,11 +108,11 @@ A Layer Options section will appear in the row editor when the row has at least 
 
 <figure>
   <img
-    alt="Aerie UI - Timeline Discrete Options"
+    alt="PlanDev UI - Timeline Discrete Options"
     src={timelineDiscreteOptionsEditor}
     style={{ maxHeight: '100%', width: '100%' }}
   />
-  <figcaption>Figure 4: Aerie UI Timeline Discrete Options Editor - Manage Activity and Event Rendering</figcaption>
+  <figcaption>Figure 4: PlanDev UI Timeline Discrete Options Editor - Manage Activity and Event Rendering</figcaption>
 </figure>
 
 #### 1. Height
@@ -128,11 +128,11 @@ Activities and events can be rendered in two ways:
 
 <figure>
   <img
-    alt="Aerie UI - Timeline Activity Display Mode"
+    alt="PlanDev UI - Timeline Activity Display Mode"
     src={timelineActivityOptionsMode}
     style={{ maxHeight: '100%', width: '100%' }}
   />
-  <figcaption>Figure 5: Aerie UI Timeline Layer Options Display Mode</figcaption>
+  <figcaption>Figure 5: PlanDev UI Timeline Layer Options Display Mode</figcaption>
 </figure>
 
 #### 3. Label Visibility
@@ -172,11 +172,11 @@ Group events either by event source or by event type.
 
 <figure>
   <img
-    alt="Aerie UI - Timeline Activity Tree"
+    alt="PlanDev UI - Timeline Activity Tree"
     src={timelineActivityTree}
     style={{ maxHeight: '100%', width: '100%' }}
   />
-  <figcaption>Figure 6: Aerie UI Timeline Activity Tree</figcaption>
+  <figcaption>Figure 6: PlanDev UI Timeline Activity Tree</figcaption>
 </figure>
 
 In `Grouped` mode the activity tree presented in the row header has several important indicators and actions:
@@ -220,8 +220,8 @@ Y Axes have additional options available in the settings menu popover. By defaul
 3. `Manual`: Manually enter a static min and max for the axis.
 
 <figure>
-  <img alt="Aerie UI - Y Axis Settings" src={timelineYAxisSettings} style={{ maxHeight: '100%', width: '100%' }} />
-  <figcaption>Figure 7: Aerie UI Timeline Y Axis Settings</figcaption>
+  <img alt="PlanDev UI - Y Axis Settings" src={timelineYAxisSettings} style={{ maxHeight: '100%', width: '100%' }} />
+  <figcaption>Figure 7: PlanDev UI Timeline Y Axis Settings</figcaption>
 </figure>
 
 ### Manage Line and X-Range Names

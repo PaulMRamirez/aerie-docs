@@ -1,6 +1,6 @@
 # Software Architecture and Design
 
-Below are brief descriptions of the various documents the project provides to learn about Aerie's software architecture and design
+Below are brief descriptions of the various documents the project provides to learn about PlanDev's software architecture and design
 
 ## Architectural Decision Records (ADRs)
 

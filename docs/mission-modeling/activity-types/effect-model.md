@@ -56,7 +56,7 @@ This activity first spawns a `PowerOnHeater` activity, which then continues conc
 
 ## Activity Decomposition
 
-In Aerie mission models, decomposition of an activity is not an independent method, rather it is defined within the effect model by means of invoking child activities. These activities can be invoked using the `call()` method, where the rest of the effect model waits for the child activity to complete; or using the `spawn()` method, where the effect model continues to execute without waiting for the child activity to complete. This method allows any arbitrary serial and parallel arrangement of child activities. This approach replaces duration estimate based wait calls with event based waits. Hence, this allows for not keeping track of estimated durations of activities, while also improving the readability of the activity procedure as a linear sequence of events.
+In PlanDev mission models, decomposition of an activity is not an independent method, rather it is defined within the effect model by means of invoking child activities. These activities can be invoked using the `call()` method, where the rest of the effect model waits for the child activity to complete; or using the `spawn()` method, where the effect model continues to execute without waiting for the child activity to complete. This method allows any arbitrary serial and parallel arrangement of child activities. This approach replaces duration estimate based wait calls with event based waits. Hence, this allows for not keeping track of estimated durations of activities, while also improving the readability of the activity procedure as a linear sequence of events.
 
 ## Computed Attributes
 
@@ -90,7 +90,7 @@ public ComputedAttributes run(final Mission mission) { // Notice the new return 
 
 The `@AutoValueMapper.Record` annotation exists to make this pattern more convenient - it only applies to records returned from effect models.
 
-Computed attributes are not limited to records - they can be any type that Aerie knows how to serialize. Here is an example where the effect model returns a list of strings, instead of a record:
+Computed attributes are not limited to records - they can be any type that PlanDev knows how to serialize. Here is an example where the effect model returns a list of strings, instead of a record:
 
 ```java
 @EffectModel

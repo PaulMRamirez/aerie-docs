@@ -41,7 +41,7 @@ The violations will include the corresponding constraint name, type, and id. An 
 ## Create Constraint
 
 <details closed>
-  <summary><b>For Aerie deployments before v2.4.0</b></summary>
+  <summary><b>For PlanDev deployments before v2.4.0</b></summary>
 
   ```graphql
   mutation CreateConstraint($constraint: constraint_insert_input!) {
@@ -152,7 +152,7 @@ mutation DeleteConstraintVersion($constraintId: Int!, $revsion: Int!) {
 ## Delete Constraint
 
 <details closed>
-  <summary><b>For Aerie deployments before v2.4.0</b></summary>
+  <summary><b>For PlanDev deployments before v2.4.0</b></summary>
 
   ```graphql
   mutation DeleteConstraint($id: Int!) {
@@ -178,7 +178,7 @@ mutation DeleteConstraint($id: Int!) {
 
 ***Introduced in v2.4.0.***
 
-There are two types of constraint specifications in Aerie:
+There are two types of constraint specifications in PlanDev:
 a **model specification** and a **plan specification**.
 
 - A **constraint plan specification** is the set of constraints that

@@ -1,10 +1,10 @@
 # External Datasets
 
-A **dataset** is a collection of Real (numeric) and Discrete (any type) profiles which all start at the same time. Most datasets are created by simulation, but sometimes it will be helpful to import data that can’t be simulated by Aerie so it can be used in planning (e.g. constraint checking or schedular evaluation). This document describes how to add external datasets to Aerie.
+A **dataset** is a collection of Real (numeric) and Discrete (any type) profiles which all start at the same time. Most datasets are created by simulation, but sometimes it will be helpful to import data that can’t be simulated by PlanDev so it can be used in planning (e.g. constraint checking or schedular evaluation). This document describes how to add external datasets to PlanDev.
 
 External datasets contain resource profiles that are quite similar to the profiles produced by a simulation. A resource profile describes the behavior of a resource over time. Each profile has a name, a type, a start time, and a list of profile segments that conform to that type. Each profile segment defines the value of the resource over a duration of time (referred to as its "dynamics"). The first segment starts at the start time of the profile, and every subsequent segment starts at the end of the previous segment.
 
-External datasets come from the user rather than simulation output, and can be uploaded at any time before or after simulation. They can be viewed in the Aerie UI along with a plan.
+External datasets come from the user rather than simulation output, and can be uploaded at any time before or after simulation. They can be viewed in the PlanDev UI along with a plan.
 
 Ultimately the purpose of external datasets is up to the user. You might be looking to include some geometry information to assist in building a plan, or you may simply be adding power and thermal modeling results to be viewable with existing simulation results. Just be aware that at this time external profiles are not accessible to the mission model during simulation, and are simply for viewing purposes in the UI.
 
@@ -37,7 +37,7 @@ The `addExternalDataset` GraphQL mutation takes four query variables as specifie
 | `$datasetStart`                   | String  | The DOY UTC timestamp the dataset starts from<br/>UTC Format: `yyyy-dddThh:mm:ss`                     |
 | `$profileSet`                     | Object  | The set of precomputed profiles that make up the external dataset                                     |
 
-If `$simulationDatasetId` is provided, the uploaded external dataset will only be associated with a single simulation dataset, instead of implicitly being associated with every simulation dataset pertaining to the `$planId`. This can be useful if, for example, external simulation tools are used alongside Aerie that calculate additional profiles based on a Merlin simulation dataset, which are then upstreamed to Aerie to use in constraint checking or visualization in the UI. Associating these external profiles with a single simulation dataset will keep them from showing up in future simulation run visualizations or constraint violations.
+If `$simulationDatasetId` is provided, the uploaded external dataset will only be associated with a single simulation dataset, instead of implicitly being associated with every simulation dataset pertaining to the `$planId`. This can be useful if, for example, external simulation tools are used alongside PlanDev that calculate additional profiles based on a Merlin simulation dataset, which are then upstreamed to PlanDev to use in constraint checking or visualization in the UI. Associating these external profiles with a single simulation dataset will keep them from showing up in future simulation run visualizations or constraint violations.
 
 The profile set to be uploaded should have one entry for each profile, indexed by a unique name mapping to an object specifying the details of the profile.
 

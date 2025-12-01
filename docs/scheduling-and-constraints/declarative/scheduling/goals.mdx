@@ -1,6 +1,6 @@
 # Goals
 
-This document describes different scheduling goals available in Aerie and how to author them using the TypeScript EDSL.
+This document describes different scheduling goals available in PlanDev and how to author them using the TypeScript EDSL.
 
 :::caution
 
@@ -455,7 +455,7 @@ biteArgs.biteSize += 10; // 10 bigger than the preset
 ## Restricting When a Goal is Applied
 
 By default, a goal applies on the whole planning horizon.
-The Aerie scheduler provides support for restricting when a goal applies with the `.applyWhen()` method in the `Goal` class.
+The PlanDev scheduler provides support for restricting when a goal applies with the `.applyWhen()` method in the `Goal` class.
 This node allows users to provide a set of `Windows` which could be a time-based, or a resource-based window.
 
 The `.applyWhen()` method, takes one argument: the windows (in the form of an expression) that the goal should apply over.
@@ -533,13 +533,13 @@ export default function cardinalityGoalExample() {
 
 ## Creating a New Goal
 
-This section describes how to create a new scheduling goal via the Aerie UI. In the UI, open the scheduling pane by clicking on the top-right bar.
+This section describes how to create a new scheduling goal via the PlanDev UI. In the UI, open the scheduling pane by clicking on the top-right bar.
 
 import schedulingPanel from './assets/scheduling-panel.png';
 
 <figure>
-  <img alt="Aerie UI - Scheduling Panel" src={schedulingPanel} />
-  <figcaption>Figure 1: Aerie UI Scheduling Panel</figcaption>
+  <img alt="PlanDev UI - Scheduling Panel" src={schedulingPanel} />
+  <figcaption>Figure 1: PlanDev UI Scheduling Panel</figcaption>
 </figure>
 
 Next click "New" to create a new scheduling goal in the specification for the plan you are viewing. This will open the goal editor.
@@ -547,7 +547,7 @@ Next click "New" to create a new scheduling goal in the specification for the pl
 import goalEditorNew from './assets/goal-editor-new.png';
 
 <figure>
-  <img alt="Aerie UI - Scheduling Goal Editor - New Goal" src={goalEditorNew} />
+  <img alt="PlanDev UI - Scheduling Goal Editor - New Goal" src={goalEditorNew} />
   <figcaption>Figure 2: Scheduling Goal Editor - New Goal</figcaption>
 </figure>
 
@@ -561,7 +561,7 @@ export default (): Goal => {
 
 This is a [TypeScript](https://www.typescriptlang.org/) function that takes no arguments and returns a Goal. To unpack all of the parts:
 
-- `export default` signals to Aerie that this is the function that defines the Goal.
+- `export default` signals to PlanDev that this is the function that defines the Goal.
 - `() => {}` in TypeScript is called an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
 - The parenthesis `()` represent the parameters that the function takes. Scheduling goals cannot take any parameters, so these parenthesis must be empty.
 - The curly braces `{}` represent the definition of the goal. The return statement for the function must go inside the braces.
@@ -588,7 +588,7 @@ The editor should tell you that `ActivityRecurrenceGoal()` takes one argument:
 import invalidRecurrenceGoal from './assets/invalid-recurrence-goal.png';
 
 <figure>
-  <img alt="Aerie UI - Invalid Recurrence Goal" src={invalidRecurrenceGoal} />
+  <img alt="PlanDev UI - Invalid Recurrence Goal" src={invalidRecurrenceGoal} />
   <figcaption>Figure 3: Invalid Recurrence Goal</figcaption>
 </figure>
 
@@ -635,7 +635,7 @@ To delete or edit a scheduling goal via the UI, open the scheduling pane and rig
 import goalContextMenu from './assets/goal-context-menu.png';
 
 <figure>
-  <img alt="Aerie UI - Goal Context Menu" src={goalContextMenu} />
+  <img alt="PlanDev UI - Goal Context Menu" src={goalContextMenu} />
   <figcaption>Figure 4: Goal Context Menu</figcaption>
 </figure>
 
@@ -644,7 +644,7 @@ Click on "Delete Goal" to delete the goal. If you click on "Edit Goal" it will o
 import goalEditorEdit from './assets/goal-editor-edit.png';
 
 <figure>
-  <img alt="Aerie UI - Scheduling Goal Editor - Edit Goal" src={goalEditorEdit} />
+  <img alt="PlanDev UI - Scheduling Goal Editor - Edit Goal" src={goalEditorEdit} />
   <figcaption>Figure 5: Scheduling Goal Editor - Edit Goal</figcaption>
 </figure>
 

@@ -18,7 +18,7 @@ public class BatteryAboveZero implements Constraint {
 ## Constraint Basics
 
 When building a constraint procedure, the primary goal is to find windows of time within the plan that violate a constraint and then turn those windows into a list of
-constraints to be reported and visualized by Aerie. A few of the Aerie [Timelines](../timelines/introduction.mdx) objects will come in handy as you manipulate information available within the `Plan` and `SimulationResults` objects:
+constraints to be reported and visualized by PlanDev. A few of the PlanDev [Timelines](../timelines/introduction.mdx) objects will come in handy as you manipulate information available within the `Plan` and `SimulationResults` objects:
 
 - The `Windows` object provides a number of logical operations (e.g. union, intersection) that you can perform against sets of windows in order to converge on the set of violation windows you want to return. These objects are most useful when performing logic on activities.
 - The `Interval` object has similar functionality to `Windows`, but is often useful when you want to compare or perform operations one interval at a time

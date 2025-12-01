@@ -1,7 +1,7 @@
 # Sequence Templates
 
 :::danger
-Template Expansion is an *experimental feature* as of Aerie v3.4.0.
+Template Expansion is an *experimental feature* as of PlanDev v3.4.0.
 Development is active, and the API may be subject to further change. Please let us know if you have feedback
 on its future development!
 :::
@@ -43,19 +43,19 @@ C DP_PRIORITIZE "STRING" 5
 ```
 
 ## Configuration
-In order to use sequence templates instead of the existing Typescript EDSL sequence expansion rules, you need to make a configuration change to your `aerie-ui` container.
+In order to use sequence templates instead of the existing Typescript EDSL sequence expansion rules, you need to make a configuration change to your `plandev-ui` container.
 
 :::caution
-Sequence templating and EDSL rules are exclusive of each other. They cannot coexist in the same instance of Aerie.
+Sequence templating and EDSL rules are exclusive of each other. They cannot coexist in the same instance of PlanDev.
 :::
 
-If you are running `aerie-ui` locally, then within the `aerie-ui` directory, navigate to `{aerie-ui path}/.env` and update the variable `PUBLIC_COMMAND_EXPANSION_MODE` to `templating`, instead of its default (`legacy`). Then restart the server process.
+If you are running `plandev-ui` locally, then within the `plandev-ui` directory, navigate to `{plandev-ui path}/.env` and update the variable `PUBLIC_COMMAND_EXPANSION_MODE` to `templating`, instead of its default (`legacy`). Then restart the server process.
 
-If you are running `aerie` in docker, then within the `aerie` directory, navigate to `{aerie path}/docker-compose.yml`, and update the variable `PUBLIC_COMMAND_EXPANSION_MODE` under the `aerie-ui` container's settings to `templating`, instead of its default (`legacy`). Then, redeploy the container.
+If you are running `plandev` in docker, then within the `plandev` directory, navigate to `{plandev path}/docker-compose.yml`, and update the variable `PUBLIC_COMMAND_EXPANSION_MODE` under the `plandev-ui` container's settings to `templating`, instead of its default (`legacy`). Then, redeploy the container.
 
-If you are accessing `aerie` remotely via an externally managed host, please reach out to that system's administrator about changing the deployment configuration.
+If you are accessing `plandev` remotely via an externally managed host, please reach out to that system's administrator about changing the deployment configuration.
 
-## Sequence Templates in Aerie
+## Sequence Templates in PlanDev
 After having enabled sequence templates, you are ready to author your own templates and expand with them. Prior to doing so, however, it might be instructive to provide a brief discussion of what these templates require and how they differ from Typescript expansion rules:
 
 * Like Typescript rules, sequence templates must be associated with a [**mission model**](/mission-modeling/introduction) and **a command dictionary/dictionaries** (via a [**parcel**](/sequencing/editor/#parcel)), since they directly refer to activity types defined in the model, and commands in the dictionaries.

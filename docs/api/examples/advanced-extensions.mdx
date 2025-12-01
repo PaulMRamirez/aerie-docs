@@ -20,7 +20,7 @@ Below is an example query variable that creates an extension called "My External
   "extension": {
     "label": "My External Application",
     "url": "https://externalapp/api/test",
-    "description": "An application that exists outside of Aerie."
+    "description": "An application that exists outside of PlanDev."
   }
 }
 ```
@@ -41,12 +41,12 @@ mutation InsertExtensionRoles($roles: [extension_roles_insert_input!]!) {
 }
 ```
 
-Below is an example query variable that grants the `aerie_admin` and `user` roles to run the extension with an ID of 1.
+Below is an example query variable that grants the `plandev_admin` and `user` roles to run the extension with an ID of 1.
 
 ```json
 {
   "roles": [
-    { "extension_id": 1, "role": "aerie_admin" },
+    { "extension_id": 1, "role": "plandev_admin" },
     { "extension_id": 1, "role": "user" }
   ]
 }

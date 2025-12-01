@@ -1,6 +1,6 @@
 # Contributing
 
-We would love for you to contribute to the Aerie documentation and help make it even better than it is today!
+We would love for you to contribute to the PlanDev documentation and help make it even better than it is today!
 
 - [Prerequisite Knowledge](#prerequisite-knowledge)
 - [Prerequisite Software](#prerequisite-software)
@@ -15,11 +15,11 @@ We would love for you to contribute to the Aerie documentation and help make it 
 
 ## Prerequisite Knowledge
 
-The Aerie documentation is built with [Docusaurus](https://docusaurus.io/). Documents can be written in either vanilla [Markdown](https://www.markdownguide.org/) (`.md` files), or [MDX](https://mdxjs.com/) (`.mdx` files). Most of the time you will want to use `.mdx` to [add assets](#assets), or things like [admonitions](https://docusaurus.io/docs/2.0.1/markdown-features/admonitions). Please see the [Docusaurus documentation](https://docusaurus.io/docs/next/markdown-features) for the complete set of available markdown features.
+The PlanDev documentation is built with [Docusaurus](https://docusaurus.io/). Documents can be written in either vanilla [Markdown](https://www.markdownguide.org/) (`.md` files), or [MDX](https://mdxjs.com/) (`.mdx` files). Most of the time you will want to use `.mdx` to [add assets](#assets), or things like [admonitions](https://docusaurus.io/docs/2.0.1/markdown-features/admonitions). Please see the [Docusaurus documentation](https://docusaurus.io/docs/next/markdown-features) for the complete set of available markdown features.
 
 ## Prerequisite Software
 
-Before you can run the Aerie documentation locally you must install and configure the following products on your development machine:
+Before you can run the PlanDev documentation locally you must install and configure the following products on your development machine:
 
 - [Git](http://git-scm.com) and/or the [GitHub app](https://desktop.github.com/); [GitHub's Guide to Installing Git](https://help.github.com/articles/set-up-git) is a good source of information.
 
@@ -28,13 +28,13 @@ Before you can run the Aerie documentation locally you must install and configur
 - [Node.js LTS](http://nodejs.org) which is used to run a development web server, and generate distributable files. We recommend using the [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm) to install Node.js and [NPM](https://www.npmjs.com/) on your machine. Once you have NVM installed you can use the required Node.js/NPM versions via:
 
   ```shell
-  cd aerie-docs
+  cd plandev-docs
   nvm use
   ```
 
 ## <a name="editor"></a> Editor
 
-The recommended editor for writing Aerie documentation is [VS Code](https://code.visualstudio.com/) with the following settings and extensions. You can easily use another editor of your choice as long as you can replicate the formatting and spell-check settings.
+The recommended editor for writing PlanDev documentation is [VS Code](https://code.visualstudio.com/) with the following settings and extensions. You can easily use another editor of your choice as long as you can replicate the formatting and spell-check settings.
 
 ### Settings.json
 
@@ -48,28 +48,28 @@ Your editor should follow the same settings found in [.vscode/settings.json](.vs
 
 ## <a name="clone"></a> Clone the Repository
 
-[Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) the aerie-docs repository:
+[Clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) the plandev-docs repository:
 
 ```shell
-git clone https://github.com/NASA-AMMOS/aerie-docs.git
-cd aerie-docs
+git clone https://github.com/PlanDev/plandev-docs.git
+cd plandev-docs
 ```
 
 ## <a name="install"></a> Install Dependencies
 
 ```sh
-cd aerie-docs
+cd plandev-docs
 npm install
 ```
 
 ## <a name="start"></a> Start Documentation Server
 
 ```sh
-cd aerie-docs
+cd plandev-docs
 npm start
 ```
 
-Visit http://localhost:3000/aerie-docs/ to view the documentation in your local browser. Any changes you make to the documentation will auto-reload the page with your changes.
+Visit http://localhost:3000/plandev-docs/ to view the documentation in your local browser. Any changes you make to the documentation will auto-reload the page with your changes.
 
 ## <a name="new"></a> Adding a New Document
 
@@ -87,7 +87,7 @@ In rare cases you may need to add [static assets](https://docusaurus.io/docs/sta
 
 Please follow these instructions when submitting a Pull Request:
 
-1. Search [GitHub](https://github.com/NASA-AMMOS/aerie-docs/pulls) for an open or closed PR that relates to your submission. You don't want to duplicate effort.
+1. Search [GitHub](https://github.com/PlanDev/plandev-docs/pulls) for an open or closed PR that relates to your submission. You don't want to duplicate effort.
 1. Make your changes in a new git branch:
 
    ```sh
@@ -110,7 +110,7 @@ Please follow these instructions when submitting a Pull Request:
    git push origin my-fix-branch
    ```
 
-1. In GitHub, send a pull request to `aerie-docs:develop`.
+1. In GitHub, send a pull request to `plandev-docs:develop`.
 1. If we suggest changes then:
 
 - Make the required updates.

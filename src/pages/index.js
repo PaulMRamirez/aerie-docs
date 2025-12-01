@@ -24,21 +24,21 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className={clsx('button button--secondary button--lg', styles.heroButton)}
-            to="/aerie-docs/introduction/#fast-track"
+            to="/plandev-docs/introduction/#fast-track"
           >
             Get started
           </Link>
           <div>
             Want to chat or schedule a demo?{' '}
-            <Link href="mailto:aerie-support@googlegroups.com" className="button--secondary">
+            <Link href="mailto:plandev-support@googlegroups.com" className="button--secondary">
               Get in touch →
             </Link>
           </div>
         </div>
         <img
           className={styles.imgFullscreen}
-          src={require('@site/static/img/aerie-ui-light.png').default}
-          alt="Aerie UI"
+          src={require('@site/static/img/plandev-ui-light.png').default}
+          alt="PlanDev UI"
         />
         <HomepageMissionPartners />
       </div>

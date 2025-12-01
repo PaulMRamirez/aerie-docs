@@ -4,20 +4,20 @@ A **mission model configuration** enables mission modelers to set initial missio
 
 ## Declaration
 
-To use a mission model configuration the `@WithConfiguration` annotation must be used within the mission model's [package-info.java](./introduction.mdx#the-package-infojava-file) to register the configuration with Aerie.
+To use a mission model configuration the `@WithConfiguration` annotation must be used within the mission model's [package-info.java](./introduction.mdx#the-package-infojava-file) to register the configuration with PlanDev.
 
-For example, the Aerie mission model template [package-info.java](https://github.com/NASA-AMMOS/aerie-mission-model-template/blob/main/src/main/java/missionmodel/package-info.java) makes use of this annotation:
+For example, the PlanDev mission model template [package-info.java](https://github.com/PlanDev/plandev-mission-model-template/blob/main/src/main/java/missionmodel/package-info.java) makes use of this annotation:
 
 ```java
 @MissionModel(model = Mission.class)
 @WithConfiguration(Configuration.class)
 package missionmodel;
 
-import gov.nasa.jpl.aerie.merlin.framework.annotations.MissionModel;
-import gov.nasa.jpl.aerie.merlin.framework.annotations.MissionModel.WithConfiguration;
+import dev.plandev.merlin.framework.annotations.MissionModel;
+import dev.plandev.merlin.framework.annotations.MissionModel.WithConfiguration;
 ```
 
-In this example `Configuration` is the class class containing all mission model configuration data. When the `@WithConfiguration` annotation is used, the model – defined within the `@MissionModel` annotation – must accept the configuration as the last constructor parameter. See [Mission.java](https://github.com/NASA-AMMOS/aerie-mission-model-template/blob/main/src/main/java/missionmodel/Mission.java):
+In this example `Configuration` is the class class containing all mission model configuration data. When the `@WithConfiguration` annotation is used, the model – defined within the `@MissionModel` annotation – must accept the configuration as the last constructor parameter. See [Mission.java](https://github.com/PlanDev/plandev-mission-model-template/blob/main/src/main/java/missionmodel/Mission.java):
 
 ```java
 public Mission(final Registrar registrar, final Configuration config) {
@@ -46,9 +46,9 @@ A `Configuration` can be a simple data class. For example:
 ```java
 package missionmodel;
 
-import gov.nasa.jpl.aerie.merlin.framework.annotations.Export;
+import dev.plandev.merlin.framework.annotations.Export;
 import java.nio.file.Path;
-import static gov.nasa.jpl.aerie.merlin.framework.annotations.Export.Template;
+import static dev.plandev.merlin.framework.annotations.Export.Template;
 
 public record Configuration(Path initialDataPath) {
   public static final Path DEFAULT_DATA_PATH = Path.of("/etc/os-release");
@@ -59,12 +59,12 @@ public record Configuration(Path initialDataPath) {
 }
 ```
 
-See the Aerie [mission model examples directory](https://github.com/NASA-AMMOS/aerie/tree/develop/examples) for a demonstration of each possible style of configuration definitions:
+See the PlanDev [mission model examples directory](https://github.com/PlanDev/plandev/tree/develop/examples) for a demonstration of each possible style of configuration definitions:
 
-1. [foo-missionmodel](https://github.com/NASA-AMMOS/aerie/blob/develop/examples/foo-missionmodel/src/main/java/gov/nasa/jpl/aerie/foomissionmodel/Configuration.java) - Uses standard `@Parameter` configuration annotations
-1. [banananation](https://github.com/NASA-AMMOS/aerie/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/Configuration.java) - Uses the `@Template` annotation to define a default Configuration object (shown above)
-1. [config-with-defaults](https://github.com/NASA-AMMOS/aerie/blob/develop/examples/config-with-defaults/src/main/java/gov/nasa/jpl/aerie/configwithdefaults/Configuration.java) - Uses `@WithDefaults` to define a default for each parameter
-1. [config-without-defaults](https://github.com/NASA-AMMOS/aerie/blob/develop/examples/config-without-defaults/src/main/java/gov/nasa/jpl/aerie/configwithoutdefaults/Configuration.java) - Defined with no default arguments, requires all arguments to be supplied by the planner
+1. [foo-missionmodel](https://github.com/PlanDev/plandev/blob/develop/examples/foo-missionmodel/src/main/java/gov/nasa/jpl/aerie/foomissionmodel/Configuration.java) - Uses standard `@Parameter` configuration annotations
+1. [banananation](https://github.com/PlanDev/plandev/blob/develop/examples/banananation/src/main/java/gov/nasa/jpl/aerie/banananation/Configuration.java) - Uses the `@Template` annotation to define a default Configuration object (shown above)
+1. [config-with-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-with-defaults/src/main/java/gov/nasa/jpl/aerie/configwithdefaults/Configuration.java) - Uses `@WithDefaults` to define a default for each parameter
+1. [config-without-defaults](https://github.com/PlanDev/plandev/blob/develop/examples/config-without-defaults/src/main/java/gov/nasa/jpl/aerie/configwithoutdefaults/Configuration.java) - Defined with no default arguments, requires all arguments to be supplied by the planner
 
 The mission model may use a configuration to set initial values of resources, for example:
 

@@ -4,11 +4,11 @@ As a Mission Modeler sooner or later you will want to define a parameter type, o
 
 ## Value Schema Basics
 
-A value schema is a description of the structure of some value. Using value schemas users can tell Aerie how to work with arbitrarily complex types of values, so long as they can be described using the value schema constructs provided by Aerie.
+A value schema is a description of the structure of some value. Using value schemas users can tell PlanDev how to work with arbitrarily complex types of values, so long as they can be described using the value schema constructs provided by PlanDev.
 
 ### Elementary Value Schemas
 
-At a fundamental level a value schema is no more than a combination of elementary value schemas. Aerie defines the elementary value schemas as follows:
+At a fundamental level a value schema is no more than a combination of elementary value schemas. PlanDev defines the elementary value schemas as follows:
 
 - `BOOLEAN` - A boolean value
 - `DURATION` - A duration value

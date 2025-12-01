@@ -1,15 +1,15 @@
-# Aerie Actions
+# PlanDev Actions
 
 :::danger
-Actions are a new *experimental feature* as of Aerie v3.4.0, and not yet recommended for use in production environments.
+Actions are a new *experimental feature* as of PlanDev v3.4.0, and not yet recommended for use in production environments.
 Development is active, and the API may be subject to further change. Please let us know if you have feedback
 on their future development!
 :::
 
-Actions are *custom tasks* that developers can write and upload to an Aerie (Phoenix) Sequencing **workspace**, in order to
+Actions are *custom tasks* that developers can write and upload to an PlanDev (Phoenix) Sequencing **workspace**, in order to
 traceably automate operations on the sequences and files within the workspace. Actions may *read from* and *write to* the contents of the
 workspace, and may communicate with other services to provide things such as translation, static checking or compilation.
-More info about this decision and its intentions can be found in [ADR-0101 - Aerie Actions](/overview/design/arch-decision-records/adr-0101-aerie-actions).
+More info about this decision and its intentions can be found in [ADR-0101 - PlanDev Actions](/overview/design/arch-decision-records/adr-0101-plandev-actions).
 
 This document describes the *current state* of the Actions feature as it exists today. Check the roadmap section at the
 end to understand how it may change in the future.
@@ -20,9 +20,9 @@ This section demonstrates how to use Actions in the UI and assumes you *already 
 [this demo action](/assets/action.js) to use as an example, or follow instructions in the "Writing an Action" section below to build
 your own.
 
-Aerie actions live within the context of a **sequencing workspace**, so to begin, go to the Sequencing page and create
+PlanDev actions live within the context of a **sequencing workspace**, so to begin, go to the Sequencing page and create
 a new workspace. More info on workspaces, dictionaries and parcels can be found in
-[the Sequence Editor docs](http://localhost:3000/aerie-docs/sequencing/editor/). With your workspace open, click the
+[the Sequence Editor docs](http://localhost:3000/plandev-docs/sequencing/editor/). With your workspace open, click the
 button labeled "Actions" at the top - this will show you the actions associated with your workspace, and all of the past
 runs of those actions - currently both empty lists.
 
@@ -42,12 +42,12 @@ Now we're ready to run the action for the first time - click the purple "Run" bu
 opens a modal dialog with a form for entering **parameters** for this run. Like settings, parameters are
 options defined by the action - but unlike settings, they are required to be provided by the user on each
 run, rather than saved and persisted for all future runs. In this modal, for the parameter called "urlPath", enter
-`repos/NASA-AMMOS/aerie`. The example action appends the "urlPath" to the base "externalUrl" entered in settings
+`repos/PlanDev/plandev`. The example action appends the "urlPath" to the base "externalUrl" entered in settings
 to form a complete URL to request. Finally, click the "Run" button in the dialog window to start the run.
 
 This will take you to the **action run detail page** for this run, which will show information about the status of this
 particular run. After a few seconds, you should either see a green "success" status with results (showing information
-about the `aerie` repo from the Github API), or a red "failure" status. If you see a failure, check to make sure your
+about the `plandev` repo from the Github API), or a red "failure" status. If you see a failure, check to make sure your
 settings and parameters were set correctly.
 
 Finally, you can go back to the main Actions page for your workspace, which should show your just-completed run in the
@@ -63,10 +63,10 @@ unfamiliar with working on JS projects, it's a good idea to use an IDE such as [
 
 We provide two resources for developers who want to write a new action:
 
-* **[aerie-action-template](https://github.com/NASA-AMMOS/aerie-action-template)**, a boilerplate template showing the structure of an action
-* The **[aerie-actions](https://github.com/NASA-AMMOS/aerie-actions)** JS package, a library of utilities used by actions
+* **[plandev-action-template](https://github.com/PlanDev/plandev-action-template)**, a boilerplate template showing the structure of an action
+* The **[plandev-actions](https://github.com/PlanDev/plandev-actions)** JS package, a library of utilities used by actions
 
-We recommend starting a new action by forking or copying the **[aerie-action-template](https://github.com/NASA-AMMOS/aerie-action-template)**
+We recommend starting a new action by forking or copying the **[plandev-action-template](https://github.com/PlanDev/plandev-action-template)**
 repository and using it as a starting point. Once you have a local copy, `cd` to it and run the following commands:
 
 * `nvm use` - (optional, but ensures you're using the correct `node` version. You may have to [install NVM](https://github.com/nvm-sh/nvm) first)
@@ -74,9 +74,9 @@ repository and using it as a starting point. Once you have a local copy, `cd` to
 * `npm run build` to make sure you are setup correctly to build
 
 Files in the `/dist` folder are generated and should not be modified directly - the action's source files are in the
-`/src` directory. Open [`src/index.ts`](https://github.com/NASA-AMMOS/aerie-action-template/blob/main/src/index.ts) in
+`/src` directory. Open [`src/index.ts`](https://github.com/PlanDev/plandev-action-template/blob/main/src/index.ts) in
 your code editor to start working on your action. You'll see at the top of the file the utilities that are imported
-from `aerie-actions`, which we'll discuss below.
+from `plandev-actions`, which we'll discuss below.
 
 ### Action parameters and settings
 
@@ -97,7 +97,7 @@ export const parameterDefinitions = {
 } satisfies ActionParameterDefinitions;
 ```
 defines two user-provided parameters, a string called `myName` and an integer called `myAge`. The full list of
-supported types can be found in the [aerie-actions value schema definition](https://github.com/NASA-AMMOS/aerie-actions/blob/main/src/types/schema.ts).
+supported types can be found in the [plandev-actions value schema definition](https://github.com/PlanDev/plandev-actions/blob/main/src/types/schema.ts).
 If you are using Typescript, the next two lines should be left alone:
 ```
 type MyActionParameters = ActionParameters<typeof parameterDefinitions>;
@@ -124,7 +124,7 @@ function, or a function which returns a [`Promise` which is `resolve`d](https://
 when the action is done running.
 * The first argument to `main` is `parameters` - the user-provided parameter values for this run, which will match the structure of your `parameterDefinitions`
 * The second argument is `settings` - the user-provided setting values, matching structure of `settingDefinitions`
-* The third argument is `actionsAPI`, which is an instance of the `ActionsAPI` class [defined in `aerie-actions`](https://github.com/NASA-AMMOS/aerie-actions/blob/main/src/index.ts#L94). This is your hook for accessing (reading and writing) files and sequences in your workspace, as well as any other helper functions provided by the package.
+* The third argument is `actionsAPI`, which is an instance of the `ActionsAPI` class [defined in `plandev-actions`](https://github.com/PlanDev/plandev-actions/blob/main/src/index.ts#L94). This is your hook for accessing (reading and writing) files and sequences in your workspace, as well as any other helper functions provided by the package.
 
 ### Results, Errors and Logs
 
@@ -158,10 +158,10 @@ such as authentication tokens, passwords or opcodes, that you do not want to be 
 
 ### Using `actionsAPI` functions to read and write sequences
 
-The third argument passed to your `main` function is an instance of the `ActionsAPI` class [defined in `aerie-actions`](https://github.com/NASA-AMMOS/aerie-actions/blob/main/src/index.ts#L94). This object contains a connection to the Aerie database,
+The third argument passed to your `main` function is an instance of the `ActionsAPI` class [defined in `plandev-actions`](https://github.com/PlanDev/plandev-actions/blob/main/src/index.ts#L94). This object contains a connection to the PlanDev database,
 and allows you to asynchronously **read from** and **write to** sequences in your workspace. More documentation for
-these functions can be found in the [`aerie-actions` repo](https://github.com/NASA-AMMOS/aerie-actions/blob/main/README.md),
-and examples can be found in the `aerie-action-template`. The basic methods are:
+these functions can be found in the [`plandev-actions` repo](https://github.com/PlanDev/plandev-actions/blob/main/README.md),
+and examples can be found in the `plandev-action-template`. The basic methods are:
 
 ```js
 // return a list of the names of all sequences in your workspace:
@@ -183,24 +183,24 @@ terminated and any unprocessed results will be dropped.
 
 ### Building your action
 
-When you are ready to upload your action to an Aerie workspace, run this build command:
+When you are ready to upload your action to an PlanDev workspace, run this build command:
 
 ```
 npm run build
 ```
 
 If successful, this should create a built file `dist/action.js` (in the action-template folder) which can be uploaded to
-Aerie when you create an action. Whenever you change your action, you must re-run `npm run build` to rebuild it, and
-then reupload it to Aerie.
+PlanDev when you create an action. Whenever you change your action, you must re-run `npm run build` to rebuild it, and
+then reupload it to PlanDev.
 
 ## Roadmap
 
-Aerie Actions are an **experimental feature** under active development. If you have feedback or ideas for their future
-development, [let us know!](http://localhost:3000/aerie-docs/#:~:text=quick%20start%E2%86%92-,Learn%20More,-Ask%20a%20question)
+PlanDev Actions are an **experimental feature** under active development. If you have feedback or ideas for their future
+development, [let us know!](http://localhost:3000/plandev-docs/#:~:text=quick%20start%E2%86%92-,Learn%20More,-Ask%20a%20question)
 
 Our near-term (Spring 2025) roadmap of upcoming changes to Actions includes:
 * More example actions & improved documentation
-* Patterns for **testing actions** - User should be able to write tests for their action including mocking & spying on the aerie-actions library (`expect(actions.readSequence).toHaveBeenCalledWith('mySequence')`).
+* Patterns for **testing actions** - User should be able to write tests for their action including mocking & spying on the plandev-actions library (`expect(actions.readSequence).toHaveBeenCalledWith('mySequence')`).
 * Action **Cancellation** - Ability to stop a long-running action and kill its worker
 * Settle on our **allowed types** of parameters & add some new types, with associated UI for selecting them:
   - sequence type parameter
@@ -208,8 +208,8 @@ Our near-term (Spring 2025) roadmap of upcoming changes to Actions includes:
   - 'secret' type?
 * Run an action **“on” a particular sequence** - If an action has a sequence-type parameter, you should be able to run it *from* the sequence editor with the active sequence as the parameter value
 * Secret storage? - Ability to securely store a setting that is a secret & not display it to end user
-* CAM auth token pass-through - If a user deploys Aerie on **CAM**, and writes an action which makes an HTTP call to another service in the same CAM "walled garden", we should provide a way to pass the token through, so we can be authenticated on the other service.
-* **Concurrency** - We don't plan to fully solve the concurrency problem yet, but we should allow *one action per workspace* to run concurrently instead of *one action per aerie deployment*
+* CAM auth token pass-through - If a user deploys PlanDev on **CAM**, and writes an action which makes an HTTP call to another service in the same CAM "walled garden", we should provide a way to pass the token through, so we can be authenticated on the other service.
+* **Concurrency** - We don't plan to fully solve the concurrency problem yet, but we should allow *one action per workspace* to run concurrently instead of *one action per plandev deployment*
 * Rethink **bundling actions** - Currently no way to upload an action with any other configs or scripts to call, you can only upload a single JS file. Should we rethink this to allow a user to give us eg. a node script that calls a python script, packed into a zip file? May also be nice for our action format to have a place to specify version, eg. a manifest file.
 
 Our longer-term roadmap includes prospective features such as:

@@ -8,11 +8,11 @@ Retroactive
 
 ## Context
 
-#### Aerie API Needs
+#### PlanDev API Needs
 
 1. Evolve the internal APIs rapidly and the public APIs slowly.
 
-   The development of the Aerie user interface and application
+   The development of the PlanDev user interface and application
    internal components proceeds in parallel. As a result, the user
    interface’s data needs imposes constraints on the definition of the
    system’s public API. The evolving nature of the user interface’s
@@ -27,9 +27,9 @@ Retroactive
 2. Multiple clients and multiple different workflows for clients.
 
    There exists a category of use cases in which customers develop
-   custom Aerie client applications. Such customization requires the
+   custom PlanDev client applications. Such customization requires the
    flexibility to easily define new data projections as simple queries
-   constructed by a client. As a result, Aerie benefits from an API
+   constructed by a client. As a result, PlanDev benefits from an API
    that supports high query flexibility from both the external client
 
 3. Ability to dynamically reduce/transform response payloads.
@@ -47,9 +47,9 @@ Retroactive
 
 4. Custom queries and batch fetching.
 
-   The Aerie stores a number of significant mission data sources
+   The PlanDev stores a number of significant mission data sources
    (E.g. activity plan, simulation results, and constraint violation
-   results). Aerie must provide users flexible access to this data to
+   results). PlanDev must provide users flexible access to this data to
    support an arbitrary space of use cases for reporting, auditing and
    interfacing with third-party customers.
 
@@ -83,7 +83,7 @@ Table 3 Comparison of REST and GraphQL capabilities
 | Enterprise Ready                                   | ✅      | ✅                 |
 
 The following is a discussion of the particular API qualities which
-provide for Aerie’s needs.
+provide for PlanDev’s needs.
 
 - **Discovery and Introspection** - The GraphQL data graph schema
   provides a contract-like mechanism where requests and replies are
@@ -116,7 +116,7 @@ provide for Aerie’s needs.
   client side data manipulation/filtering.
 
 - **Flexibility of API Design** - User and mission needs are
-  constantly evolving. GraphQL decouples the API allowing the Aerie
+  constantly evolving. GraphQL decouples the API allowing the PlanDev
   team to make adjustments to the API according to evolving customer
   needs. Additionally, the increased granularity and visibility when
   auditing the frequency and combinations with which certain fields
@@ -127,7 +127,7 @@ provide for Aerie’s needs.
 
 Use Apollo GraphQL. (Later, [[0003-hasura-and-postgres]])
 
-The Aerie GraphQL API presents a consistent application boundary to Aerie users. The API server enables the composition of multiple APIs (internal to the application) as a single API endpoint. The API component additionally provides a location in the system for the following needs:
+The PlanDev GraphQL API presents a consistent application boundary to PlanDev users. The API server enables the composition of multiple APIs (internal to the application) as a single API endpoint. The API component additionally provides a location in the system for the following needs:
 
 - Manipulation of data
 - Response Caching
@@ -140,20 +140,20 @@ identified as possible risks and sufficient mitigation options are
 identified:
 
 1. **Tooling API Management** - GraphQL is a newer technological approach to APIs (2012).
-   **Mitigation:** Aerie has chosen to use Hasura, a major open source contributor to the GraphQL community.
+   **Mitigation:** PlanDev has chosen to use Hasura, a major open source contributor to the GraphQL community.
 2. **Caching** - REST over HTTP benefits from existing HTTP server caching and browsers client caching mechanisms.
    **Mitigation:** Most GraphQL libraries have caching mechanisms built in. Hasura caching must be handled with annotations/directives on the graph definition.
-3. **Client-API Loose Coupling** - Each new client application must make affordance at development time and hardcode custom queries and mutations as made possible by the Aerie GraphQL schema.
-   **Mitigation:** None. In the Aerie context this is not considered a benefit.
+3. **Client-API Loose Coupling** - Each new client application must make affordance at development time and hardcode custom queries and mutations as made possible by the PlanDev GraphQL schema.
+   **Mitigation:** None. In the PlanDev context this is not considered a benefit.
 
 ## Retrospective
 
-Note, since the time of this original decision, the loose coupling of the client API provided by GraphQL has resulted in some challenges for missions using or considering to use Aerie:
+Note, since the time of this original decision, the loose coupling of the client API provided by GraphQL has resulted in some challenges for missions using or considering to use PlanDev:
 
-- While missions have full flexibility in how they build queries, they must go through the legwork of building a set a queries to perform basic functions that legacy tools provided out of the box (e.g. exporting plans and simulation results). This results in added cost and an increase to the barrier of entry for missions considering Aerie. In fact, the first user of Aerie found it necessary to build a command line tool for Aerie ([aerie-cli](https://github.com/NASA-AMMOS/aerie-cli)), which they graciously provided back to the community and is now maintained by the Aerie project.
-- Similarly, since Aerie lives in the greater ground system ecosystem where tools often communicate to each via files, common file formats are especially useful. Missions often don't want to go through the work of creating their own file formats if pre-built ones are sufficient.
+- While missions have full flexibility in how they build queries, they must go through the legwork of building a set a queries to perform basic functions that legacy tools provided out of the box (e.g. exporting plans and simulation results). This results in added cost and an increase to the barrier of entry for missions considering PlanDev. In fact, the first user of PlanDev found it necessary to build a command line tool for PlanDev ([aerie-cli](https://github.com/PlanDev/plandev-cli)), which they graciously provided back to the community and is now maintained by the PlanDev project.
+- Similarly, since PlanDev lives in the greater ground system ecosystem where tools often communicate to each via files, common file formats are especially useful. Missions often don't want to go through the work of creating their own file formats if pre-built ones are sufficient.
 
-In addition to the flexibility provided by GraphQL, there still seems to be a need for Aerie to offer an "out of the box" solution (file formats and standard queries) that works for most use cases and reduces the workload on missions.
+In addition to the flexibility provided by GraphQL, there still seems to be a need for PlanDev to offer an "out of the box" solution (file formats and standard queries) that works for most use cases and reduces the workload on missions.
 
 ## References
 

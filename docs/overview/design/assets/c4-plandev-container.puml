@@ -2,18 +2,18 @@
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 Person(planner, Planner, "A mission/instrument team planner")
 
-System_Boundary(c1, "Aerie") {
+System_Boundary(c1, "PlanDev") {
         System_Ext(cam, "CAM")
         Container_Boundary(ui_boundary, "UI") {
-		Container(web_app, "Aerie UI", "Typescript, Svelte", "Provides all planning, simulation, scheduling, and command expansion capabilities via a browser")
-                Container(ui_server, "UI Server", "svelte backend", "Serves the Aerie UI, performs server-side rendering")
+		Container(web_app, "PlanDev UI", "Typescript, Svelte", "Provides all planning, simulation, scheduling, and command expansion capabilities via a browser")
+                Container(ui_server, "UI Server", "svelte backend", "Serves the PlanDev UI, performs server-side rendering")
                 ContainerDb(ui_db, "UI Config Database", "PostgreSQL", "Stores mission custom UI view configurations")
         }
         Container_Boundary(merlin_boundary, "Merlin") {
                 Container(merlin, "Merlin", "Javalin and Java", "Provides mission model simulation and plan management")
                 ContainerDb(merlin_db, "Merlin Database", "PostgreSQL", "Stores records of mission models and plans")
         }
-        Container(hasura, "Hasura", "Third party, yaml config", "Receives and resolves requests against the Aerie GraphQL schema")
+        Container(hasura, "Hasura", "Third party, yaml config", "Receives and resolves requests against the PlanDev GraphQL schema")
         Container_Boundary(scheduler_boundary, "Scheduler") {
                 Container(scheduler, "Scheduler", "Javalin and java", "Performs automated scheduling for activity planning")
                 ContainerDb(scheduler_db, "Scheduler Database", "PostgreSQL", "Stores records of scheduling goals and specifications")
@@ -23,7 +23,7 @@ System_Boundary(c1, "Aerie") {
                 ContainerDb(sequencing_db, "Sequencing Database", "PostgreSQL", "Stores records of expansion logic, and expanded sequences")
         }
         Container(gateway, "Gateway", "Typescript, Express", "Provides file upload and authentication capabilities")
-        ContainerDb(file_store, "Aerie File Store", "File system", "Stores uploaded mission models and other files")
+        ContainerDb(file_store, "PlanDev File Store", "File system", "Stores uploaded mission models and other files")
 }
 
 Rel_R(planner, web_app, "Uses", "HTTPS")

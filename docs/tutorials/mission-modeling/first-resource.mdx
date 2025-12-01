@@ -10,8 +10,8 @@ In the `DataModel` class, declare the `RecordingRate` resource by adding a singl
 ```java
 package missionmodel;
 
-import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
-import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
+import dev.plandev.contrib.streamline.core.MutableResource;
+import dev.plandev.contrib.streamline.modeling.discrete.Discrete;
 
 public class DataModel {
   public MutableResource<Discrete<Double>> RecordingRate; // Megabits/s
@@ -26,7 +26,7 @@ As you are coding, take advantage of your IDE to auto import the modeling framew
 
 Let's tease apart this line of code and use it as an opportunity to provide a brief overview of the various types of resources available to you as a modeler. The mission modeling framework provides two primary classes from which to define resources:
 
-1. `MutableResource` - resource whose value can be explicitly updated by activities or other modeling code after it has been defined. Updates to the resource take the form of "Effects" such as `increase`, `decrease`, or `set`. The values of this category of resource are explicitly tracked in objects called "Cells" within Aerie, which you can read about in detail in the [Aerie Software Design Document](https://ammos.nasa.gov/aerie-docs/overview/software-design-document/#cells) if you are interested.
+1. `MutableResource` - resource whose value can be explicitly updated by activities or other modeling code after it has been defined. Updates to the resource take the form of "Effects" such as `increase`, `decrease`, or `set`. The values of this category of resource are explicitly tracked in objects called "Cells" within PlanDev, which you can read about in detail in the [PlanDev Software Design Document](https://ammos.nasa.gov/plandev-docs/overview/software-design-document/#cells) if you are interested.
 2. `Resource` - resource whose value cannot be explicitly updated after it has been defined. In other words, these resources cannot be updated via "Effects". The most common use of these resources are to create "derived" resources that are fully defined by the values of other resources (we will have some examples of these later). Since these resources get their value from other resources, they actually don't need to store their own value within a "Cell". Interestingly, the `MutableResource` class extends the `Resource` class and includes additional logic to ensure values are correctly stored in these "Cells".
 
 From these classes, there are a few different types of resources provided, which are primarily distinguished by how the value of the resource progresses between computed points:
@@ -40,7 +40,7 @@ TODO: Add more content on `Clock`
 
 :::info
 
-Polynomial resources currently cannot be rendered in the Aerie UI and must be transformed to a linear resource (an example of this is shown later in the tutorial)
+Polynomial resources currently cannot be rendered in the PlanDev UI and must be transformed to a linear resource (an example of this is shown later in the tutorial)
 
 :::
 
@@ -65,20 +65,20 @@ This is accomplished with the following line of code after the resource definiti
 registrar.discrete("RecordingRate", RecordingRate, new DoubleValueMapper());
 ```
 
-The first argument to this `discrete` function is the string name of the resource you want to appear in the UI, the second argument is the resource itself, and then the third argument is a [Value Mapper](https://nasa-ammos.github.io/aerie-docs/mission-modeling/activity-mappers/#value-mappers) object that matches the resource primitive type, which in this case is a `Double`. For now, you don't need to know much about Value Mappers other than they are needed for performing data serialization to the UI and there are mappers already currently available as part of the framework for all basic types. You can create custom ones if you have complex resource types, but for almost all cases, you should be able to get away with one of the pre-built mappers.
+The first argument to this `discrete` function is the string name of the resource you want to appear in the UI, the second argument is the resource itself, and then the third argument is a [Value Mapper](https://nasa-ammos.github.io/plandev-docs/mission-modeling/activity-mappers/#value-mappers) object that matches the resource primitive type, which in this case is a `Double`. For now, you don't need to know much about Value Mappers other than they are needed for performing data serialization to the UI and there are mappers already currently available as part of the framework for all basic types. You can create custom ones if you have complex resource types, but for almost all cases, you should be able to get away with one of the pre-built mappers.
 
 You have now declared, defined, and registered your first resource and your `DataModel` class should look something like this:
 
 ```java
 package missionmodel;
 
-import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
-import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
-import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
-import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
+import dev.plandev.contrib.streamline.core.MutableResource;
+import dev.plandev.contrib.streamline.modeling.Registrar;
+import dev.plandev.contrib.streamline.modeling.discrete.Discrete;
+import dev.plandev.contrib.serialization.mappers.DoubleValueMapper;
 
-import static gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource.resource;
-import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete.discrete;
+import static dev.plandev.contrib.streamline.core.MutableResource.resource;
+import static dev.plandev.contrib.streamline.modeling.discrete.Discrete.discrete;
 
 public class DataModel {
 
@@ -96,14 +96,14 @@ With our `DataModel` class built, we can now instantiate it within the top-level
 ```java
 package missionmodel;
 
-import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
+import dev.plandev.contrib.streamline.modeling.Registrar;
 
 public final class Mission {
 
   public final Registrar errorRegistrar;
   public final DataModel dataModel;
 
-  public Mission(final gov.nasa.jpl.aerie.merlin.framework.Registrar registrar, final Configuration config) {
+  public Mission(final dev.plandev.merlin.framework.Registrar registrar, final Configuration config) {
     this.errorRegistrar = new Registrar(registrar, Registrar.ErrorBehavior.Log);
     // Tutorial code
     this.dataModel = new DataModel(this.errorRegistrar);

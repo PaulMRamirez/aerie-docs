@@ -1,6 +1,6 @@
 # Glossary
 
-This is an alphabetized glossary of common term definitions used throughout the Aerie ecosystem and related domains.
+This is an alphabetized glossary of common term definitions used throughout the PlanDev ecosystem and related domains.
 
 ## A
 
@@ -9,7 +9,7 @@ This is an alphabetized glossary of common term definitions used throughout the 
 1. **Activity Plan (Plan)** - A collection of activity directives within a time span bounded with plan start and plan end time.
 
 1. **Activity Type** - A Java class in the mission model that is the archetype of a unit operation an activity simulation.
-   Activity types are units for modeling and planning for ground operations, and are not recognized by the flight system. An activity type in Aerie describes:
+   Activity types are units for modeling and planning for ground operations, and are not recognized by the flight system. An activity type in PlanDev describes:
 
    - Parameters that define the range of execution for each instance of the activity
    - Computed attributes that define values that will be computed
@@ -35,7 +35,7 @@ This is an alphabetized glossary of common term definitions used throughout the 
 
 1. **Constraint Checking** - A downstream analysis of a simulation dataset that evaluates a set of constraints and returns time windows of violation.
 
-1. **Constraint** - An expression built up with the [Aerie constraints](../scheduling-and-constraints/declarative/constraints/introduction) eDSL, which evaluates to a set of windows during which the condition(s) defined by the expression is true or false. Aerie supports various constraint types such as safe ranges for resources or necessary pre-conditions for safe execution of activities. Aerie constraints is a mechanism to represent and check many flight rule types.
+1. **Constraint** - An expression built up with the [PlanDev constraints](../scheduling-and-constraints/declarative/constraints/introduction) eDSL, which evaluates to a set of windows during which the condition(s) defined by the expression is true or false. PlanDev supports various constraint types such as safe ranges for resources or necessary pre-conditions for safe execution of activities. PlanDev constraints is a mechanism to represent and check many flight rule types.
 
 ## D
 
@@ -43,7 +43,7 @@ This is an alphabetized glossary of common term definitions used throughout the 
 
 1. **Delay** - A function in the [Merlin simulation modeling API](../mission-modeling/activity-types/effect-model/). A modeler can delay (pause) an activity’s execution during simulation effectively modeling some passage of simulated time, before resuming further modeling.
 
-1. **Deployment** - We refer to a particular configuration of the Aerie system as an "Aerie Deployment", in the context of a broader [ground data system (GDS)](https://www.nasa.gov/smallsat-institute/sst-soa/ground-data-systems-and-mission-operations) deployment.
+1. **Deployment** - We refer to a particular configuration of the PlanDev system as an "PlanDev Deployment", in the context of a broader [ground data system (GDS)](https://www.nasa.gov/smallsat-institute/sst-soa/ground-data-systems-and-mission-operations) deployment.
 1. [Docker](https://www.docker.com/) - A set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.
 
 ## G
@@ -52,7 +52,7 @@ This is an alphabetized glossary of common term definitions used throughout the 
 
 ## H
 
-1. [Hasura](https://hasura.io/) - A GraphQL schema compiler and GraphQL API server. As a compiler, Hasura parses a PostgresDB schema and generates a GraphQL schema defining a data graph of Queries, Mutation, and Subscriptions. Aerie utilizes a Hasura component to expose select database tables as the Aerie GraphQL API.
+1. [Hasura](https://hasura.io/) - A GraphQL schema compiler and GraphQL API server. As a compiler, Hasura parses a PostgresDB schema and generates a GraphQL schema defining a data graph of Queries, Mutation, and Subscriptions. PlanDev utilizes a Hasura component to expose select database tables as the PlanDev GraphQL API.
 
 ## I
 
@@ -64,7 +64,7 @@ This is an alphabetized glossary of common term definitions used throughout the 
 
 ## M
 
-1. **Mission Model** - The modeling code written in Java, packaged as a JAR that describes activity types and resource behavior models. Mission model is a required input for activity planning, simulation and scheduling performed by Aerie.
+1. **Mission Model** - The modeling code written in Java, packaged as a JAR that describes activity types and resource behavior models. Mission model is a required input for activity planning, simulation and scheduling performed by PlanDev.
 
 ## P
 
@@ -120,4 +120,4 @@ This is an alphabetized glossary of common term definitions used throughout the 
 
 1. **Window** - The output of constraints checking. A boolean-type profile describing at what times a given constraint is violated. True means the state is nominal; false means the state is a violation.
 
-1. **Worker** - Aerie provides a multi-tenancy capability so that many users can run simulations concurrently. Simulation multi-tenancy is achieved by configuring Aerie to launch multiple simulation worker containers. Each simulation worker can execute a sand-boxed simulation run.
+1. **Worker** - PlanDev provides a multi-tenancy capability so that many users can run simulations concurrently. Simulation multi-tenancy is achieved by configuring PlanDev to launch multiple simulation worker containers. Each simulation worker can execute a sand-boxed simulation run.

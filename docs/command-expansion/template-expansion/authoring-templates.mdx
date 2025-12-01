@@ -7,10 +7,10 @@ import templateHelpers from './assets/authoring-template-helpers.png';
 
 Template authoring follows a similar process to Typescript expansion rule authoring.
 
-To create a new sequence template for an activity type (or to edit existing ones) navigate to the **Sequence Templates** page of Aerie.
+To create a new sequence template for an activity type (or to edit existing ones) navigate to the **Sequence Templates** page of PlanDev.
 
 <figure>
-  <img alt="Aerie UI - Templates Page" src={templatePage} />
+  <img alt="PlanDev UI - Templates Page" src={templatePage} />
   <figcaption>Figure 1: Navigating to the sequence templates page</figcaption>
 </figure>
 
@@ -26,14 +26,14 @@ To create a new template, select `New Template`, and provide your template with:
 To edit an existing template, mouse over it in the table and select the edit button.
 
 <figure>
-  <img alt="Aerie UI - Create New Template" src={createNewTemplate} />
+  <img alt="PlanDev UI - Create New Template" src={createNewTemplate} />
   <figcaption>Figure 2: Creating a new sequence template</figcaption>
 </figure>
 
 This editor has autocomplete functionality, whitespace formatting, and error visibility for supported languages. There is also a panel that describes the available commands, one describing the template, and the ability to switch to editing a different sequence template.
 
 <figure>
-  <img alt="Aerie UI - Template Editor" src={templateEditor} />
+  <img alt="PlanDev UI - Template Editor" src={templateEditor} />
   <figcaption>Figure 3: Template Editor</figcaption>
 </figure>
 
@@ -85,7 +85,7 @@ C DP_PRIORITIZE "STRING" 5
 
 ## Template input data
 
-During expansion, Aerie goes through your plan looking for activities which have a template associated with them, and compiles the template with the following input data structure from the activity, which may be used in the template:
+During expansion, PlanDev goes through your plan looking for activities which have a template associated with them, and compiles the template with the following input data structure from the activity, which may be used in the template:
 
 ```
 {
@@ -120,7 +120,7 @@ The actual compilation of templates is discussed in [Expanding Templates](../exp
 ## Template Helpers
 
 We also introduce with Handlebars formatting the notion of helpers. Helper functions (discussed in the Handlebars documentation [here](https://handlebarsjs.com/guide/builtin-helpers.html)), allow a user to invoke a function with arguments and produce a result in the template.
-Aerie defines 4 helpers for use in templates. User-defined helpers are not yet supported, so only these 4 are available at the moment.
+PlanDev defines 4 helpers for use in templates. User-defined helpers are not yet supported, so only these 4 are available at the moment.
 
 Template helpers for times output according to the configured language. The time formats for the supported languages are:
 
@@ -262,10 +262,10 @@ Unflattened: 1,2,3.5,string; Flattened: [1 2 3.5 string]
 
 ---
 
-Putting this all together in AERIE, we might have the following:
+Putting this all together in PlanDev, we might have the following:
 
 <figure>
-  <img alt="Aerie UI - Template With Helpers" src={templateHelpers} />
+  <img alt="PlanDev UI - Template With Helpers" src={templateHelpers} />
   <figcaption>Figure 4: A sequence template using helpers</figcaption>
 </figure>
 

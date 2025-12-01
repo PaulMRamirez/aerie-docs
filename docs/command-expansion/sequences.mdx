@@ -8,12 +8,12 @@ import planSequenceAssignment from './assets/plan-expansion-assign-sequence.png'
 
 The output of command expansion is not only time-ordered commands per activity, but rather complete sequence products.
 These sequences can contain commands from multiple activities from a simulation dataset.
-Users can query these sequences through the Aerie API to get them in the `seqJSON` format.
-In order to generate these sequences, Aerie requires sequence ids (seqIDs) to be declared, and mapped to simulated activities.
-To do so users should first open the "Expansion" panel in the [Aerie Planning UI](../../planning/create-plan-and-simulate), from any open panel as shown below.
+Users can query these sequences through the PlanDev API to get them in the `seqJSON` format.
+In order to generate these sequences, PlanDev requires sequence ids (seqIDs) to be declared, and mapped to simulated activities.
+To do so users should first open the "Expansion" panel in the [PlanDev Planning UI](../../planning/create-plan-and-simulate), from any open panel as shown below.
 
 <figure>
-  <img alt="Aerie UI - Plan Expansion Panel" src={planExpansionPanel} />
+  <img alt="PlanDev UI - Plan Expansion Panel" src={planExpansionPanel} />
   <figcaption>Figure 1: Plan Expansion Panel </figcaption>
 </figure>
 
@@ -30,7 +30,7 @@ There are two ways to create a sequence - from a filter, or directly. Independen
 
 :::caution
 
-Since Aerie expands simulated activities from a simulation dataset, currently we only allow seqIDs to be associated with the simulation dataset.
+Since PlanDev expands simulated activities from a simulation dataset, currently we only allow seqIDs to be associated with the simulation dataset.
 This means that when you re-run a simulation, seqIDs have to be declared again for the new simulation dataset.
 We are exploring several options to mitigate the rework.
 
@@ -41,21 +41,21 @@ This page will pick up after the third step.
 To create a filter, select the following:
 
 <figure>
-  <img alt="Aerie UI - Sequence Filter Creation" src={planExpansionFilter} />
+  <img alt="PlanDev UI - Sequence Filter Creation" src={planExpansionFilter} />
   <figcaption>Figure 2: Sequence Filter Creation </figcaption>
 </figure>
 
 name it, and then select all relevant options to narrow down the set of simulated activities that you would like to associate with the sequence you will be creating. 
 
 <figure>
-  <img alt="Aerie UI - Sequence Filter Options" src={planExpansionFilterFinish} />
+  <img alt="PlanDev UI - Sequence Filter Options" src={planExpansionFilterFinish} />
   <figcaption>Figure 3: Sequence Filter Options </figcaption>
 </figure>
 
 From here, mouse over the filter, click the play icon, and then select the dates you want the sequence to apply over and then you will create a sequence from this filter.
 
 <figure>
-  <img alt="Aerie UI - Create a Sequence from a Sequence Filter" src={planSequenceCreationFromFilter} />
+  <img alt="PlanDev UI - Create a Sequence from a Sequence Filter" src={planSequenceCreationFromFilter} />
   <figcaption>Figure 4: Create a Sequence from a Sequence Filter </figcaption>
 </figure>
 
@@ -71,18 +71,18 @@ Clicking on the Sequence ID input field lists all of the declared sequence IDs a
 Note that this association is the mechanism for mapping expansion output of multiple activities to the same sequence output.
 
 <figure>
-  <img alt="Aerie UI - Assign a Simulated Activity to a Sequence" src={planSequenceAssignment} />
+  <img alt="PlanDev UI - Assign a Simulated Activity to a Sequence" src={planSequenceAssignment} />
   <figcaption>Figure 5: Assign a Simulated Activity to a Sequence </figcaption>
 </figure>
 
 :::note
 
-Aerie recommends automating the seqID declaration and seqID-activity association steps using Aerie API, such that the information can be recreated automatically after every simulation run.
+PlanDev recommends automating the seqID declaration and seqID-activity association steps using PlanDev API, such that the information can be recreated automatically after every simulation run.
 
 :::
 
 ## Command Sorting
 
-As of Aerie [v1.5.0](https://github.com/NASA-AMMOS/aerie/releases/tag/v1.5.0), during expansion if more than one activity targets a single sequence then the commands are sorted time-ascending if all commands use either absolute or relative time tags, and the first command for each activity uses an absolute time tag. Otherwise none of the commands are sorted. If the commands are sorted then all time tags are converted to absolute time.
+As of PlanDev [v1.5.0](https://github.com/PlanDev/plandev/releases/tag/v1.5.0), during expansion if more than one activity targets a single sequence then the commands are sorted time-ascending if all commands use either absolute or relative time tags, and the first command for each activity uses an absolute time tag. Otherwise none of the commands are sorted. If the commands are sorted then all time tags are converted to absolute time.
 
 Additionally a `timeSorted` boolean property has been added to the expanded sequence `metadata` indicating if the commands have been sorted (true for sorted, false otherwise).

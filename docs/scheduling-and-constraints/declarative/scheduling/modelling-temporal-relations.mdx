@@ -7,21 +7,21 @@ import xstartsy from './assets/xstartsy.png';
 
 # Modelling Temporal Relations with Coexistence Goal
 In mission modeling and planning for space systems, having the capability to establish temporal dependencies between events or activities is crucial.
-Aerie includes the capability to model flexible temporal relations through the use of `Coexistence Goals`.
+PlanDev includes the capability to model flexible temporal relations through the use of `Coexistence Goals`.
 
 A Coexistence Goal can be used to define a causality relation between two activities: the first activity is a directive that should be already included in the plan,
 while the second is an activity type to be added to the plan under certain conditions. Both activities can be instantaneous or have a duration, and can be related temporally
 in several ways. The [Allen’s Temporal Relations](https://en.wikipedia.org/wiki/Allen%27s_interval_algebra) describe 14 different ways in which two time intervals relate to each other.
 Many of these relations can be easily generalized to relations between timepoints for instantaneous activities.
 
-The following sections introduce the syntax to represent temporal relations in Aerie and provide a number of examples.
+The following sections introduce the syntax to represent temporal relations in PlanDev and provide a number of examples.
 
 ## Flexible Time Intervals in eDSL
 Consider a time interval as a time range defined by two timepoints that specify the lower and upper bounds of the interval. For example, `[lb, ub]` represents a closed time interval bounded by the timepoints `lb` and `ub`.
 We define a flexible interval as a time range where its timepoints are specified relative to another timepoint. For example, considering `ae` as the timepoint at which an activity `a` ends, we can define a time interval relative to it
 as follows: `[ae + x, ae + y]` where `x` and `y` represents the delta lower and upper bounds with respect to`a`'s end.
 
-Flexible Time Intervals are represented in Aerie by means of `TimingConstraint.bounds`, which are composed of two `TimingConstraint.singletons` to model the lower and upper bound.
+Flexible Time Intervals are represented in PlanDev by means of `TimingConstraint.bounds`, which are composed of two `TimingConstraint.singletons` to model the lower and upper bound.
 For example,
 ```ts
 TimingConstraint.bounds(TimingConstraint.singleton(WindowProperty.START).plus(Temporal.Duration.from({ minutes : 5})), TimingConstraint.singleton(WindowProperty.START).plus(Temporal.Duration.from({ minutes : 10})))

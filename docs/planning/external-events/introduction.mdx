@@ -22,14 +22,14 @@ import timelineEditorFull from './assets/timeline_and_editor_full.png';
 # External Events
 
 
-An **External Event** is temporal data used to inform a mission planner's decision making process. By nature, these events are *external* to Aerie itself and represent temporal occurrences that are immutable in nature.
+An **External Event** is temporal data used to inform a mission planner's decision making process. By nature, these events are *external* to PlanDev itself and represent temporal occurrences that are immutable in nature.
 
 Examples of External Events include:
 * Ground station contacts
 * Orbital events
 * Weather forecasts
 
-In this document, we will discuss what External Events are, what their containing entities (External Sources) are, their grouping mechanisms (Derivation Groups), as well as how they manifest within Aerie.
+In this document, we will discuss what External Events are, what their containing entities (External Sources) are, their grouping mechanisms (Derivation Groups), as well as how they manifest within PlanDev.
 
 ## Concepts
 
@@ -40,7 +40,7 @@ With External Events (and External Sources) come several constructs.
 External Events represent temporal occurrences outside of the locus of control of the modelled spacecraft(s). See [External Events](#external-events-2) below for more information.
 
 #### External Sources
-External Sources are containers for External Events and the primary way that users interact with External Events. To get External Events into Aerie, an External Source must be uploaded that contains the event definitions inside. See [External Sources](#external-sources-1) below for more information.
+External Sources are containers for External Events and the primary way that users interact with External Events. To get External Events into PlanDev, an External Source must be uploaded that contains the event definitions inside. See [External Sources](#external-sources-1) below for more information.
 
 #### External Event Types
 External Event Types define the *typing* of each External Event. This typing groups External Events on the basis of the data they represent, and details the allowed attributes that a given External Event is allowed to have. For example, an External Event may be of the type `Ground Station Contact`, `Solar Flare`, or `Weather Forecast`. Each of these types contains a schema for a set of allowed/defined attributes which are then implemented by the events using this External Event Type to display additional data, such as `station`, `flux level`, or `precipitation`.
@@ -79,7 +79,7 @@ Currently, External Events are *not* accessible to the procedural constraints en
 ### External Sources
 **External Sources** represent a collection of External Events. When we upload External Events, we can only do so by uploading them in an External Source.
 
-These sources are defined using [JSON Schema](https://json-schema.org/) format with a [meta-schema](https://github.com/NASA-AMMOS/aerie-gateway/blob/develop/src/schemas/external-event-validation-schemata.ts) enforced to ensure certain fields such as `key` and `start_time` are present and in the correct format.
+These sources are defined using [JSON Schema](https://json-schema.org/) format with a [meta-schema](https://github.com/PlanDev/plandev-gateway/blob/develop/src/schemas/external-event-validation-schemata.ts) enforced to ensure certain fields such as `key` and `start_time` are present and in the correct format.
 
 
 #### Schema
@@ -188,7 +188,7 @@ Events are represented as a set of objects contained in a list, and each event h
 
 ##### Full External Source & Event Types Example
 
-The following is a full example of a valid, `JSON` representation of an External Source Type and External Event Type. The type definitions must be uploaded to Aerie prior to attempting to use them in an External Source and/or External Event(s).
+The following is a full example of a valid, `JSON` representation of an External Source Type and External Event Type. The type definitions must be uploaded to PlanDev prior to attempting to use them in an External Source and/or External Event(s).
 
 The example represents the definitions for a weather forecast source & event.
 
@@ -261,7 +261,7 @@ For more information on External Source & Type definitions & attribute schemas, 
 
 ##### Full External Source Example
 
-The following is a full example of a valid, `JSON` representation of an External Source that can be ingested by Aerie.
+The following is a full example of a valid, `JSON` representation of an External Source that can be ingested by PlanDev.
 
 The example represents a week-long weather forecast where each event is the report for a specific day.
 
@@ -617,7 +617,7 @@ After uploading an External Source, it will show up in the table on the upper-ri
   <figcaption><i>Figure 12: External Source Table</i></figcaption>
 </figure>
 
-Selecting a source allows for the inspection of the source, which is essentially an in-Aerie rendering of what's included under `source` in the uploaded `JSON` (as discussed earlier). It is here, as well as in the table, that deletion can be performed. Note that for deletion to work, an External Source must not be associated with any existing plan (that is the Derivation Group it is a part of must be dissociated from all plans before deletions become legal). Aside from that, there is currently no system of ownership, meaning admins and users alike, as long as External Sources satisfy the aforementioned condition, can delete at will. Viewers, however, cannot.
+Selecting a source allows for the inspection of the source, which is essentially an in-PlanDev rendering of what's included under `source` in the uploaded `JSON` (as discussed earlier). It is here, as well as in the table, that deletion can be performed. Note that for deletion to work, an External Source must not be associated with any existing plan (that is the Derivation Group it is a part of must be dissociated from all plans before deletions become legal). Aside from that, there is currently no system of ownership, meaning admins and users alike, as long as External Sources satisfy the aforementioned condition, can delete at will. Viewers, however, cannot.
 
 It should also be noted that all this inspection takes place outside the context of a plan, so that External Sources & their events can be viewed without having to open and associate the External Source(s) to a plan.
 

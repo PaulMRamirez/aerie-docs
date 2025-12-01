@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the **official documentation site for Aerie**, a NASA-AMMOS software framework for modeling spacecraft. The documentation is built with [Docusaurus 2](https://docusaurus.io/) and hosted at https://nasa-ammos.github.io/aerie-docs/.
+This is the **official documentation site for PlanDev**, a software framework for mission planning and simulation. The documentation is built with [Docusaurus 2](https://docusaurus.io/) and hosted at https://plandev.github.io/plandev-docs/.
 
-Aerie itself is a spacecraft mission planning and simulation tool that includes:
+PlanDev is a mission planning and simulation tool that includes:
 - Mission modeling in Java
 - Activity planning and scheduling
 - Constraint checking
@@ -28,7 +28,7 @@ Aerie itself is a spacecraft mission planning and simulation tool that includes:
 # Install dependencies
 npm install
 
-# Start local dev server (http://localhost:3000/aerie-docs/)
+# Start local dev server (http://localhost:3000/plandev-docs/)
 npm start
 
 # Build for production
@@ -47,7 +47,7 @@ npm run clear
 ## Project Structure
 
 ```
-aerie-docs/
+plandev-docs/
 ├── docs/                    # All documentation content
 │   ├── api/                 # GraphQL API examples
 │   ├── command-expansion/   # Command expansion docs
@@ -98,6 +98,6 @@ Supported syntax highlighting: `graphql`, `java`, `kotlin`, `javascript`, `types
 
 ## External Resources
 
-- **Main Aerie repo**: https://github.com/NASA-AMMOS/aerie
-- **Live docs**: https://nasa-ammos.github.io/aerie-docs/
-- **Slack**: NASA-AMMOS workspace
+- **Main PlanDev repo**: https://github.com/PlanDev/plandev
+- **Live docs**: https://plandev.github.io/plandev-docs/
+- **Slack**: PlanDev workspace

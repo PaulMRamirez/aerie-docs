@@ -110,17 +110,17 @@ for (var currentEvent : exampleEvents) {
 ```java
 package scheduling.procedures;
 
-import gov.nasa.ammos.aerie.procedural.scheduling.Goal;
-import gov.nasa.ammos.aerie.procedural.scheduling.annotations.SchedulingProcedure;
-import gov.nasa.ammos.aerie.procedural.scheduling.plan.EditablePlan;
-import gov.nasa.ammos.aerie.procedural.scheduling.plan.NewDirective;
-import gov.nasa.ammos.aerie.procedural.timeline.collections.Instances;
-import gov.nasa.ammos.aerie.procedural.timeline.payloads.activities.AnyDirective;
-import gov.nasa.ammos.aerie.procedural.timeline.payloads.activities.AnyInstance;
-import gov.nasa.ammos.aerie.procedural.timeline.payloads.activities.DirectiveStart;
-import gov.nasa.ammos.aerie.procedural.timeline.plan.EventQuery;
-import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
-import gov.nasa.jpl.aerie.merlin.protocol.types.SerializedValue;
+import dev.plandev.procedural.scheduling.Goal;
+import dev.plandev.procedural.scheduling.annotations.SchedulingProcedure;
+import dev.plandev.procedural.scheduling.plan.EditablePlan;
+import dev.plandev.procedural.scheduling.plan.NewDirective;
+import dev.plandev.procedural.timeline.collections.Instances;
+import dev.plandev.procedural.timeline.payloads.activities.AnyDirective;
+import dev.plandev.procedural.timeline.payloads.activities.AnyInstance;
+import dev.plandev.procedural.timeline.payloads.activities.DirectiveStart;
+import dev.plandev.procedural.timeline.plan.EventQuery;
+import dev.plandev.merlin.protocol.types.Duration;
+import dev.plandev.merlin.protocol.types.SerializedValue;
 
 import java.util.List;
 import java.util.Map;
@@ -178,7 +178,7 @@ After the goal has been created and saved, it must be compiled following the ste
 
 Afterwards, a `DemoSchedulingGoal.jar` should be created in `$project/scheduling/build/libs/`.
 
-In the Aerie UI, navigate back to the plan view for our previously created plan and select `Scheduling Goals` from the top-left drop-down menu. From there, click `Manage Goals` and then the `New` button to be directed to creating/uploading a new scheduling goal.
+In the PlanDev UI, navigate back to the plan view for our previously created plan and select `Scheduling Goals` from the top-left drop-down menu. From there, click `Manage Goals` and then the `New` button to be directed to creating/uploading a new scheduling goal.
 
 <figure>
   <img alt="Opening the scheduling goal management modal" src={schedulingGoalModal} />

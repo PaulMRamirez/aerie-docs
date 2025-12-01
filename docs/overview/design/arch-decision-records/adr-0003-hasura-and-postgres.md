@@ -6,7 +6,7 @@ Retroactive
 
 ## Context
 
-At the time, the Aerie team was developing and maintaining an API server, using [Apollo](https://www.apollographql.com/). The team found themselves spending a lot of their time on repetitive tasks involving adding endpoints to create, read, update, or delete some domain object.
+At the time, the PlanDev team was developing and maintaining an API server, using [Apollo](https://www.apollographql.com/). The team found themselves spending a lot of their time on repetitive tasks involving adding endpoints to create, read, update, or delete some domain object.
 
 ## Decision
 
@@ -39,13 +39,13 @@ flowchart LR
 
 Every new domain object would need to be added first to MongoDB, then to Merlin and exposed as an HTTP endpoint, and lastly to Apollo and exposed as a GraphQL endpoint.
 
-Hasura came with postgres support out of the box, and this to some extent drove the decision to switch to postgres. Additional justification came in the form that most Aerie data is well structured, and fits well into a relational schema. The need for open-ended user-defined data will be implemented using `jsonb` , which we expect to be sufficient for our purposes.
+Hasura came with postgres support out of the box, and this to some extent drove the decision to switch to postgres. Additional justification came in the form that most PlanDev data is well structured, and fits well into a relational schema. The need for open-ended user-defined data will be implemented using `jsonb` , which we expect to be sufficient for our purposes.
 
 MongoDB was originally selected because it's the backend for RAVEN, which some of the developers had worked on before.
 
 ## Consequences
 
-Using Hasura allowed the Aerie team to deliver features like filtering and sorting for every query without additional development effort.
+Using Hasura allowed the PlanDev team to deliver features like filtering and sorting for every query without additional development effort.
 
 ## References
 

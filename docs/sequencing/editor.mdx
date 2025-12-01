@@ -1,18 +1,18 @@
 # Sequence Editor
 
-Aerie sequence editor is a web application with various features (auto complete, linting, hinting) to assist users while typing a sequence of commands. Aerie currently supports AMPCS command, parameter, and channel dictionary schemas for commands, parameters, and telemetry channels. To be able to author or edit a sequence, users must reference a parcel containing a command dictionary available in the Aerie instance. To upload a command dictionary [see instructions here](../../command-expansion/upload-command-dictionary). Users may optionally upload parameter dictionaries, channel dictionaries, and adaptataion code on the same view. After these are uploaded a parcel should be specified.
+PlanDev sequence editor is a web application with various features (auto complete, linting, hinting) to assist users while typing a sequence of commands. PlanDev currently supports AMPCS command, parameter, and channel dictionary schemas for commands, parameters, and telemetry channels. To be able to author or edit a sequence, users must reference a parcel containing a command dictionary available in the PlanDev instance. To upload a command dictionary [see instructions here](../../command-expansion/upload-command-dictionary). Users may optionally upload parameter dictionaries, channel dictionaries, and adaptataion code on the same view. After these are uploaded a parcel should be specified.
 
 ## Parcel
 
-Aerie groups a command dictionary along with zero of more parameter dictionaries, an optional channel dictionary, and an optional javascript adaptation file. If a parcel includes an adaptation, the adaptation may use parameter and channel dictionaries for additional information beyond the command dictionary. If a parcek does not specify an adaption or specifies an adaptation does not make use of the additional dictionaries they may have no impact on sequencing.
+PlanDev groups a command dictionary along with zero of more parameter dictionaries, an optional channel dictionary, and an optional javascript adaptation file. If a parcel includes an adaptation, the adaptation may use parameter and channel dictionaries for additional information beyond the command dictionary. If a parcek does not specify an adaption or specifies an adaptation does not make use of the additional dictionaries they may have no impact on sequencing.
 
 Navigate to the parcel page to create a parcel or edit an existing parcel.
 
 import parcelMenuItem from './assets/parcelMenuItem.png';
 
 <figure>
-  <img alt="Navigate to Aerie parcel configuration view" src={parcelMenuItem} />
-  <figcaption>Use main Aerie drop down menu to navigate to the Aerie parcel configuration view.</figcaption>
+  <img alt="Navigate to PlanDev parcel configuration view" src={parcelMenuItem} />
+  <figcaption>Use main PlanDev drop down menu to navigate to the PlanDev parcel configuration view.</figcaption>
 </figure>
 
 Create a new parcel or edit an existing parcel to change the configuration. Parcels are often named according to Ground Data System or Flight Software releases.
@@ -24,13 +24,13 @@ import parcelConfiguration from './assets/parcelConfiguration.png';
   <figcaption>Parcels define a grouping of files that effect sequencing checks and translations</figcaption>
 </figure>
 
-Navigate to the Aerie sequence editor from the Aerie drop down menu at the upper left corner.
+Navigate to the PlanDev sequence editor from the PlanDev drop down menu at the upper left corner.
 
 import navigateSeq from './assets/navigateSeq.png';
 
 <figure>
-  <img alt="Navigate to Aerie sequencing editor" src={navigateSeq} />
-  <figcaption>Use main Aerie drop down menu to navigate to the Aerie sequence editor.</figcaption>
+  <img alt="Navigate to PlanDev sequencing editor" src={navigateSeq} />
+  <figcaption>Use main PlanDev drop down menu to navigate to the PlanDev sequence editor.</figcaption>
 </figure>
 
 The landing page lists all sequences available at this venue in the left panel. Upon click users can view the contents of sequences in the right hand side editor in a "read only" mode. To edit an individual sequence click the pencil icon for the sequence on the left hand side panel as shown in the image below.
@@ -44,7 +44,7 @@ import viewSeq from './assets/viewSeq.png';
 
 :::note
 
-Currently Aerie sequence editor does not support user roles and permissions, hence all sequences authored in this venue will be accessible to everyone who has access to Aerie. User roles will allow limiting edit and/or view access to some sequences. For now, we recommend pre-appending a user name to your sequence names to indicate ownership.
+Currently PlanDev sequence editor does not support user roles and permissions, hence all sequences authored in this venue will be accessible to everyone who has access to PlanDev. User roles will allow limiting edit and/or view access to some sequences. For now, we recommend pre-appending a user name to your sequence names to indicate ownership.
 
 :::
 
@@ -59,7 +59,7 @@ import editSeq from './assets/editSeq.png';
 
 ## Import / export seqJSON
 
-Aerie editor allows authoring and viewing sequences in a user friendly format which is more compact, easier to read and write compared to the seqJSON. However seqJSON is the exchange format that should be used to exchange sequences with upstream and downstream tools. While creating a new sequence, users can import a seqJSON using the in (`Choose File`) button available at the new sequence the left panel. After authoring a sequence, it can be downloaded to the your local machine using the (`Download`) button at the upper right corner of the seqJSON view panel at the bottom.
+PlanDev editor allows authoring and viewing sequences in a user friendly format which is more compact, easier to read and write compared to the seqJSON. However seqJSON is the exchange format that should be used to exchange sequences with upstream and downstream tools. While creating a new sequence, users can import a seqJSON using the in (`Choose File`) button available at the new sequence the left panel. After authoring a sequence, it can be downloaded to the your local machine using the (`Download`) button at the upper right corner of the seqJSON view panel at the bottom.
 
 ## Typing commands
 
@@ -89,7 +89,7 @@ R00:00:10 THROW_BANANA 10
 
 import sequenceFormEditor from './assets/sequenceFormEditor.png';
 
-Aerie offers a form editor to edit individual arguments. Different argument types -- strings, enumerations, variables and numbers -- each have their own appropriate control
+PlanDev offers a form editor to edit individual arguments. Different argument types -- strings, enumerations, variables and numbers -- each have their own appropriate control
 
 <figure>
   <img alt="Form view for sequence editing" src={sequenceFormEditor} />
